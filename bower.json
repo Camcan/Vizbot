@@ -1,0 +1,16 @@
+{
+  "name": "simplifyingAgent",
+  "version": "0.0.1",
+  "authors": [
+    "Mohamed Mokhtari<mohamed.mokhtari.pro@gmail.com>"
+  ],
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "*",
+    "jquery": "*",
+    "bootstrap": "*",
+    "angular-route": "*",
+    "angular-resource" : "*"
+  }
+}
