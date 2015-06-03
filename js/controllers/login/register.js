@@ -11,6 +11,7 @@ app.controller('RegisterCtrl', ['$scope', '$http', '$location', function ($scope
 		var res = $http.post("http://localhost:3000/users", user);
 		res.success(function(data, status, headers, config) {
 			$scope.message = data;
+			$scope.userId = headers.id;
 			$location.path("/consents/");
 		});
 		res.error(function(data, status, headers, config) {

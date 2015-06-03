@@ -20,24 +20,33 @@
 			</div>
 			<div class="row">
 			  <div class="col-md-6">
-				<div class="table-responsive">
+				<div class="table-responsive" >
 					<table class="table table-condensed">
+					<tbody> 
 					  <tr>
 						<th>Name</th>
 						<th>Client</th> 
-						<th>Locatiobn</th>
+						<th>Location</th>
 						<th></th>
 					   </tr>
-  						<tr>
-     				      <td>Dojo</td>
-					      <td>Biz</td> 
-					      <td>115 Tory Street</td>
+					 </tbody>
+					 <tbody> 
+  						<tr ng-repeat="consent in consents">
+     				      <td>{{consent.title}}</td>
+					      <td>{{consent.client}}</td> 
+					      <td>{{consent.address}}</td>
 					      <td><a href="dashboard"><button type="button" class="btn btn-primary btn-md">
 						  <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span> Edit
 						</button></a></td>
 					  </tr>
+					  </tbody>
 					</table>
 				</div>
+				<ul>
+    				<li>
+        			{{test}} {{c}}
+    				</li>
+				</ul>
 				</div>
 			</div>
 		</div>

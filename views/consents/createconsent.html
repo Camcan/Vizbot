@@ -9,19 +9,17 @@
 				<form class="large-margin-top">
 				  		<div class="form-group">
 							<label>Consent title :</label>
-							<input type="text" class="form-control" ng-model="login.name">
+							<input type="text" class="form-control" ng-model="consent.title">
 				  		</div>
 				  		<div class="form-group">
 							<label>Client : </label>
-							<input type="text" class="form-control" ng-model="login.password">
+							<input type="text" class="form-control" ng-model="consent.client">
 				  		</div>
 				  		<div class="form-group">
 							<label>Location :</label>
-							<input placeholder="Adress 1" type="text" class="form-control" ng-model="login.password">
-							<input placeholder="City" type="text" class="form-control" ng-model="login.password">
-							<input placeholder="Zip Code" type="text" class="form-control" ng-model="login.password">
+							<input placeholder="Address" type="text" class="form-control" ng-model="consent.address">
 				  		</div>
-				  		<button ng-click="save()" type="submit" class="custom-button">Create</button>
+				  		<button ng-click="createConsent()" type="submit" class="custom-button">Create</button>
 					</form>
 			</div>
 		</div>
