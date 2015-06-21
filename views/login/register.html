@@ -1,36 +1,42 @@
 <div class="container-fluid">
   <div class="row">
-
-	<div class="col-md-10 overflow">
+	<div class="col-md-4 col-md-offset-4 margin-top-10pc">
 			<div class="row">
-				<h1>Register</h1>
-			</div>
-			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-12">
 					<form class="large-margin-top">
-				  		<div class="form-group">
+						<h2>Register</h2>
+				  		<div class="form-group" ng-show="step==1">
 							<label>Name:</label>
-							<input type="text" class="form-control" ng-model="register.name">
-				  		</div>
-				  		<div class="form-group">
+							<input type="text" class="form-control" ng-model="register.name" autofocus>
 							<label>Mail:</label>
-							<input type="text" class="form-control" ng-model="register.mail">
-				  		</div>
-				  		<div class="form-group">
+							<input type="text" class="form-control" ng-model="register.mail" >
 							<label>Password:</label>
-							<input type="text" class="form-control" ng-model="register.pwd">
+							<input type="password" class="form-control" ng-model="register.pwd">
+							<button ng-click="next()" class="btn btn-primary pull-right margin-top-10px">Next</button>
 				  		</div>
-				  		<div class="form-group">
+				  		<div class="form-group" ng-show="step==2">
+							<label>Street:</label>
+							<input type="text" class="form-control" ng-model="register.address.street" autofocus>
+							<label>City:</label>
+							<input type="text" class="form-control" ng-model="register.address.city">	
+							<label>Post Code:</label>
+							<input type="text" class="form-control" ng-model="register.address.postCode">
+							<label>Phone Number:</label>
+							<input type="text" class="form-control" ng-model="register.phone">
+							<button ng-click="previous()" class="btn btn-primary margin-top-10px">Previous</button>
+							<button ng-click="next()" class="btn btn-primary margin-top-10px pull-right">Next</button>
+				  		</div>
+				  		<div class="form-group" ng-show="step==3">
 							<label>Professional registration: </label>
-							<input type="text" class="form-control" ng-model="register.registration">
+							<input type="text" class="form-control" ng-model="register.registration" autofocuss>
+							<button ng-click="previous()" class="btn btn-primary margin-top-10px">Previous</button>
+				  			<button ng-click="create()" type="submit" class="btn btn-success margin-top-10px pull-right">Create profile</button>
 				  		</div>
-						<div class="form-group">
-							<label>Address:</label>
-							<input type="text" class="form-control" ng-model="register.address">
-				  		</div>
-				  		<button ng-click="create()" type="submit" class="btn btn-primary">Create profile</button>
 					</form>
 				</div>
+			</div>
+			<div>
+				
 			</div>
 		</div>
   </div>

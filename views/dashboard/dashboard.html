@@ -1,213 +1,160 @@
-<div class="container-fluid">
+<nav class="navbar navbar-inverse">
+	<a class="navbar-brand" href="#">Vizbot</a>
+	<ul class="nav navbar-nav">
+		<li class="active">
+			<a href="dashboard">Dashboard</a>
+		</li>
+		<li>
+			<a href="workspace">Workspace</a>
+		</li>
+		<li>
+			<a href="summary">Summary</a>
+		</li>
+	</ul>
+</nav>
+<div class="container-fluid" data-ng-init="init()">
   <div class="row">
-
-	<div class="col-md-10 overflow">
-			<div class="row">
-				<h1>Main dashboard</h1>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-				 	<div class="panel panel-default">
-						<div class="panel-heading">
-					    	<h3 class="panel-title">Global informations</h3>
-					  	</div>
-					<div class="panel-body">
-					  <div class="row">
-						<div class="col-md-6">
-						    <span><b>Consent </b>: Dojo </span><br/>
-						    <span><b>Client </b>: Biz </span><br/>
-						    <span><b>Location </b> : 115 Tory St.</span><br/>
-						</div>
-						<div class="col-md-6">
-						   <iframe width="500" height="200" frameborder="0" style="border:0"
-							src="https://www.google.com/maps/embed/v1/place?q=The+BizDojo,+Vivian+Street,+Wellington,+Nouvelle-Zélande&key=AIzaSyAVfktdNHdqaedc9T7ElTx2axcAS4Gasq8"></iframe>
-						</div>
-					  </div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-				<div class="col-md-12">
-				 	<div class="panel panel-default">
-						<div class="panel-heading">
-					    	<h3 class="panel-title">Progress bar</h3>
-					  	</div>
-					<div class="panel-body">
-					  <div class="row">
-						<div class="col-md-12">
-						   <div class="progress">
-							  <div class="progress-bar progress-bar-success" style="width: 35%">
-							    <span class="sr-only">35% Complete (success)</span>
-							  </div>
-							  <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 20%">
-							    <span class="sr-only">20% Complete (warning)</span>
-							  </div>
-							  <div class="progress-bar progress-bar-danger" style="width: 10%">
-							    <span class="sr-only">10% Complete (danger)</span>
-							  </div>
-							</div>
-						</div>
-					  </div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="col-md-12 overflow">
 		<div class="row">
 			<div class="col-md-12">
-				 <div class="panel panel-default">
-						<div class="panel-heading">
-					    	<h3 class="panel-title">Tasks</h3>
-					  	</div>
-					<div class="panel-body">
-					  <div class="row">
-						<div class="col-md-12">
-							<div class="btn-group" data-toggle="buttons">
-							  <label class="btn btn-primary active">
-							    <input type="radio" name="options" id="option1" autocomplete="off" checked> Apply for pre app
-							  </label>
-							  <label class="btn btn-primary">
-							    <input type="radio" name="options" id="option2" autocomplete="off"> Apply for XXX
-							  </label>
-							  <label class="btn btn-primary">
-							    <input type="radio" name="options" id="option3" autocomplete="off"> Apply for PIM / LIM
-							  </label>
-							  <label class="btn btn-primary">
-							    <input type="radio" name="options" id="option4" autocomplete="off"> Apply for xxx
-							  </label>
-							  <label class="btn btn-primary">
-							    <input type="radio" name="options" id="option5" autocomplete="off"> Apply for building consents
-							  </label>
-							</div>
-						</div>
-					  </div>
+			 	<div class="panel panel-default">
+					<div class="panel-heading">
+				    	<h3 class="panel-title">Global informations</h3>
+				  	</div>
+				<div class="panel-body">
+				  <div class="row">
+					<div class="col-md-2">
+					    <span><b>Consent </b>: {{consent.title}} </span><br/>
+					    <span><b>Client </b>: {{consent.client}} </span><br/>
+					    <span><b>Owner </b>: {{consent.owner}}</span><br/>
+					    <span><b>Location </b>: {{consent.address}}</span><br/>
 					</div>
+					<div class="col-md-3">
+						<div class="panel panel-primary">
+							  <div class="panel-heading">
+									<h3 class="panel-title">Project Team <a class="pull-right" href="workspace">View all</a></h3>
+							  </div>
+							  <div class="panel-body">
+							  		<ul ng-repeat="person consent.people">
+							  			{{person.name}} {{person.type}}
+							  		</ul>
+							  </div>
+						</div>
+					</div>
+					<div class="col-md-6" ng-hide="consent.status =='create'">
+					<div class="col-md-4">
+					    <div class="panel panel-primary">
+					    	  <div class="panel-heading">
+					    			<h3 class="panel-title">Days Remaining</h3>
+					    	  </div>
+					    	  <div class="panel-body">
+					    			{{daysRemaining}}
+					    	  </div>
+					    </div>
+					</div>
+					<div class="col-md-4">
+						<div class="panel panel-primary">
+							  <div class="panel-heading">
+									<h3 class="panel-title">Days Paused</h3>
+							  </div>
+							  <div class="panel-body">
+									0
+							  </div>
+						</div>
+					</div>
+					</div>
+				  </div>
 				</div>
+			</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
-				 <div class="panel panel-default">
-						<div class="panel-heading">
-					    	<h3 class="panel-title">Add Info</h3>
-					  	</div>
-					<div class="panel-body">
-					  <div class="row">
-						<div class="col-md-12">
-							<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addPeopleModal">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add People  
-							</button>
-							<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addBuildingInfo">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Building  
-							</button>
-							<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addProject">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Project  
-							</button>
-							<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addDocument">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Document  
-							</button>
-							<!-- Modal -->
-							<div class="modal fade" id="addPeopleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							  <div class="modal-dialog">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							        <h4 class="modal-title" id="myModalLabel">Add People</h4>
-							      </div>
-							      <div class="modal-body">
-							        <form class="large-margin-top">
-								  		<div class="form-group">
-											<label>Name :</label>
-											<input type="text" class="form-control" ng-model="dashboard.people.name">
-								  		</div>
-								  		<div class="form-group">
-											<label>Mail :</label>
-											<input type="mail" class="form-control" ng-model="dashboard.people.mail">
-								  		</div>
-								  		<button ng-click="save()" type="submit" class="btn btn-primary">Add</button>
-									</form>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-							<div class="modal fade" id="addBuildingInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							  <div class="modal-dialog">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							        <h4 class="modal-title" id="myModalLabel">Add Building</h4>
-							      </div>
-							      <div class="modal-body">
-							        <form class="large-margin-top">
-								  		<div class="form-group">
-											<label>Name :</label>
-											<input type="text" class="form-control" ng-model="login.name">
-								  		</div>
-								  		<div class="form-group">
-											<label>Password</label>
-											<input type="password" class="form-control" ng-model="login.password">
-								  		</div>
-								  		<button ng-click="save()" type="submit" class="btn btn-primary">Add</button>
-									</form>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-							<div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							  <div class="modal-dialog">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							        <h4 class="modal-title" id="myModalLabel">Add Project</h4>
-							      </div>
-							      <div class="modal-body">
-							        <form class="large-margin-top">
-								  		<div class="form-group">
-											<label>Name :</label>
-											<input type="text" class="form-control" ng-model="login.name">
-								  		</div>
-								  		<div class="form-group">
-											<label>Password</label>
-											<input type="password" class="form-control" ng-model="login.password">
-								  		</div>
-								  		<button ng-click="save()" type="submit" class="btn btn-primary">Add</button>
-									</form>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-							<div class="modal fade" id="addDocument" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							  <div class="modal-dialog">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							        <h4 class="modal-title" id="myModalLabel">Add Document</h4>
-							      </div>
-							      <div class="modal-body">
-									<form class="large-margin-top">
-								  		<div class="form-group">
-											<label>File name :</label>
-											<input type="text" class="form-control" ng-model="dashboard.filename">
-								  		</div>
-								  		<div class="form-group">
-											<label>File name :</label>
-											<input type="text" class="form-control" ng-model="dashboard.filename">
-								  		</div>
-								  		<div class="form-group">
-											<input type="file">
-								  		</div>
-								  		<button ng-click="save()" type="submit" class="btn btn-primary">Add</button>
-									</form>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-						</div>  
-					  </div>
+					<div class="col-md-12">
+					<div class="panel panel-default">
+						  <div class="panel-heading">
+								<h3 class="panel-title">Step Bar</h3>
+						  </div>
+						  <div class="panel-body">
+							<div class="row bs-wizard" style="border-bottom:0;">
+	                
+			                <div class="col-xs-1 bs-wizard-step" ng-class="stepbar.create">
+			                  <div class="text-center bs-wizard-stepnum">Create Consent</div>
+			                  <div class="progress"><div class="progress-bar"></div></div>
+			                  <a href="#" class="bs-wizard-dot"></a>
+			                </div>
+			                
+			                <div class="col-xs-1 bs-wizard-step" ng-class="stepbar.build"><!-- complete -->
+			                  <div class="text-center bs-wizard-stepnum">Build Consent</div>
+			                  <div class="progress"><div class="progress-bar"></div></div>
+			                  <a href="#" class="bs-wizard-dot"></a>
+			                </div>
+			                
+			                <div class="col-xs-1 bs-wizard-step" ng-class="stepbar.submit"><!-- complete -->
+			                  <div class="text-center bs-wizard-stepnum">Submit</div>
+			                  <div class="progress"><div class="progress-bar"></div></div>
+			                  <a href="#" class="bs-wizard-dot"></a>
+			                </div>
+			                
+			                <div class="col-xs-1 bs-wizard-step" ng-class="stepbar.vetting"><!-- active -->
+			                  <div class="text-center bs-wizard-stepnum">Vetting</div>
+			                  <div class="progress"><div class="progress-bar"></div></div>
+			                  <a href="#" class="bs-wizard-dot"></a>
+			                </div>
+			                <div class="col-xs-1 bs-wizard-step" ng-class="stepbar.approval"><!-- active -->
+			                  <div class="text-center bs-wizard-stepnum">Approval</div>
+			                  <div class="progress"><div class="progress-bar"></div></div>
+			                  <a href="#" class="bs-wizard-dot"></a>
+			                </div>
+			                <div class="col-xs-1 bs-wizard-step" ng-class="stepbar.rfi"><!-- active -->
+			                  <div class="text-center bs-wizard-stepnum">RFI</div>
+			                  <div class="progress"><div class="progress-bar"></div></div>
+			                  <a href="#" class="bs-wizard-dot"></a>
+			                </div>
+							<div class="col-xs-1 bs-wizard-step" ng-class="stepbar.approved"><!-- active -->
+			                  <div class="text-center bs-wizard-stepnum">Approved</div>
+			                  <div class="progress"><div class="progress-bar"></div></div>
+			                  <a href="#" class="bs-wizard-dot"></a>
+			                </div>
+			            </div>
+						  </div>
 					</div>
-				</div>
+
+					</div>
+				  </div>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="panel panel-default fixed-panel">
+					<div class="panel-heading">
+				    	<h3 class="panel-title">Status</h3>
+				    </div>
+				<div class="panel-body">
+					<h3>{{status}}</h3>
+					<button ng-click="submitApplication()" type="button" class="btn btn-success" ng-show="consent.status =='submit'">SUBMIT</button>
+			   </div>
 			</div>
 		</div>
-
-  </div>
+		<div class="col-md-9">
+			<div class="panel panel-default">
+						<div class="panel-heading">
+					    	<h3 class="panel-title">Timeline</h3>
+					    </div>
+				<div class="panel-body">
+				<ul class="timeline" ng-repeat="item in timeline">
+			        <li>
+			          <div class="timeline-badge"><i ng-class="item.icon"></i></div>
+			          <div class="timeline-panel">
+			            <div class="timeline-heading">
+			              <h4 class="timeline-title">{{item.title}}</h4>
+			              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{item.date}} by {{item.by}}</small></p>
+			            </div>
+			            <div class="timeline-body">
+			              <p> {{item.text}} </p>
+			            </div>
+			          </div>
+			        </li>
+			    </ul>
+			   </div>
+			</div>
+		</div>
+  	</div>
 </div>

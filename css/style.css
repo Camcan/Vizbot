@@ -1,0 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:500,600,700,800,400,200,300);
+
+body {
+  background-color: white;
+  font-family: 'canter', 'Raleway', sans-serif;
+}
+
+.fixed-panel {
+  min-height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
