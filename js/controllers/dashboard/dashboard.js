@@ -3,9 +3,9 @@
 	
 	$scope.timeline = new Array();
 	$scope.stepbar = new Array();
+	var idconsent = JSON.parse(sessionStorage.getItem('idConsentSelected'));
 
 	$scope.init = function(){
-		var idconsent = JSON.parse(sessionStorage.getItem('idConsentSelected'));
 		$scope.consent = Consent.get({_id: idconsent})
 		.$promise.then(function(consent) {
 	      $scope.consent = consent;
@@ -20,13 +20,19 @@
 	};
 
 	$scope.submitApplication = function(){
-		$scope.consent.status = 'vetting';
-		$scope.status = 'Action from Council required';	
-		prepareTimeline();
+		$scope.consent = Consent.get({_id: idconsent})
+		.$promise.then(function(consent) {
+	      $scope.consent = consent;
+	      $scope.consent.status = 'vetting';
+	      $scope.status = 'Action from Council required';	
+	      $scope.consent.$save();
+	      prepareTimeline();
+	    });		
 	};
 
 	function updatestatus(){
-		if($scope.consent.project && $scope.consent.buildingInfo && $scope.consent.people){
+		
+		if(($scope.consent.project.length > 0 || $scope.consent.project) && ($scope.consent.buildingInfo.length > 0 || $scope.consent.buildingInfo ) && $scope.consent.people.length > 0){
 			if($scope.consent.status == 'create')
 				$scope.consent.status = 'submit';
 		}
@@ -70,7 +76,7 @@
 				rfi : "disabled",
 				approved : "disabled"
 			};
-			$scope.daysRemaining = 20;
+			
 		}
 		if($scope.consent.status == 'vetting'){
 			var elem = {
@@ -94,61 +100,11 @@
 	};
 
 	$scope.tasks = {
-
-	}
-	$scope.people = {
-
-	};
-	$scope.project = {
-
-	};
-	$scope.building = {
-
-	};
-	$scope.document = {
-
-	};
-
-	$scope.tasks = {
 		buildingInfo : true,
 		project : true,
 		people : true,
 		document : true,
 		extra : true
-	};
-
-	$scope.savePeople = function(){
-		var consent = {
-			user :  "",
-			title : $scope.consent.title,
-			client : $scope.consent.client,
-			address : $scope.consent.address
-		};
-
-	};
-
-	$scope.submitPeople = function(){
-
-	};
-
-	$scope.addBuildingInfo = function(){
-
-	};
-
-	$scope.submitBuildingInformation = function(){
-
-	};
-
-	$scope.saveProject = function(){
-
-	};
-
-	$scope.submitProject = function(){
-
-	};
-
-	$scope.saveDocument = function(){
-
 	};
 
 }]);

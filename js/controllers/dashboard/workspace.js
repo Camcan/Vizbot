@@ -1,20 +1,27 @@
-app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', function ($scope, Consent, User) {
+app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
+
+	function ($scope, Consent, User, fileUpload) {
 
 	
 	$scope.checkInfoBuilding = false;
 	$scope.checkInfoPeople = false;
 	$scope.checkInfoProject = false;
 	$scope.checkInfoDocument = false;
+	$scope.checkInfoCouncil = false;
 	var idconsent = JSON.parse(sessionStorage.getItem('idConsentSelected'));
 
 	$scope.init = function(){
 		$scope.consent = Consent.get({_id: idconsent} )
 		.$promise.then(function(consent) {
 	      $scope.consent = consent;
-	      if($scope.consent.buildingInfo)
+	      if($scope.consent.buildingInfo){
 	      	$scope.checkInfoBuilding = true;
-	      if($scope.consent.project.description)
+	      	$scope.building = $scope.consent.buildingInfo;
+	      }
+	      if($scope.consent.project.description){
 	      	$scope.checkInfoProject = true;
+	      	$scope.project = $scope.consent.project;
+	      }
 	      if($scope.consent.people.length > 0)
 	      	$scope.checkInfoPeople = true;
 	      if($scope.consent.doc.length > 0)
@@ -76,7 +83,7 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', function ($scope, C
 			$('#addPeopleModal').modal('hide');
 
 			$scope.checkInfoPeople = true;
-			// clean $scope.people
+			
 		});
 	};
 
@@ -84,5 +91,12 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', function ($scope, C
 		$('#addDocument').modal('hide'); 
 		$scope.checkInfoDocument = true;
 	};
+
+	$scope.uploadFile = function(){
+        var file = $scope.myFile;
+        console.log('file is ' + JSON.stringify(file));
+        var uploadUrl = "http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/consents/" + idconsent +'/document';
+        fileUpload.uploadFileToUrl(file, uploadUrl);
+    };
 
 }]);

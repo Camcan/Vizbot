@@ -1,15 +1,17 @@
- app.factory('User', ['$resource', function($resource) {
+var url = 'http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com';
+var server = 'http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com';
 
-	return $resource('http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/users/:id', {id : '@id'}, {
-		all: {method: "GET", isArray: true, url: "http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/users"},
-		byConsent: {method: "GET", isArray: true, url: "http://localhost:3000/consents/people"},
-		logIn: {method:"PUT", url:"http://localhost:3000/users"}
+ app.factory('User', ['$resource', function($resource) {
+	return $resource(url + '/users/:id', {id : '@id'}, {
+		all: {method: "GET", isArray: true, url: url + "/users"},
+		byConsent: {method: "GET", isArray: true, url: url + "/consents/people"},
+		logIn: {method:"PUT", url: url +"/users"}
 	});
 }]);
 
  app.factory('Consent', ['$resource', function($resource) {
-	return $resource('http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/consents/:_id', {_id : '@_id'}, {
-		all: {method: "GET", isArray: true, url: "http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/consents"},
-		byUser: {method: "GET", isArray: true, url: "http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/users/:userId/consents"}
+	return $resource(url +'/consents/:_id', {_id : '@_id'}, {
+		all: {method: "GET", isArray: true, url: url + "/consents"},
+		byUser: {method: "GET", isArray: true, url: url + "/users/:userId/consents"}
 	});
 }]);

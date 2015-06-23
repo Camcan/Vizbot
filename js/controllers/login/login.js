@@ -7,12 +7,7 @@ app.controller('LoginCtrl', ['$scope', '$location',
 	//$scope.user = new User();
 	$scope.consent = new Consent();
 	$scope.consents = new Array();
-	console.log($scope.user);
-	$scope.login = {
-		mail : "mohamed@gmail.com",
-		pwd : "pwd"
-	};
-
+	
 	$scope.save = function(){
 		User.logIn({}, $scope.login, function(data,headers){
 			sessionStorage.clear();

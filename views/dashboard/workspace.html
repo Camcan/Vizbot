@@ -1,14 +1,11 @@
 <nav class="navbar navbar-inverse">
-	<a class="navbar-brand" href="dashboard">Vizbot</a>
+	<a class="navbar-brand" href="consents">Vizbot</a>
 	<ul class="nav navbar-nav">
 		<li>
 			<a href="dashboard">Dashboard</a>
 		</li>
 		<li class="active">
 			<a href="workspace">Workspace</a>
-		</li>
-		<li>
-			<a href="summary">Summary</a>
 		</li>
 	</ul>
 </nav>
@@ -17,43 +14,34 @@
   		<div class="col-md-12">
   			<h3>Key People</h3>	
   		</div>
-		<div class="col-md-5">
+		<div class="col-md-5" ng-show="checkInfoPeople">
 			<div class="panel panel-default fixed-panel">
 				<div class="panel-heading">
 			    	<h3 class="panel-title">Project Team</h3>
 			    </div>
 			<div class="panel-body">
-			<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> Agent</span><br/>
-			<ul>
+			<ul ng-repeat="person in consent.people">
 				<li>
-					<span class="" aria-hidden="true">Mourton Coutts</span>
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> {{person.type}}</span><br/>
+					<span class="" aria-hidden="true">{{person.name}}</span>
 				</li>
 			</ul>
 		   </div>
 		</div>
 		</div>
-		<div class="col-md-7">
+		<div class="col-md-7" ng-show="checkInfoCouncil">
 			<div class="panel panel-default fixed-panel">
 						<div class="panel-heading">
 					    	<h3 class="panel-title">Council</h3>
 					    </div>
 				<div class="panel-body">
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> Admin</span><br/>
-						<ul>
-
-						</ul>
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> Consent Officier</span><br/>
-						<ul>
-							<li>
-								<span class="" aria-hidden="true">I.M Encharge</span>
-							</li>
-						</ul>
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> Structural BCO</span><br/>
-						<ul>
-							<li>
-								<span class="" aria-hidden="true">John Baily</span>
-							</li>
-						</ul>
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> Admin</span><br/>
+					<ul>
+						<li>
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span> Consent Officier</span><br/>
+							<span class="" aria-hidden="true">I.M Encharge</span>
+						</li>
+					</ul>
 			   </div>
 			</div>
 		</div>
@@ -75,10 +63,10 @@
 						<div ng-show="checkInfoBuilding">
 						<div class="row">
 							<div class"col-md-6">
-								<span class="label label-success">Information supplied</span>
+								<h3 class="">Information supplied</h3>
 							</div>
 							<div class"col-md-3">
-								<button type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addBuildingInfo">
+								<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addBuildingInfo">
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
 								</button>	
 						   </div>
@@ -119,7 +107,6 @@
 									<label>Year First Constructed:</label>
 									<input type="text" class="form-control" ng-model="building.yearConstructed" required>
 									<button ng-click="addBuildingInfo()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
-									<button ng-click="submitBuildingInformation()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Submit</button>
 								</form>
 						      </div>
 						    </div>
@@ -158,7 +145,7 @@
 								    </div>
 								    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 								      <div class="panel-body">
-								      <ul ng-repeat="person in people">
+								      <ul ng-repeat="person in consent.people">
 								      	<li>{{person.peopleType}} {{person.name}}</li>       
 								      </ul>
 								      </div>
@@ -304,7 +291,6 @@
 										<input type="mail" class="form-control" ng-model="dashboard.people.mail">
 							  		</div>
 							  		<button ng-click="savePeople()" type="submit" class="btn btn-primary">Save</button>
-							  		<button ng-click="submitPeople()" type="submit" class="btn btn-primary">Submit</button>
 								</form>
 						      </div>
 						    </div>
@@ -400,7 +386,6 @@
 									<label>All building work to be carried out in the building consent will be/was completed on:</label>
 									<input type="text" class="form-control" ng-model="project.other" required>
 									<button ng-click="saveProject()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
-									<button ng-click="submitProject()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Submit</button>
 								</form>
 						      </div>
 						    </div>
@@ -440,7 +425,9 @@
 								    </div>
 								    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 								      <div class="panel-body">
-								        {{people}}
+								      <ul ng-repeat="item in consent.doc">
+								      <li><a ng-href="http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/{{item.url}}">{{item.name}}</a></li>
+								      </ul>
 								      </div>
 								    </div>
 								  </div>
@@ -467,11 +454,8 @@
 								<form class="large-margin-top">
 							  		<div class="form-group">
 										<label>File name :</label>
-										<input type="text" class="form-control" ng-model="document.filename">
-							  		</div>
-							  		<div class="form-group">
-										<label>File name :</label>
-										<input type="text" class="form-control" ng-model="document.filename">
+										<input type="file" file-model="myFile"/>
+										<button ng-click="uploadFile()">Upload file</button>
 							  		</div>
 							  		<div class="form-group">
 										<input type="file" ng-model="document.file">

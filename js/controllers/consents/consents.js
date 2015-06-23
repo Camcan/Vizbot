@@ -38,8 +38,7 @@ app.controller('ConsentsCtrl', ['$scope', '$location',
 		$scope.consents.push($scope.newconsent);
 		sessionStorage.setItem('consents', JSON.stringify($scope.consents));
 		$scope.newconsent.$save();
-
-		
-		
 	};
+
+	
 }]);
