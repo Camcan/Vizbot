@@ -8,8 +8,7 @@ app.controller('RegisterCtrl', ['$scope', '$http', '$location', function ($scope
 				pwd : $scope.register.pwd,
 				address : $scope.register.address,
 				phone : $scope.register.phone,
-				registration : $scope.register.registration
-				
+				registration : $scope.register.registration	
 		};
 		var res = $http.post("http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/users", user);
 		res.success(function(data, status, headers, config) {
@@ -22,6 +21,11 @@ app.controller('RegisterCtrl', ['$scope', '$http', '$location', function ($scope
 		res.error(function(data, status, headers, config) {
 			alert( "failure message: " + JSON.stringify({data: data}));
 		});
+	};
+
+	$scope.checkFirst = function(){
+		if($scope.register.name && $scope.register.mail && $scope.register.pwd)
+			$scope.step++;
 	};
 
 	$scope.next = function(){

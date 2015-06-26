@@ -10,11 +10,11 @@
 	</ul>
 </nav>
 <div class="container-fluid" data-ng-init="init()">
-	<div class="row">
+	<div class="row" ng-show="checkInfoPeople">
   		<div class="col-md-12">
   			<h3>Key People</h3>	
   		</div>
-		<div class="col-md-5" ng-show="checkInfoPeople">
+		<div class="col-md-5" >
 			<div class="panel panel-default fixed-panel">
 				<div class="panel-heading">
 			    	<h3 class="panel-title">Project Team</h3>
@@ -84,28 +84,28 @@
 						      </div>
 						      <div class="modal-body">
 						        <form class="centering">
-									<label>Building name:</label>
+								<!--	<label>Building name:</label>
 									<input type="text" class="form-control" ng-model="building.name" required autofocus>
 									<label>Address:</label>
-									<input type="text" class="form-control" ng-model="building.address" required autofocus>
+									<input type="text" class="form-control" ng-model="building.address" required>
 									<label>Client:</label>
-									<input type="text" class="form-control" ng-model="building.client" required>
+									<input type="text" class="form-control" ng-model="building.client" required> -->
 									<label>Description of land use:</label>
-									<input type="textarea" class="form-control" ng-model="building.description" required>
+									<input type="textarea" class="form-control" ng-model="building.description" >
 									<label>Area:</label>
-									<input type="text" class="form-control" ng-model="building.area" required>
+									<input type="text" class="form-control" ng-model="building.area" >
 									<label>Number of levels:</label>
-									<input type="text" class="form-control" ng-model="building.level" required>
+									<input type="text" class="form-control" ng-model="building.level" >
 									<label>Total floor area:</label>
-									<input type="text" class="form-control" ng-model="building.totalFloor" required>
+									<input type="text" class="form-control" ng-model="building.totalFloor" >
 									<label>Existing floor area:</label>
-									<input type="text" class="form-control" ng-model="building.existingFloor" required>
+									<input type="text" class="form-control" ng-model="building.existingFloor" >
 									<label>New floor area:</label>
-									<input type="text" class="form-control" ng-model="building.newFloor" required>
+									<input type="text" class="form-control" ng-model="building.newFloor" >
 									<label>Current, Lawfully Established, Use:</label>
-									<input type="text" class="form-control" ng-model="building.lawfully" required>
+									<input type="text" class="form-control" ng-model="building.lawfully" >
 									<label>Year First Constructed:</label>
-									<input type="text" class="form-control" ng-model="building.yearConstructed" required>
+									<input type="text" class="form-control" ng-model="building.yearConstructed" >
 									<button ng-click="addBuildingInfo()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
 								</form>
 						      </div>
@@ -342,7 +342,7 @@
 						      <div class="modal-body">
 						        <form class="centering">
 									<label>Description of Building Work:</label>
-									<input type="text" class="form-control" ng-model="project.description" required autofocus>
+									<input type="text" class="form-control" ng-model="project.description" autofocus>
 									<label>Scope of approval:</label><br/>
 									<label class="checkbox-inline"><input type="checkbox" ng-model="project.approval.wind">Wind</label>
 									<label class="checkbox-inline"><input type="checkbox" ng-model="project.approval.earthquake">Earthquake</label>
@@ -360,9 +360,9 @@
 									  <label><input type="radio" name="optradio" ng-model="project.useOfSite.info">No</label>
 									</div>
 									<label>Will the Building Work Result in a Change of Use of the Building:</label>
-									<input type="textarea" class="form-control" ng-model="project.workResult" required>
+									<input type="textarea" class="form-control" ng-model="project.workResult">
 									<label>Life of Building (if < 50 years):</label>
-									<input type="text" class="form-control" ng-model="project.life" required>
+									<input type="text" class="form-control" ng-model="project.life">
 									<label>Building Consents Previously Issued for this project:</label>
 									<select class="form-control" id="sel1" ng-model="project.prev">
 								        <option>None</option>
@@ -380,11 +380,14 @@
 									  <label><input type="radio" name="optradio" ng-model="project.preApp.info">No</label>
 									</div>
 									<label>Estimated value of the building work on which the building levy will be calculated:</label>
-									<input type="text" class="form-control" ng-model="project.value" required>
+								   <div class="input-group">
+								      <div class="input-group-addon">$NZD</div>
+								      <input type="text" class="form-control" ng-model="project.value">
+								    </div>
 									<label>If this is an application to amend a bulding consent, advise the new estimate value of total building work:</label>
-									<input type="text" class="form-control" ng-model="project.newValue" required>
+									<input type="text" class="form-control" ng-model="project.newValue">
 									<label>All building work to be carried out in the building consent will be/was completed on:</label>
-									<input type="text" class="form-control" ng-model="project.other" required>
+									<input type="text" class="form-control" ng-model="project.other">
 									<button ng-click="saveProject()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
 								</form>
 						      </div>

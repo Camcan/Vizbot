@@ -2,6 +2,7 @@
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4 margin-top-10pc">
 			<form class="centering">
+				<p class="bg-danger" ng-show="loginMistake == true"><span class="glyphicon glyphicon-remove-circle"></span> {{loginerror}}</p>
 				<h2>Login</h2>
 				<label>Mail :</label>
 				<input type="text" class="form-control" ng-model="login.mail" required autofocus>

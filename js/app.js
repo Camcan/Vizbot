@@ -40,6 +40,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         templateUrl: 'views/dashboard/summary.html',
         controller: 'SummaryCtrl'
       }).
+      when('/profile', {
+        templateUrl: 'views/dashboard/profile.html',
+        controller: 'ProfileCtrl'
+      }).
       otherwise({
         redirectTo: '/'
       });

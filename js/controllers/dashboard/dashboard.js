@@ -24,15 +24,16 @@
 		.$promise.then(function(consent) {
 	      $scope.consent = consent;
 	      $scope.consent.status = 'vetting';
-	      $scope.status = 'Action from Council required';	
+	      $scope.status = 'Action from Council required';
+	      $scope.consent.councilRef = "3456723";
+	      $scope.consent.workingDays = "20";
 	      $scope.consent.$save();
 	      prepareTimeline();
 	    });		
 	};
 
 	function updatestatus(){
-		
-		if(($scope.consent.project.length > 0 || $scope.consent.project) && ($scope.consent.buildingInfo.length > 0 || $scope.consent.buildingInfo ) && $scope.consent.people.length > 0){
+		if($scope.consent.project && $scope.consent.buildingInfo  && $scope.consent.people.length > 0 && $scope.consent.doc.length > 0){
 			if($scope.consent.status == 'create')
 				$scope.consent.status = 'submit';
 		}
