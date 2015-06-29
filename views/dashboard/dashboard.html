@@ -32,8 +32,8 @@
 									<h3 class="panel-title">Project Team <a class="pull-right" href="workspace">View all</a></h3>
 							  </div>
 							  <div class="panel-body">
-							  		<ul ng-repeat="person consent.people">
-							  			{{person.name}} {{person.type}}
+							  		<ul ng-repeat="person in consent.people">
+							  			{{person.name}}<span class="pull right"> {{person.type}}</span>
 							  		</ul>
 							  </div>
 						</div>
@@ -45,7 +45,7 @@
 					    			<h3 class="panel-title">Days Remaining</h3>
 					    	  </div>
 					    	  <div class="panel-body">
-					    			{{daysRemaining}}
+					    			{{consent.daysRemaining}}
 					    	  </div>
 					    </div>
 					</div>
@@ -146,6 +146,7 @@
 			            </div>
 			            <div class="timeline-body">
 			              <p> {{item.text}} </p>
+			              <hr ng-show="consent.status =='create'">
 			              <a href="workspace" class="btn btn-primary" ng-show="consent.status =='create'">Compile Application</a>
 			            </div>
 			          </div>

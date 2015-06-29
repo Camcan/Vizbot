@@ -173,10 +173,12 @@
 						        <form class="large-margin-top">
 							  		<div class="form-group">
 										<label>Type :</label>
+										<div class="alert alert-info" role="alert" ng-show="peopleType==null">Choose a person's type, fill out the form and save. Add one member each time.</div>
 											<div class="radio">
 											<label><input type="radio" name="optradio" ng-model="peopleType" value="pro">Professional</label>
 											<select class="form-control" id="type" ng-model= "people.pro.type">
 										        <option value"engineer">Engineer</option>
+										        <option value"architect">Designer of Architect</option>
 										        <option value"structEngineer">Structural Engineer</option>
 										        <option value"fire">Fire Engineer</option>
 										        <option value"mechanical">Mechanical Engineer</option>
@@ -197,9 +199,6 @@
 											</div>
 											<div class="radio">
 											  <label><input type="radio" name="optradio" ng-model="peopleType" value="licensed">LicensedBuilding</label>
-											</div>
-											<div class="radio">
-											  <label><input type="radio" name="optradio" ng-model="peopleType" value="client">Client</label>
 											</div>
 							  		</div>
 							  		<div class="form-group" ng-show="peopleType == 'pro'">
@@ -290,7 +289,7 @@
 										<label>Client :</label>
 										<input type="mail" class="form-control" ng-model="dashboard.people.mail">
 							  		</div>
-							  		<button ng-click="savePeople()" type="submit" class="btn btn-primary">Save</button>
+							  		<button ng-click="savePeople()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px" ng-show="peopleType!=null">Save</button>
 								</form>
 						      </div>
 						    </div>
@@ -429,7 +428,7 @@
 								    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 								      <div class="panel-body">
 								      <ul ng-repeat="item in consent.doc">
-								      <li><a ng-href="http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/{{item.url}}">{{item.name}}</a></li>
+								      <li><a ng-href="http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/{{item.url}}" target="_blank">{{item.name}}</a></li>
 								      </ul>
 								      </div>
 								    </div>
@@ -456,23 +455,25 @@
 						      <div class="modal-body">
 								<form class="large-margin-top">
 							  		<div class="form-group">
-										<label>File name :</label>
+										<label>File:</label>
 										<input type="file" file-model="myFile"/>
-										<button ng-click="uploadFile()">Upload file</button>
+										<button ng-click="uploadFile()" class="btn btn-lg btn-primary btn-block margin-top-10px">Upload file</button>
 							  		</div>
-							  		<div class="form-group">
-										<input type="file" ng-model="document.file">
-							  		</div>
-							  		<button ng-click="saveDocument()" type="submit" class="btn btn-primary">Add</button>
 								</form>
 						      </div>
 						    </div>
 						  </div>
 						</div>
+
 					</div>  
 				  </div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		<button ng-click="submitApplication()" type="button" class="btn btn-success margin-top-10px" ng-show="checkInfoBuilding==true && checkInfoPeople==true && checkInfoProject==true && checkInfoDocument==true && consent.status!='vetting'">SUBMIT</button>
 		</div>
 	</div>
 </div>

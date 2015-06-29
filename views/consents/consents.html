@@ -63,13 +63,13 @@
 				</div>
 			</div>
 			<div class="col-md-2">
+			<label>Search: <input ng-model="searchText"></label>
+			</div>
+			<div class="col-md-2">
 				<p>Total consents : {{consents.length}}</p>
 			</div>
 			<div class="col-md-2">
 				<p>Underway : {{consents.length}}</p>
-			</div>
-			<div class="col-md-2">
-				<p>Paused : 0</p>
 			</div>
 			<div class="col-md-2">
 				<p>Approved : 0</p>
@@ -90,7 +90,7 @@
 					   </tr>
 					 </thead>
 					 <tbody> 
-  						<tr ng-repeat="consent in consents" class="tableLine">
+  						<tr ng-repeat="consent in consents | filter:searchText" class="tableLine">
      				      <td>{{consent.title}}</td>
 					      <td>{{consent.client}}</td> 
 					      <td>{{consent.address}}</td>

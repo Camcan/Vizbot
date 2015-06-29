@@ -8,6 +8,7 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 	$scope.checkInfoProject = false;
 	$scope.checkInfoDocument = false;
 	$scope.checkInfoCouncil = false;
+	$scope.docAdded = false;
 	var idconsent = JSON.parse(sessionStorage.getItem('idConsentSelected'));
 
 	$scope.init = function(){
@@ -87,16 +88,33 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 		});
 	};
 
-	$scope.saveDocument = function(){
-		$('#addDocument').modal('hide'); 
-		$scope.checkInfoDocument = true;
-	};
-
 	$scope.uploadFile = function(){
         var file = $scope.myFile;
         console.log('file is ' + JSON.stringify(file));
         var uploadUrl = "http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/consents/" + idconsent +'/document';
-        fileUpload.uploadFileToUrl(file, uploadUrl);
+        var ret = fileUpload.uploadFileToUrl(file, uploadUrl);
+        ret.success(function(){
+            $scope.docAdded = true;
+        	$scope.checkInfoDocument = true;
+        	$('#addDocument').modal('hide');
+        	$scope.myFile = null;
+        	$scope.init();
+        })
+        .error(function(){
+            return false;
+        });
     };
+
+    $scope.submitApplication = function(){
+		$scope.consent = Consent.get({_id: idconsent})
+		.$promise.then(function(consent) {
+	      $scope.consent = consent;
+	      $scope.consent.status = 'vetting';
+	      $scope.status = 'Action from Council required';
+	      $scope.consent.councilRef = "3456723";
+	      $scope.consent.workingDays = "20";
+	      $scope.consent.$save();
+	    });		
+	};
 
 }]);
