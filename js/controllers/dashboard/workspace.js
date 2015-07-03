@@ -10,6 +10,7 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 	$scope.checkInfoCouncil = false;
 	$scope.docAdded = false;
 	var idconsent = JSON.parse(sessionStorage.getItem('idConsentSelected'));
+	$scope.username = JSON.parse(sessionStorage.getItem('username'));
 
 	$scope.init = function(){
 		$scope.consent = Consent.get({_id: idconsent} )
@@ -34,6 +35,8 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 		$scope.consent = Consent.get({_id: idconsent} )
 		.$promise.then(function(consent) {
 	      $scope.consent = consent;
+	      $scope.building.client = consent.client;
+	      $scope.building.address = consent.address;
 	      $scope.consent.buildingInfo = $scope.building;
 	      $scope.consent.$save();
 		  $scope.checkInfoBuilding = true;
@@ -75,16 +78,8 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 				$scope.consent.$save();
 				$scope.people = null;
 			}
-			if($scope.peopleType == 'client'){
-				$scope.people.client.peopleType = $scope.peopleType;
-				$scope.consent.people.push($scope.people.client); 
-				$scope.consent.$save();
-				$scope.people = null; 
-			}
 			$('#addPeopleModal').modal('hide');
-
 			$scope.checkInfoPeople = true;
-			
 		});
 	};
 
@@ -109,10 +104,8 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 		$scope.consent = Consent.get({_id: idconsent})
 		.$promise.then(function(consent) {
 	      $scope.consent = consent;
-	      $scope.consent.status = 'vetting';
+	      $scope.consent.status = 'submitted';
 	      $scope.status = 'Action from Council required';
-	      $scope.consent.councilRef = "3456723";
-	      $scope.consent.workingDays = "20";
 	      $scope.consent.$save();
 	    });		
 	};

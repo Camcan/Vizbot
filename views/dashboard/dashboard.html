@@ -5,8 +5,21 @@
 			<a href="dashboard">Dashboard</a>
 		</li>
 		<li>
-			<a href="workspace">Workspace</a>
+			<a href="workspace">Application Information</a>
 		</li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <span class="glyphicon glyphicon-user"> {{username}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
+            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="home"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+          </ul>
+        </li>
 	</ul>
 </nav>
 <div class="container-fluid" data-ng-init="init()">
@@ -45,7 +58,7 @@
 					    			<h3 class="panel-title">Days Remaining</h3>
 					    	  </div>
 					    	  <div class="panel-body">
-					    			{{consent.daysRemaining}}
+					    			{{consent.workingDays}}
 					    	  </div>
 					    </div>
 					</div>
@@ -75,13 +88,13 @@
 							<div class="row bs-wizard" style="border-bottom:0;">
 	                
 			                <div class="col-xs-1 bs-wizard-step" ng-class="stepbar.create">
-			                  <div class="text-center bs-wizard-stepnum">Create Consent</div>
+			                  <div class="text-center bs-wizard-stepnum">Create Project</div>
 			                  <div class="progress"><div class="progress-bar"></div></div>
 			                  <a href="#" class="bs-wizard-dot"></a>
 			                </div>
 			                
 			                <div class="col-xs-1 bs-wizard-step" ng-class="stepbar.build"><!-- complete -->
-			                  <div class="text-center bs-wizard-stepnum">Build Consent</div>
+			                  <div class="text-center bs-wizard-stepnum">Compiling</div>
 			                  <div class="progress"><div class="progress-bar"></div></div>
 			                  <a href="#" class="bs-wizard-dot"></a>
 			                </div>
@@ -98,7 +111,7 @@
 			                  <a href="#" class="bs-wizard-dot"></a>
 			                </div>
 			                <div class="col-xs-1 bs-wizard-step" ng-class="stepbar.approval"><!-- active -->
-			                  <div class="text-center bs-wizard-stepnum">Approval</div>
+			                  <div class="text-center bs-wizard-stepnum">Processing</div>
 			                  <div class="progress"><div class="progress-bar"></div></div>
 			                  <a href="#" class="bs-wizard-dot"></a>
 			                </div>
@@ -127,6 +140,11 @@
 				<div class="panel-body">
 					<h3>{{status}}</h3>
 					<button ng-click="submitApplication()" type="button" class="btn btn-success" ng-show="consent.status =='submit'">SUBMIT</button>
+					<button ng-click="vetting()" type="button" class="btn btn-success" ng-show="consent.status =='submitted'">Go to vetting</button>
+					<button ng-click="approval()" type="button" class="btn btn-success" ng-show="consent.status =='vetting'">Go to Approval</button>
+					<button ng-click="rfc()" type="button" class="btn btn-success" ng-show="consent.status =='approval'">Add RFC</button>
+					<button ng-click="rfi()" type="button" class="btn btn-success" ng-show="consent.status =='rfc'">Go to RFI</button>
+					
 			   </div>
 			</div>
 		</div>
@@ -136,7 +154,8 @@
 			    	<h3 class="panel-title">Timeline</h3>
 			    </div>
 				<div class="panel-body">
-				<ul class="timeline" ng-repeat="item in timeline">
+					<h3 class="panel-title">{{timelineTitle}}</h3>
+				<ul class="timeline" ng-repeat="item in timeline.slice().reverse()">
 			        <li>
 			          <div class="timeline-badge"><i ng-class="item.icon"></i></div>
 			          <div class="timeline-panel">

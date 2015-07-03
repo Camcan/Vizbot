@@ -18,7 +18,7 @@ app.controller('ConsentsCtrl', ['$scope', '$location',
 	User.get({id:JSON.parse(sessionStorage.getItem('userId')) })
 	.$promise.then(function(user){
 		sessionStorage.setItem('username', JSON.stringify(user.name));
-		$username = user.name;
+		$scope.username = user.name;
 	});
 	console.log($scope.consents);
 	}

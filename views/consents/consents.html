@@ -3,16 +3,16 @@
 	<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-user"><span class="caret"></span></a>
+          <span class="glyphicon glyphicon-user"> {{username}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
             <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
             <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="home"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
           </ul>
         </li>
-      </ul>	
+	</ul>	
 </nav>
 <div class="container-fluid" data-ng-init="init()">
   <div class="row">
@@ -94,7 +94,7 @@
      				      <td>{{consent.title}}</td>
 					      <td>{{consent.client}}</td> 
 					      <td>{{consent.address}}</td>
-					      <td>{{consent.councilref}}</td>
+					      <td>{{consent.councilRef}}</td>
 					      <td>{{consent.status}}</td>
 					      <td><a href="dashboard"><button type="button" class="btn btn-primary btn-md" ng-click="dashboard(consent._id)">
 						  <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span> Edit
