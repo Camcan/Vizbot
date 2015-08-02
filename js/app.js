@@ -1,6 +1,7 @@
 var app = angular.module('app', [
   'ngRoute',
-  'ngResource'
+  'ngResource',
+  'br.fullpage'
 ]);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
@@ -41,8 +42,16 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         controller: 'SummaryCtrl'
       }).
       when('/profile', {
-        templateUrl: 'views/dashboard/profile.html',
+        templateUrl: 'views/profile/profile.html',
         controller: 'ProfileCtrl'
+      }).
+      when('/productSpec', {
+        templateUrl: 'views/dashboard/productSpec/productSpec.html',
+        controller: 'ProductSpecCtrl'
+      }).
+      when('/contact', {
+        templateUrl: 'views/dashboard/contact/contact.html',
+        controller: 'ContactCtrl'
       }).
       otherwise({
         redirectTo: '/'

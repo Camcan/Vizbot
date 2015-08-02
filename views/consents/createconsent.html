@@ -8,12 +8,15 @@
 			<div class="row">
 				<form class="large-margin-top">
 				  		<div class="form-group">
-							<label>Consent title :</label>
+							<label>Consent name :</label>
 							<input type="text" class="form-control" ng-model="consent.title">
 				  		</div>
 				  		<div class="form-group">
-							<label>Client : </label>
-							<input type="text" class="form-control" ng-model="consent.client">
+							<label>What's your role in this project: </label>
+							<select class="form-control" id="type" ng-model= "consent.client">
+                                <option value"client" selected>Client / Owner</option>
+                                <option value"agent">Agent</option>
+                            </select>
 				  		</div>
 				  		<div class="form-group">
 							<label>Location :</label>

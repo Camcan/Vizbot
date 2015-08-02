@@ -2,11 +2,12 @@
 
 body {
   font-family: 'canter', 'Raleway', sans-serif;
+ 
 }
 
 .fixed-panel {
-  min-height: 300px;
-  max-height: 300px;
+  min-height: 100px;
+  max-height: 200px;
   overflow-y: scroll;
 }
 
@@ -19,5 +20,11 @@ body {
 .tableLine{
 	padding-top:  : 10px;
 	padding-bottom: 10px;
+}
+
+/* Home */
+
+.background{
+	background-image: url("../images/background.jpg");
 }
 

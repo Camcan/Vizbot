@@ -20,7 +20,7 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 	      	$scope.checkInfoBuilding = true;
 	      	$scope.building = $scope.consent.buildingInfo;
 	      }
-	      if($scope.consent.project.description){
+	      if($scope.consent.project){
 	      	$scope.checkInfoProject = true;
 	      	$scope.project = $scope.consent.project;
 	      }
@@ -29,6 +29,10 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 	      if($scope.consent.doc.length > 0)
 	      	$scope.checkInfoDocument = true;
 	    });
+	    if(JSON.parse(sessionStorage.getItem('product'))){
+	    	$scope.articleChoose = JSON.parse(sessionStorage.getItem('product'));
+	    	$scope.checkInfoDocument = true;
+	    }
 	};
 
 	$scope.addBuildingInfo = function(){
@@ -86,7 +90,7 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 	$scope.uploadFile = function(){
         var file = $scope.myFile;
         console.log('file is ' + JSON.stringify(file));
-        var uploadUrl = "http://ec2-54-154-80-189.eu-west-1.compute.amazonaws.com/consents/" + idconsent +'/document';
+        var uploadUrl = "http://localhost:3000/consents/" + idconsent +'/document';
         var ret = fileUpload.uploadFileToUrl(file, uploadUrl);
         ret.success(function(){
             $scope.docAdded = true;
@@ -108,6 +112,15 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 	      $scope.status = 'Action from Council required';
 	      $scope.consent.$save();
 	    });		
+	};
+
+	$scope.removeProduct = function(prod){
+		for (var i = 0; i < $scope.articleChoose.length; i++) {
+			if($scope.articleChoose[i].product_slug == prod.product_slug){
+				$scope.articleChoose.splice(i, 1);
+				sessionStorage.setItem('product', JSON.stringify($scope.articleChoose));
+			}
+		};
 	};
 
 }]);

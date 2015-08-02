@@ -17,3 +17,59 @@
 .margin-bottom-10px{
 	margin-bottom : 10px;
 }
+
+.list-no-bullets{
+	list-style-type : none;
+}
+
+.margin-right-10px{
+	margin-right :10px;
+}
+
+.content-left-seperator{
+	border-right: 1px solid #eee;
+}
+
+.icon-size-25px{
+	font-size: 25px;
+}
+
+.icon-color-999{
+	color : #999;
+}
+
+.border-1px{
+	border: 1px solid #eee;
+	padding : 20px;
+}
+
+.logo-size{
+	width: 100px;
+	height: 100px;
+}
+
+.image-size{
+	width: 300px;
+	height: 300px;
+}
+
+.btn-lg.sign {
+    border-radius: 24px;
+}
+
+.btn.outline {
+    background: none;
+    padding: 12px 22px;
+}
+
+.btn-primary.outline {
+    border: 2px solid #0099cc;
+    color: #0099cc;
+}
+
+.color-txt-white {
+	color : #ecf0f1;
+}
+.text-align {
+	text-align: center;
+}
