@@ -195,12 +195,12 @@
 														<span ng-show="person.type == null"> {{person.peopleType}}</span><br/>
 														<span class="" aria-hidden="true">{{person.name}}</span>
 													</div>
-													<div class="col-md-1">
+												<!--	<div class="col-md-1">
 														<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
 													</div>
 													<div class="col-md-1">
 														<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
-													</div>
+													</div>-->
 												</div>
 											</li>
 										</ul>
@@ -209,14 +209,14 @@
 								  </div>
 								</div>
 							</div>
-							<div class"col-md-3">
+						<!--	<div class"col-md-3">
 								<button type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#addPeopleModal">
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add more  
 								</button>
 								<a href="contact/">Contact Page</a>	
 						   </div>
-						</div>
-						</div>
+						</div>-->
+						</div> 
 						<!-- Modal -->
 						<div class="modal fade" id="addPeopleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  <div class="modal-dialog modal-lg">
@@ -232,7 +232,7 @@
 										<div class="alert alert-info" role="alert" ng-show="peopleType==null">Choose a person's type, fill out the form and save. Add one member each time.</div>
 											<div class="radio">
 											<label><input type="radio" name="optradio" ng-model="peopleType" value="pro">Professional</label>
-											<select class="form-control" id="type" ng-model= "people.pro.type">
+											<select class="form-control" id="type" ng-model= "people.pro.type" ng-show="peopleType == 'pro'">
 										        <option value"architect">Architect</option>
 										        <option value"structEngineer">Structural Engineer</option>
 										        <option value"fire">Fire Engineer</option>
@@ -255,7 +255,7 @@
 											  <label><input type="radio" name="optradio" ng-model="peopleType" value="licensed">Licensed Building Practitioners</label>
 											</div>
 							  		</div>
-							  		<div class="form-group" ng-show="peopleType == 'pro'">
+							  		<div class="form-group" ng-show="people.pro.type != null">
 									<!--	<label>Name of Agent :</label>
 										<input type="text" class="form-control" ng-model="people.pro.agentName">-->
 										<label>Name / Business :</label>
