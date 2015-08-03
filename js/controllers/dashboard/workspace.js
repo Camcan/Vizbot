@@ -90,7 +90,7 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 	$scope.uploadFile = function(){
         var file = $scope.myFile;
         console.log('file is ' + JSON.stringify(file));
-        var uploadUrl = "http://ec2-52-18-52-59.eu-west-1.compute.amazonaws.com/consents/" + idconsent +'/document';
+        var uploadUrl = "http://ec2-52-17-95-152.eu-west-1.compute.amazonaws.com/consents/" + idconsent +'/document';
         var ret = fileUpload.uploadFileToUrl(file, uploadUrl);
         ret.success(function(){
             $scope.docAdded = true;
