@@ -11,6 +11,7 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 	$scope.docAdded = false;
 	var idconsent = JSON.parse(sessionStorage.getItem('idConsentSelected'));
 	$scope.username = JSON.parse(sessionStorage.getItem('username'));
+	$scope.url = "http://ec2-52-18-73-178.eu-west-1.compute.amazonaws.com/";
 
 	$scope.init = function(){
 		$scope.consent = Consent.get({_id: idconsent} )
@@ -90,7 +91,7 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 	$scope.uploadFile = function(){
         var file = $scope.myFile;
         console.log('file is ' + JSON.stringify(file));
-        var uploadUrl = "http://ec2-52-17-95-152.eu-west-1.compute.amazonaws.com/consents/" + idconsent +'/document';
+        var uploadUrl = $scope.url + idconsent +'/document';
         var ret = fileUpload.uploadFileToUrl(file, uploadUrl);
         ret.success(function(){
             $scope.docAdded = true;

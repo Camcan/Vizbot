@@ -355,7 +355,7 @@
 								    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 								      <div class="panel-body">
 								      <ul ng-repeat="item in consent.doc">
-								      <li><a ng-href="http://ec2-52-17-95-152.eu-west-1.compute.amazonaws.com/{{item.url}}" target="_blank">{{item.name}}</a></li>
+								      <li><a ng-href= '{{$scope.url}}' + "{{item.url}}" target="_blank">{{item.name}}</a></li>
 								      </ul>
 								      <ul ng-repeat="art in articleChoose" class="list-no-bullets">
 							            <li>

@@ -1,5 +1,5 @@
-var url = 'http://ec2-52-17-95-152.eu-west-1.compute.amazonaws.com',
-	server = 'http://ec2-52-18-52-59.eu-west-1.compute.amazonaws.com';
+var url = 'http://ec2-52-18-73-178.eu-west-1.compute.amazonaws.com',
+	server = 'http://ec2-52-18-73-178.eu-west-1.compute.amazonaws.com';
 
  app.factory('User', ['$resource', function($resource) {
 	return $resource(url + '/users/:id', {id : '@id'}, {

@@ -10,7 +10,7 @@ app.controller('RegisterCtrl', ['$scope', '$http', '$location', function ($scope
 				phone : $scope.register.phone,
 				registration : $scope.register.registration	
 		};
-		var res = $http.post("http://ec2-52-17-95-152.eu-west-1.compute.amazonaws.com/users", user);
+		var res = $http.post("http://ec2-52-18-73-178.eu-west-1.compute.amazonaws.com/users", user);
 		res.success(function(data, status, headers, config) {
 			$scope.message = data;
 			$scope.userId = headers.id;
