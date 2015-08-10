@@ -8,7 +8,7 @@
 				  		<div class="form-group" ng-show="step==1">
 							<label>Name:</label>
 							<input type="text" class="form-control" ng-model="register.name" autofocus required>
-							<label>Mail:</label>
+							<label>E-Mail:</label>
 							<input type="text" class="form-control" ng-model="register.mail" required>
 							<label>Password:</label>
 							<input type="password" class="form-control" ng-model="register.pwd" required>
@@ -23,12 +23,6 @@
 							<input type="text" class="form-control" ng-model="register.address.postCode">
 							<label>Phone Number:</label>
 							<input type="text" class="form-control" ng-model="register.phone">
-							<button ng-click="previous()" class="btn btn-primary margin-top-10px">Previous</button>
-							<button ng-click="next()" class="btn btn-primary margin-top-10px pull-right">Next</button>
-				  		</div>
-				  		<div class="form-group" ng-show="step==3">
-							<label>Professional registration: </label>
-							<input type="text" class="form-control" ng-model="register.registration" autofocus required>
 							<button ng-click="previous()" class="btn btn-primary margin-top-10px">Previous</button>
 				  			<button ng-click="create()" type="submit" class="btn btn-success margin-top-10px pull-right">Create profile</button>
 				  		</div>

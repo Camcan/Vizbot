@@ -1,20 +1,20 @@
 <nav class="navbar navbar-inverse">
-	<a class="navbar-brand" href="consent">Vizbot</a>
+	<a class="navbar-brand" href="#/consents">Vizbot</a>
   <ul class="nav navbar-nav">
     <li class="active">
-      <a href="consent">Home</a>
+      <a href="#/consents">Home</a>
     </li>
   </ul>
 	<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           <span class="glyphicon glyphicon-user"><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="#/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
             <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
             <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="home"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+            <li><a href="#/"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
           </ul>
         </li>
       </ul>	
@@ -46,12 +46,12 @@
           </div>          
             </li>
           </ul>
-          <button type="button" class="btn btn-success btn-block" ng-click="save()">Validate</button>
+          <button type="button" class="btn btn-success btn-block" ng-click="save()">Add to consent</button>
           </div>
           <h3>Categories</h3>
           <ul ng-repeat="cat in categories" class="list-no-bullets">
             <li>
-             <a href="#" ng-click="catFilter(cat.primary_slug)"> {{cat.primary}}</a>
+             <a ng-click="catFilter(cat.primary_slug)"> {{cat.primary}}</a>
             </li>
           </ul>
           <hr/>
@@ -60,7 +60,7 @@
           <ul class="list-no-bullets" ng-repeat="prod in product.products">
           <li>
             <div class="col-lg-3">
-            <a href="#" ng-click="addArticle(prod)">
+            <a ng-click="addArticle(prod)">
               <img src="{{prod.image}}" alt="125x125" style="width:200px;height:200px">
               <span>{{prod.product_title}}</span>
             </a>

@@ -1,10 +1,13 @@
+"use strict";
+
+
 app.controller('SummaryCtrl', ['$scope', 'Consent','User', function ($scope, Consent, User) {
 
 	var idconsent = JSON.parse(sessionStorage.getItem('idConsentSelected'));
 	$scope.consent = Consent.get({id: idconsent});
 	$scope.tasks = {
 
-	}
+	};
 	$scope.people = {
 
 	};

@@ -1,370 +1,370 @@
 <nav class="navbar navbar-inverse">
-	<a class="navbar-brand" href="#">Vizbot</a>
+	<a class="navbar-brand" href="#/consents">Vizbot</a>
 	<ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-user"> {{username}} <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
-            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="home"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-          </ul>
-        </li>
-	</ul>	
-</nav>
-<div class="container-fluid" data-ng-init="init()">
-  <div class="row">
-	<div class="col-md-12 overflow">
+		<li class="dropdown">
+			<a href="#/consents" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				<span class="glyphicon glyphicon-user"> {{username}} <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+					<li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
+					<li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="home"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+				</ul>
+			</li>
+		</ul>	
+	</nav>
+	<div class="container-fluid" data-ng-init="init()">
 		<div class="row">
-			<div class="col-md-6">
-				<h1>My Projects</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3">
-				<div>
-					<button class="btn btn-primary btn-block margin-top-10px" data-toggle="modal" data-target="#addConsent" data-backdrop='static' data-keyboard='false'>
-					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create project
-					</button>
-					<span role="separator" class="divider"></span>
-					<div class="modal fade" id="addConsent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					  <div class="modal-dialog">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					        <h4 class="modal-title" id="myModalLabel">New project</h4>
-					      </div>
-					      <div class="modal-body">
-					        <form class="large-margin-top">
-				  				<div class="form-group">
-									<label>Project name:</label>
-									<input type="text" placeholder="Short description for the project" class="form-control" ng-model="newconsent.title" autofocus required>
-				  				</div>
-				  				<div class="form-group">
-									<label>What's your role in this project: </label>
-									<select class="form-control" ng-model="newconsent.role" required>
-		                                <option value"agent">Agent</option>
-		                                <option value"client">Client/Owner</option>
-		                            </select>
-						  		</div>
-						  		<div class="form-group">
-									<label>Location :</label>
-									<input placeholder="Address" type="text" class="form-control" ng-model="newconsent.address" required>
-						  		</div>
-						  		<button class="btn btn-primary btn-block" ng-click="createConsent()" type="submit">Create consent</button>
-							</form>
-					      </div>
-					    </div>
-					  </div>
+			<div class="col-md-12 overflow">
+				<div class="row">
+					<div class="col-md-6">
+						<h1>My Projects</h1>
 					</div>
-					<div class="modal fade" id="building">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h4 class="modal-title">Create Project</h4>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div>
+							<button class="btn btn-primary btn-block margin-top-10px" data-toggle="modal" data-target="#addConsent" data-backdrop='static' data-keyboard='false'>
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create project
+							</button>
+							<span role="separator" class="divider"></span>
+							<div class="modal fade" id="addConsent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											<h4 class="modal-title" id="myModalLabel">New project</h4>
+										</div>
+										<div class="modal-body">
+											<form class="large-margin-top">
+												<div class="form-group">
+													<label>Project name:</label>
+													<input type="text" placeholder="Short description for the project" class="form-control" ng-model="newconsent.title" autofocus required>
+												</div>
+												<div class="form-group">
+													<label>What's your role in this project: </label>
+													<select class="form-control" ng-model="newconsent.role" required>
+														<option value"agent.name">Agent</option>
+														<option value"client.name">Client/Owner</option>
+													</select>
+												</div>
+												<div class="form-group">
+													<label>Location :</label>
+													<input placeholder="Address" type="text" class="form-control" ng-model="newconsent.address" required>
+												</div>
+												<button class="btn btn-primary btn-block" ng-click="createConsent()" type="submit">Create consent</button>
+											</form>
+										</div>
+									</div>
 								</div>
-								<div class="modal-body">
-									<div class="row">
-										<div ng-show="step1">
-											<div class="col-md-4 content-left-seperator">
+							</div>
+							<div class="modal fade" id="building">
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title">Create Project</h4>
+										</div>
+										<div class="modal-body">
 											<div class="row">
-											<span custom-popover popover-html="Applies to buildings or use where there is self care and service (internal
-management)." popover-placement="bottom" class="glyphicon glyphicon-question-sign pull-right icon-size-25px icon-color-999"></span>
-											</div>
-											<a href="#" ng-click="step(1)">
-								              <img src="images/house158.svg" alt="Housing" class="center-block" style="width:150px;height:150px">
-								              <h3>Housing</h3>
-								            </a>
-												
-											</div>
-											<div class="col-md-4 content-left-seperator" >
-											<a href="#" ng-click="step(2)" >
-								              <img src="images/school1.svg" alt="Communal Residential" class="center-block" style="width:150px;height:150px">
-												<h3>Communal Residential</h3>
-											</a>
-											</div>
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="step(3)" >
-								              <img src="images/office24.svg" alt="Non Communal Residential" class="center-block" style="width:150px;height:150px">
-												<h3>Non Communal Residential</h3>
-											</a>
-											</div>
-											<div class="col-md-4 content-left-seperator" >
-											<a href="#" ng-click="step(4)">
-								              <img src="images/shop3.svg" alt="Commercial" class="center-block" style="width:150px;height:150px">
-												<h3>Commercial</h3>
-											</a>
-											</div>
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="step(5)" >
-								              <img src="images/factory25.svg" alt="Industrial" class="center-block" style="width:150px;height:150px">
-												<h3>Industrial</h3>
-											</a>
-											</div>
-											<div class="col-md-4">
-											<a href="#" ng-click="step(6)">
-								              <img src="images/fence14.svg" alt="Outbuildings" class="center-block" style="width:150px;height:150px">
-												<h3>Outbuildings</h3>
-											</a>
-											</div> 
+												<div ng-show="step1">
+													<div class="col-md-4 content-left-seperator">
+														<div class="row">
+															<span custom-popover popover-html="Applies to buildings or use where there is self care and service (internal
+															management)." popover-placement="bottom" class="glyphicon glyphicon-question-sign pull-right icon-size-25px icon-color-999"></span>
+														</div>
+														<a ng-click="step(1)">
+															<img src="images/house158.svg" alt="Housing" class="center-block" style="width:150px;height:150px">
+															<h3>Housing</h3>
+														</a>
+														
+													</div>
+													<div class="col-md-4 content-left-seperator" >
+														<a ng-click="step(2)" >
+															<img src="images/school1.svg" alt="Communal Residential" class="center-block" style="width:150px;height:150px">
+															<h3>Communal Residential</h3>
+														</a>
+													</div>
+													<div class="col-md-4 content-left-seperator">
+														<a ng-click="step(3)" >
+															<img src="images/office24.svg" alt="Non Communal Residential" class="center-block" style="width:150px;height:150px">
+															<h3>Non Communal Residential</h3>
+														</a>
+													</div>
+													<div class="col-md-4 content-left-seperator" >
+														<a ng-click="step(4)">
+															<img src="images/shop3.svg" alt="Commercial" class="center-block" style="width:150px;height:150px">
+															<h3>Commercial</h3>
+														</a>
+													</div>
+													<div class="col-md-4 content-left-seperator">
+														<a ng-click="step(5)" >
+															<img src="images/factory25.svg" alt="Industrial" class="center-block" style="width:150px;height:150px">
+															<h3>Industrial</h3>
+														</a>
+													</div>
+													<div class="col-md-4">
+														<a ng-click="step(6)">
+															<img src="images/fence14.svg" alt="Outbuildings" class="center-block" style="width:150px;height:150px">
+															<h3>Outbuildings</h3>
+														</a>
+													</div> 
 
-										</div>
-										<div ng-show="step11">
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="dwelling(1)">
-								              <img src="images/home168.svg" alt="Detached Dwelling" class="center-block" style="width:100px;height:100px">
-												<h3>Detached Dwelling</h3>
-											</a>
-											</div>
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="dwelling(2)">
-								              <img src="images/big101.svg" alt="Multi-unit Dwelling" class="center-block" style="width:100px;height:100px">
-												<h3>Multi-unit Dwelling</h3>
-												</a>
-											</div>
-											<div class="col-md-4">
-											<a href="#" ng-click="dwelling(3)">
-								              <img src="images/subdivision.svg" alt="Group Dwelling" class="center-block" style="width:100px;height:100px">
-												<h3>Group Dwelling</h3>
-											</a>
-											</div> 
-										</div>
-										<div ng-show="step12">
-											<div class="col-md-6 content-left-seperator">
-											<a href="#" ng-click="community(1)">
-								              <img src="images/accomodation1.svg" alt="Community Service" class="center-block" style="width:100px;height:100px">
-												<h3>Community Service</h3>
-											</a>
-											</div>
-											<div class="col-md-6 content-left-seperator">
-											<a href="#" ng-click="community(2)">
-								              <img src="images/hospital11.svg" alt="Community Care" class="center-block" style="width:100px;height:100px">
-												<h3>Community Care</h3>
-												</a>
-											</div>
-										</div>
-										<div ng-show="step13">
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="assembly(1)">
-								              <img src="images/movies12.svg" alt="Assembly Service" class="center-block" style="width:100px;height:100px">
-												<h3>Assembly Service</h3>
-											</a>
-											</div>
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="assembly(2)">
-								              <img src="images/school72.svg" alt="Assembly Care" class="center-block" style="width:100px;height:100px">
-												<h3>Assembly Care</h3>
-												</a>
-											</div>
-										</div>
-										<div ng-show="step2">
-										<div class="row">
-											<div class="col-md-6 col-md-offset-3">
-											<form class="large-margin-top">
-								  				<div class="form-group">
-													<label>How many people live by level?</label>
-													<div class="input-group">
-														<input type="text" class="form-control" aria-describedby="sizing-addon1" ng-model="newconsent.numberPeople" autofocus required>
-														<span class="input-group-addon" id="sizing-addon1">People</span>
+												</div>
+												<div ng-show="step11">
+													<div class="col-md-4 content-left-seperator">
+														<a ng-click="dwelling(1)">
+															<img src="images/home168.svg" alt="Detached Dwelling" class="center-block" style="width:100px;height:100px">
+															<h3>Detached Dwelling</h3>
+														</a>
 													</div>
-								  				</div>
-								  				<div class="form-group">
-													<label>How old the building are?</label>
-													<input type="text" class="form-control" placeholder="YYYY" ng-model="newconsent.old" required>
-								  				</div>
-								  				<div class="form-group">
-													<label>Intended life (if < 50 years)?</label>
-													<div class="input-group">
-														<input type="text" class="form-control" aria-describedby="sizing-addon1" ng-model="newconsent.intended" required>
-														<span class="input-group-addon" id="sizing-addon1">Years</span>
+													<div class="col-md-4 content-left-seperator">
+														<a ng-click="dwelling(2)">
+															<img src="images/big101.svg" alt="Multi-unit Dwelling" class="center-block" style="width:100px;height:100px">
+															<h3>Multi-unit Dwelling</h3>
+														</a>
 													</div>
-								  				</div>
-								  				<button ng-click="next()" class="btn btn-primary margin-top-10px pull-right">Next</button>
-								  			</form>
-								  			</div>
-								  		</div>
-										</div>
-										<div ng-show="step3">
-										<div class="row">
-											<div class="col-md-6 col-md-offset-3">
-											<form class="large-margin-top">
-								  				<div class="form-group">
-								  					<label>Description of the building work :</label><br/>
-								  					<textarea rows="5" cols="60" ng-model="newconsent.buildingWork" required>
-								  					</textarea>
-								  				</div>
-								  				<div class="form-group">
-													<label>Will it change the use ?</label>
-													<label class="radio-inline">
-													<input type="radio" name="inlineRadioOptions" id="inlineRadio3" ng-model="optionUse" value="yes"> Yes
-													</label>
-													<label class="radio-inline">
-													  <input type="radio" name="inlineRadioOptions" id="inlineRadio4" ng-model="optionUse" value="no"> No
-													</label>
-													<button ng-click="optionYes()" class="btn btn-primary margin-top-10px pull-right" ng-show="optionUse == 'yes'">Next</button>
-													<button ng-click="final()" class="btn btn-primary margin-top-10px pull-right" ng-show="optionUse == 'no'">Finish</button>
-								  				</div>
-								  			</form>
-								  			</div>
-								  		</div>
-										</div>
-										<div ng-show="step4">
-										<div class="row">
-											<div class="col-md-6">
-												<h2>New use of building</h2>
+													<div class="col-md-4">
+														<a ng-click="dwelling(3)">
+															<img src="images/subdivision.svg" alt="Group Dwelling" class="center-block" style="width:100px;height:100px">
+															<h3>Group Dwelling</h3>
+														</a>
+													</div> 
+												</div>
+												<div ng-show="step12">
+													<div class="col-md-6 content-left-seperator">
+														<a ng-click="community(1)">
+															<img src="images/accomodation1.svg" alt="Community Service" class="center-block" style="width:100px;height:100px">
+															<h3>Community Service</h3>
+														</a>
+													</div>
+													<div class="col-md-6 content-left-seperator">
+														<a ng-click="community(2)">
+															<img src="images/hospital11.svg" alt="Community Care" class="center-block" style="width:100px;height:100px">
+															<h3>Community Care</h3>
+														</a>
+													</div>
+												</div>
+												<div ng-show="step13">
+													<div class="col-md-4 content-left-seperator">
+														<a ng-click="assembly(1)">
+															<img src="images/movies12.svg" alt="Assembly Service" class="center-block" style="width:100px;height:100px">
+															<h3>Assembly Service</h3>
+														</a>
+													</div>
+													<div class="col-md-4 content-left-seperator">
+														<a ng-click="assembly(2)">
+															<img src="images/school72.svg" alt="Assembly Care" class="center-block" style="width:100px;height:100px">
+															<h3>Assembly Care</h3>
+														</a>
+													</div>
+												</div>
+												<div ng-show="step2">
+													<div class="row">
+														<div class="col-md-6 col-md-offset-3">
+															<form class="large-margin-top">
+																<div class="form-group">
+																	<label>For current use, what is the number of occupants per level?</label>
+																	<div class="input-group">
+																		<input type="text" class="form-control" aria-describedby="sizing-addon1" ng-model="newconsent.numberPeople" autofocus required>
+																		<span class="input-group-addon" id="sizing-addon1">People</span>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<label>When was the building built?</label>
+																	<input type="text" class="form-control" placeholder="year" ng-model="newconsent.old" required>
+																</div>
+																<div class="form-group">
+																	<label>Intended life (if < 50 years)?</label>
+																	<div class="input-group">
+																		<input type="text" class="form-control" aria-describedby="sizing-addon1" ng-model="newconsent.intended" required>
+																		<span class="input-group-addon" id="sizing-addon1">Years</span>
+																	</div>
+																</div>
+																<button ng-click="next()" class="btn btn-primary margin-top-10px pull-right">Next</button>
+															</form>
+														</div>
+													</div>
+												</div>
+												<div ng-show="step3">
+													<div class="row">
+														<div class="col-md-6 col-md-offset-3">
+															<form class="large-margin-top">
+																<div class="form-group">
+																	<label>Description of the building work :</label><br/>
+																	<textarea rows="5" cols="60" ng-model="newconsent.buildingWork" required>
+																	</textarea>
+																</div>
+																<div class="form-group">
+																	<label>Will it change the use ?</label>
+																	<label class="radio-inline">
+																		<input type="radio" name="inlineRadioOptions" id="inlineRadio3" ng-model="optionUse" value="yes"> Yes
+																	</label>
+																	<label class="radio-inline">
+																		<input type="radio" name="inlineRadioOptions" id="inlineRadio4" ng-model="optionUse" value="no"> No
+																	</label>
+																	<button ng-click="optionYes()" class="btn btn-primary margin-top-10px pull-right" ng-show="optionUse == 'yes'">Next</button>
+																	<button ng-click="final()" class="btn btn-primary margin-top-10px pull-right" ng-show="optionUse == 'no'">Finish</button>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+												<div ng-show="step4">
+													<div class="row">
+														<div class="col-md-6">
+															<h2>New use of building</h2>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-4 content-left-seperator">
+															<span custom-popover popover-html="Applies to buildings or use where there is self care and service (internal
+															management)." popover-placement="top" class="glyphicon glyphicon-question-sign pull-right icon-size-25px icon-color-999"></span>
+															<a ng-click="step(41)">
+																<img src="images/house158.svg" alt="125x125" class="center-block" style="width:150px;height:150px">
+																<h3>Housing</h3>
+															</a>
+															
+														</div>
+														<div class="col-md-4 content-left-seperator" >
+															<a ng-click="step(42)">
+																<img src="images/school1.svg" alt="125x125" class="center-block" style="width:150px;height:150px">
+																<h3>Communal Residential</h3>
+															</a>
+														</div>
+														<div class="col-md-4 content-left-seperator">
+															<a ng-click="step(43)" >
+																<img src="images/office24.svg" alt="125x125" style="width:150px;height:150px">
+																<h3>Non Communal Residential</h3>
+															</a>
+														</div>
+														<div class="col-md-4 content-left-seperator"  class="disabled">
+															<a ng-click="step(44)">
+																<img src="images/shop3.svg" alt="125x125" class="center-block" style="width:150px;height:150px">
+																<h3>Commercial</h3>
+															</a>
+														</div>
+														<div class="col-md-4 content-left-seperator">
+															<a ng-click="step(45)" >
+																<img src="images/factory25.svg" alt="125x125" class="center-block" style="width:150px;height:150px">
+																<h3>Industrial</h3>
+															</a>
+														</div>
+														<div class="col-md-4">
+															<a ng-click="step(46)" >
+																<img src="images/fence14.svg" alt="125x125" class="center-block" style="width:150px;height:150px">
+																<h3>Outbuildings</h3>
+															</a>
+														</div> 
+													</div>
+												</div>
+												<div ng-show="step41">
+													<div class="col-md-4 content-left-seperator">
+														<a ng-click="dwelling(41)">
+															<img src="images/home168.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
+															<h3>Detached Dwelling</h3>
+														</a>
+													</div>
+													<div class="col-md-4 content-left-seperator">
+														<a ng-click="dwelling(42)">
+															<img src="images/big101.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
+															<h3>Multi-unit Dwelling</h3>
+														</a>
+													</div>
+													<div class="col-md-4">
+														<a ng-click="dwelling(43)">
+															<img src="images/subdivision.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
+															<h3>Group Dwelling</h3>
+														</a>
+													</div> 
+												</div>
+												<div ng-show="step42">
+													<div class="col-md-6 content-left-seperator">
+														<a ng-click="community(41)">
+															<img src="images/accomodation1.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
+															<h3>Community Service</h3>
+														</a>
+													</div>
+													<div class="col-md-6 content-left-seperator">
+														<a ng-click="community(42)">
+															<img src="images/hospital11.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
+															<h3>Community Care</h3>
+														</a>
+													</div>
+												</div>
+												<div ng-show="step43">
+													<div class="col-md-4 content-left-seperator">
+														<a ng-click="assembly(41)">
+															<img src="images/movies12.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
+															<h3>Assembly Service</h3>
+														</a>
+													</div>
+													<div class="col-md-4 content-left-seperator">
+														<a ng-click="assembly(42)">
+															<img src="images/school72.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
+															<h3>Assembly Care</h3>
+														</a>
+													</div>
+												</div>	
+												<div ng-show="step5">
+													<div class="row">
+														<div class="col-md-8 col-md-offset-2">
+															<h3>Congratulations {{username}}</h3>
+															<p> Your project is created.</p>
+															<button ng-click="final()" class="btn btn-primary margin-top-10px pull-right">Save</button>
+														</div>										
+													</div>
+												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-4 content-left-seperator">
-											<span custom-popover popover-html="Applies to buildings or use where there is self care and service (internal
-management)." popover-placement="top" class="glyphicon glyphicon-question-sign pull-right icon-size-25px icon-color-999"></span>
-											<a href="#" ng-click="step(41)">
-								              <img src="images/house158.svg" alt="125x125" class="center-block" style="width:150px;height:150px">
-								              <h3>Housing</h3>
-								            </a>
-												
-											</div>
-											<div class="col-md-4 content-left-seperator" >
-											<a href="#" ng-click="step(42)">
-								              <img src="images/school1.svg" alt="125x125" class="center-block" style="width:150px;height:150px">
-												<h3>Communal Residential</h3>
-											</a>
-											</div>
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="step(43)" >
-								              <img src="images/office24.svg" alt="125x125" style="width:150px;height:150px">
-												<h3>Non Communal Residential</h3>
-											</a>
-											</div>
-											<div class="col-md-4 content-left-seperator"  class="disabled">
-											<a href="#" ng-click="step(44)">
-								              <img src="images/shop3.svg" alt="125x125" class="center-block" style="width:150px;height:150px">
-												<h3>Commercial</h3>
-											</a>
-											</div>
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="step(45)" >
-								              <img src="images/factory25.svg" alt="125x125" class="center-block" style="width:150px;height:150px">
-												<h3>Industrial</h3>
-											</a>
-											</div>
-											<div class="col-md-4">
-											<a href="#" ng-click="step(46)" >
-								              <img src="images/fence14.svg" alt="125x125" class="center-block" style="width:150px;height:150px">
-												<h3>Outbuildings</h3>
-											</a>
-											</div> 
-										</div>
-										</div>
-										<div ng-show="step41">
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="dwelling(41)">
-								              <img src="images/home168.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
-												<h3>Detached Dwelling</h3>
-											</a>
-											</div>
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="dwelling(42)">
-								              <img src="images/big101.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
-												<h3>Multi-unit Dwelling</h3>
-												</a>
-											</div>
-											<div class="col-md-4">
-											<a href="#" ng-click="dwelling(43)">
-								              <img src="images/subdivision.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
-												<h3>Group Dwelling</h3>
-											</a>
-											</div> 
-										</div>
-										<div ng-show="step42">
-											<div class="col-md-6 content-left-seperator">
-											<a href="#" ng-click="community(41)">
-								              <img src="images/accomodation1.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
-												<h3>Community Service</h3>
-											</a>
-											</div>
-											<div class="col-md-6 content-left-seperator">
-											<a href="#" ng-click="community(42)">
-								              <img src="images/hospital11.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
-												<h3>Community Care</h3>
-												</a>
-											</div>
-										</div>
-										<div ng-show="step43">
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="assembly(41)">
-								              <img src="images/movies12.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
-												<h3>Assembly Service</h3>
-											</a>
-											</div>
-											<div class="col-md-4 content-left-seperator">
-											<a href="#" ng-click="assembly(42)">
-								              <img src="images/school72.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
-												<h3>Assembly Care</h3>
-												</a>
-											</div>
-										</div>	
-										<div ng-show="step5">
-										<div class="row">
-											<div class="col-md-8 col-md-offset-2">
-												<h3>Congratulations {{username}}</h3>
-												<p> Your project is create.</p>
-												<button ng-click="final()" class="btn btn-primary margin-top-10px pull-right">Save</button>
-											</div>										
-										</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<div class="col-md-2">
+						<label>Search: <input ng-model="searchText"></label>
+					</div>
+					<div class="col-md-2">
+						<p>Total consents : {{consents.length}}</p>
+					</div>
+					<div class="col-md-2">
+						<p>Underway : {{consents.length}}</p>
+					</div>
+					<div class="col-md-2">
+						<p>Approved : 0</p>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-2">
-			<label>Search: <input ng-model="searchText"></label>
-			</div>
-			<div class="col-md-2">
-				<p>Total consents : {{consents.length}}</p>
-			</div>
-			<div class="col-md-2">
-				<p>Underway : {{consents.length}}</p>
-			</div>
-			<div class="col-md-2">
-				<p>Approved : 0</p>
+				<div class="row margin-top-20px">
+					<div class="col-md-12">
+						<div class="table-responsive" >
+							<table class="table table-condensed">
+								<thead class="tableHead"> 
+									<tr>
+										<th>Project Name</th>
+										<th>Client</th> 
+										<th>Location</th>
+										<th>Council reference</th>
+										<th>Status</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody> 
+									<tr ng-repeat="consent in consents | filter:searchText" class="tableLine">
+										<td>{{consent.title}}</td>
+										<td>{{consent.client.name}}</td> 
+										<td>{{consent.address}}</td>
+										<td>{{consent.councilRef}}</td>
+										<td>{{consent.status}}</td>
+										<td><a href="#/dashboard"><button type="button" class="btn btn-primary btn-md" ng-click="dashboard(consent._id)">
+											<span aria-hidden="true" class="glyphicon glyphicon-pencil"></span> Edit
+										</button></a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-			<div class="row margin-top-20px">
-			  <div class="col-md-12">
-				<div class="table-responsive" >
-					<table class="table table-condensed">
-					<thead class="tableHead"> 
-					  <tr>
-						<th>Name</th>
-						<th>Client</th> 
-						<th>Location</th>
-						<th>Council reference</th>
-						<th>Status</th>
-						<th></th>
-					   </tr>
-					 </thead>
-					 <tbody> 
-  						<tr ng-repeat="consent in consents | filter:searchText" class="tableLine">
-     				      <td>{{consent.title}}</td>
-					      <td>{{consent.client}}</td> 
-					      <td>{{consent.address}}</td>
-					      <td>{{consent.councilRef}}</td>
-					      <td>{{consent.status}}</td>
-					      <td><a href="dashboard"><button type="button" class="btn btn-primary btn-md" ng-click="dashboard(consent._id)">
-						  <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span> Edit
-						</button></a></td>
-					  </tr>
-					  </tbody>
-					</table>
-				</div>
-				</div>
-			</div>
-		</div>
-  </div>
-</div>
+	</div>

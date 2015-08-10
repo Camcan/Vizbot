@@ -1,5 +1,7 @@
-var url = 'http://ec2-52-18-73-178.eu-west-1.compute.amazonaws.com',
-	server = 'http://ec2-52-18-73-178.eu-west-1.compute.amazonaws.com';
+"use strict";
+
+var url = 'http://localhost:3000',
+	server = 'http://localhost:3000';
 
  app.factory('User', ['$resource', function($resource) {
 	return $resource(url + '/users/:id', {id : '@id'}, {

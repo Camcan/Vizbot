@@ -1,419 +1,286 @@
 <nav class="navbar navbar-inverse">
-	<a class="navbar-brand" href="consents">Vizbot</a>
+	<a class="navbar-brand" href="#/consents">Vizbot</a>
 	<ul class="nav navbar-nav">
 		<li>
-			<a href="dashboard">Dashboard</a>
+			<a href="#/dashboard">Dashboard</a>
 		</li>
 		<li class="active">
-			<a href="workspace">Application Information</a>
+			<a href="#/workspace">Application Information</a>
 		</li>
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-user"> {{username}} <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
-            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="home"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-          </ul>
-        </li>
-	</ul>
-</nav>
-<div class="container-fluid" data-ng-init="init()">
-  	<div class="row">
-  		<div class="col-md-6 col-md-offset-3">
-	  		<div class="col-md-12">
-	  			<h3>Application Information<br/>
-	  			<small>This is the information that will be supplied to council when you submit your application. You need to make sure all this information in completed before you are able to submit your application.</small>
-	  			</h3>
-	  		</div>
-	  		<div class="row">
-				<div class="col-md-6 col-md-offset-3">
-					<button ng-click="submitApplication()" type="button" class="btn btn-lg btn-success btn-block margin-top-10px pull-right margin-bottom-10px" ng-show="checkInfoBuilding==true && checkInfoPeople==true && checkInfoProject==true && checkInfoDocument==true && consent.status != 'submitted' || consent.status =='submit'">SUBMIT</button>
-				</div>
-			</div>
-  		</div>
-  	</div>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			 <div class="panel panel-default">
-					<div class="panel-heading">
-				    	<h3 class="panel-title">Building Information</h3>
-				  	</div>
-				<div class="panel-body">
-				  <div class="row">
-					<div class="col-md-12">
-						<div class="col-md-5 col-md-offset-7" ng-show="!checkInfoBuilding">
-							<button type="button" class="btn btn-primary btn-block btn-lg pull-right" data-toggle="modal" data-target="#addBuildingInfo">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Building information
-							</button>
-						</div>
-						<div ng-show="checkInfoBuilding">
-						<div class="row">
-							<div class"col-md-6">
-								<h3>Information supplied</h3>
-							</div>
-							<div class"col-md-3">
-								<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addBuildingInfo">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
-								</button>	
-						   </div>
-						</div>
-							
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				<span class="glyphicon glyphicon-user"> {{username}} <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+					<li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
+					<li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#/"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<div class="container-fluid" data-ng-init="init()">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="col-md-12">
+					<h3>Application Information<br/>
+						<small>The information you enter below will be supplied to the council when you submit your application. 
+							You will need to complete all the fields before your are able to submit your application</small>
+						</h3>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3">
+							<button ng-click="submitApplication()" type="button" class="btn btn-lg btn-success btn-block margin-top-10px pull-right margin-bottom-10px" ng-show="checkInfoBuilding==true && checkInfoPeople==true && checkInfoProject==true && checkInfoDocument==true && consent.status != 'submitted' || consent.status =='submit'">SUBMIT</button>
 						</div>
 					</div>
-						<!-- Modal -->
-						<div class="modal fade" id="addBuildingInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        <h4 class="modal-title" id="myModalLabel">Building information</h4>
-						      </div>
-						      <div class="modal-body">
-						        <form class="centering">
-									<label>Building name:</label>
-									<input type="text" class="form-control" ng-model="building.name" required autofocus>
-									<label>Number of levels:</label>
-									<input type="text" class="form-control" ng-model="building.level">
-									<label>Building Area:</label>
-									<input type="text" class="form-control" ng-model="building.area">
-									<label>Total floor area:</label>
-									<input type="text" class="form-control" ng-model="building.totalFloor">
-									<label>New floor area:</label>
-									<input type="text" class="form-control" ng-model="building.newFloor" >
-									<button ng-click="addBuildingInfo()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
-								</form>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-					</div>  
-				  </div>
 				</div>
 			</div>
-		</div>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			 <div class="panel panel-default">
-					<div class="panel-heading">
-				    	<h3 class="panel-title">Project Information</h3>
-				  	</div>
-				<div class="panel-body">
-				  <div class="row">
-					<div class="col-md-12">
-						<div class="col-md-5 col-md-offset-7" ng-show="!checkInfoProject">
-							<button type="button" class="btn btn-primary btn-lg btn-block pull-right" data-toggle="modal" data-target="#addproject">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Project Information 
-							</button>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Building Information</h3>
 						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-5 col-md-offset-7" ng-show="!checkInfoBuilding">
+										<button type="button" class="btn btn-primary btn-block btn-lg pull-right" data-toggle="modal" data-target="#addBuildingInfo">
+											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Building information
+										</button>
+									</div>
+									<div class="col-md-12" ng-show="checkInfoBuilding">
+										<div class="row">
+											<div class"col-md-6">
+												<h3>Information supplied</h3>
+											</div>
+											<div class"col-md-3">
+												<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addBuildingInfo">
+													<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
+												</button>	
+											</div>
+										</div>
 
-						<div class="row" ng-show="checkInfoProject">
-							<div class"col-md-6">
-								<h3 class="">Information supplied</h3>
-							</div>
-							<div class"col-md-3">
-								<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addproject">
-									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
-								</button>	
-						   </div>
-						</div>
-						<!-- Modal -->
-						<div class="modal fade" id="addproject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        <h4 class="modal-title" id="myModalLabel">Add project information</h4>
-						      </div>
-						      <div class="modal-body">
-						        <form class="centering">
-									<label>Pre-application Meetings Prior to this Application being made:</label>
-									<div class="radio">
-									<label><input type="radio" name="optradio" ng-model="project.info" ng-value="true">Yes</label>
-									<input type="textarea" class="form-control" ng-model="project.number" placeholder="Pre-app Number" ng-show="project.info==true">
 									</div>
-									<div class="radio">
-									  <label><input type="radio" name="optradio" ng-model="project.info" ng-value="false">No</label>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="addBuildingInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												<h4 class="modal-title" id="myModalLabel">Building information</h4>
+											</div>
+											<div class="modal-body">
+												<form class="centering">
+													<label>Building name:</label>
+													<input type="text" class="form-control" ng-model="building.name" required autofocus>
+													<label>Number of levels:</label>
+													<input type="text" class="form-control" ng-model="building.level">
+													<label>Total floor area:</label>
+													<input type="text" class="form-control" ng-model="building.totalFloor">
+													<label>Indicate area affeted by the building work if less than the total area:</label>
+													<input type="text" class="form-control" ng-model="building.area">
+													<button ng-click="addBuildingInfo()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
+												</form>
+											</div>
+										</div>
 									</div>
-									<label>Estimated value of the building work on which the building levy will be calculated:</label>
-								   <div class="input-group">
-								      <div class="input-group-addon">$NZD</div>
-								      <input type="text" class="form-control" placeholder="eg : 100.000" ng-model="project.value">
-								   </div>
-									<button ng-click="saveProject()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
-								</form>
-						      </div>
-						    </div>
-						  </div>
+								</div>
+							</div>  
 						</div>
-					</div>  
-				  </div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			 <div class="panel panel-default">
-					<div class="panel-heading">
-				    	<h3 class="panel-title">Project Team</h3>
-				  	</div>
-				<div class="panel-body">
-				  <div class="row">
-					<div class="col-md-12">
-						<div class="col-md-5 col-md-offset-7" ng-show="!checkInfoPeople">
-							<button type="button" class="btn btn-primary btn-lg btn-block pull-right" data-toggle="modal" data-target="#addPeopleModal">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> People  
-							</button>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Project Information</h3>
 						</div>
-						<div ng-show="checkInfoPeople">
-						<div class="row">
-							<div class"col-md-6">
-								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-								  <div class="panel panel-primary">
-								    <div class="panel-heading" role="tab" id="headingOne">
-								      <h4 class="panel-title">
-								        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								          People summary
-								        </a>
-								      </h4>
-								    </div>
-								    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-								      <div class="panel-body">
-								     	<ul class="list-no-bullets" ng-repeat="person in consent.people">
-											<li>
-												<div class="row">
-													<div class="col-md-1">
-														<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-													</div>
-													<div class="col-md-6">
-														<span ng-show="person.type != null"> {{person.type}}</span>
-														<span ng-show="person.type == null"> {{person.peopleType}}</span><br/>
-														<span class="" aria-hidden="true">{{person.name}}</span>
-													</div>
-												<!--	<div class="col-md-1">
-														<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
-													</div>
-													<div class="col-md-1">
-														<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
-													</div>-->
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-5 col-md-offset-7" ng-show="!checkInfoProject">
+										<button type="button" class="btn btn-primary btn-lg btn-block pull-right" data-toggle="modal" data-target="#addproject">
+											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Project Information 
+										</button>
+									</div>
+
+									<div class="col-md-12" ng-show="checkInfoProject">
+										<div class"col-md-6">
+											<h3 class="">Information supplied</h3>
+										</div>
+										<div class"col-md-3">
+											<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addproject">
+												<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
+											</button>	
+										</div>
+									</div>
+									<!-- Modal -->
+									<div class="modal fade" id="addproject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<h4 class="modal-title" id="myModalLabel">Add project information</h4>
 												</div>
-											</li>
-										</ul>
-								      </div>
-								    </div>
-								  </div>
-								</div>
+												<div class="modal-body">
+													<form class="centering">
+														<label>Pre-application Meetings Prior to this Application being made:</label>
+														<div class="radio">
+															<label><input type="radio" name="optradio" ng-model="project.info" ng-value="true">Yes</label>
+															<input type="textarea" class="form-control" ng-model="project.number" placeholder="Pre-app Number" ng-show="project.info==true">
+														</div>
+														<div class="radio">
+															<label><input type="radio" name="optradio" ng-model="project.info" ng-value="false">No</label>
+														</div>
+														<label>Estimated value of the building work on which the building levy will be calculated:</label>
+														<div class="input-group">
+															<div class="input-group-addon">$NZD</div>
+															<input type="text" class="form-control" placeholder="eg : 100.000" ng-model="project.value">
+														</div>
+														<button ng-click="saveProject()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>  
 							</div>
-						<!--	<div class"col-md-3">
-								<button type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#addPeopleModal">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add more  
-								</button>
-								<a href="contact/">Contact Page</a>	
-						   </div>
-						</div>-->
-						</div> 
-						<!-- Modal -->
-						<div class="modal fade" id="addPeopleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						  <div class="modal-dialog modal-lg">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        <h4 class="modal-title" id="myModalLabel">Add Person</h4>
-						      </div>
-						      <div class="modal-body">
-						        <form class="large-margin-top">
-							  		<div class="form-group">
-										<label>Type :</label>
-										<div class="alert alert-info" role="alert" ng-show="peopleType==null">Choose a person's type, fill out the form and save. Add one member each time.</div>
-											<div class="radio">
-											<label><input type="radio" name="optradio" ng-model="peopleType" value="pro">Professional</label>
-											<select class="form-control" id="type" ng-model= "people.pro.type" ng-show="peopleType == 'pro'">
-										        <option value"architect">Architect</option>
-										        <option value"structEngineer">Structural Engineer</option>
-										        <option value"fire">Fire Engineer</option>
-										        <option value"mechanical">Mechanical Engineer</option>
-										        <option value"builder">Builder</option>
-										        <option value"plumber">Plumber</option>
-										        <option value"gasfitter">Gasfitter</option>
-										        <option value"electrician">Electrician</option>
-										        <option value"drainlayer">Drainlayer</option>
-										        <option value"cladder">Exterior Cladder</option>
-										        <option value"surveyor">Surveyor</option>
-										        <option value"heating">Heating Appliance Installer</option>
-										        <option value"others">Others</option>
-								   	 		</select>
-											</div>
-											<div class="radio">
-											  <label><input type="radio" name="optradio" ng-model="peopleType" value="agent">Agent</label>
-											</div>
-											<div class="radio">
-											  <label><input type="radio" name="optradio" ng-model="peopleType" value="licensed">Licensed Building Practitioners</label>
-											</div>
-							  		</div>
-							  		<div class="form-group" ng-show="people.pro.type != null">
-									<!--	<label>Name of Agent :</label>
-										<input type="text" class="form-control" ng-model="people.pro.agentName">-->
-										<label>Name / Business :</label>
-										<input type="text" class="form-control" ng-model="people.pro.name">
-										<label>Street :</label>
-										<input type="text" class="form-control" ng-model="people.pro.address.street">
-										<label>Suburb :</label>
-										<input type="text" class="form-control" ng-model="people.pro.address.suburb">
-										<label>City :</label>
-										<input type="text" class="form-control" ng-model="people.pro.address.city">
-										<label>Post Code :</label>
-										<input type="text" class="form-control" ng-model="people.pro.address.postCode">
-
-										<label>Phone Number:</label>
-										<input type="text" class="form-control" ng-model="people.pro.phone">
-										<label>Email:</label>
-										<input type="text" class="form-control" ng-model="people.pro.mail">
-										<label>Website:</label>
-										<input type="text" class="form-control" ng-model="people.pro.website">
-										<label>Registration Qualification:</label>
-										<input type="text" class="form-control" ng-model="people.pro.registration">
-							  		</div>
-
-							  		<div class="form-group" ng-show="peopleType == 'agent'">
-										<label>Name of Agent :</label>
-										<input type="text" class="form-control" ng-model="people.agent.name">
-
-										<label>Street :</label>
-										<input type="text" class="form-control" ng-model="people.agent.address.street">
-										<label>Suburb :</label>
-										<input type="text" class="form-control" ng-model="people.agent.address.suburb">
-										<label>City :</label>
-										<input type="text" class="form-control" ng-model="people.agent.address.city">
-										<label>Post Code :</label>
-										<input type="text" class="form-control" ng-model="people.agent.address.postCode">
-
-										<label>Phone Number:</label>
-										<input type="text" class="form-control" ng-model="people.agent.phone">
-										<label>Email:</label>
-										<input type="text" class="form-control" ng-model="people.agent.mail">
-							  		</div>
-
-							  		<div class="form-group" ng-show="peopleType == 'licensed'">
-										<label>Name:</label>
-										<input type="text" class="form-control" ng-model="people.licensed.name">
-										<label>Licensing Class:</label>
-										<input type="text" class="form-control" ng-model="people.licensed.class">
-										<label>LBP Number:</label>
-										<input type="text" class="form-control" ng-model="people.licensed.lbp">
-										<label>Certificate of design work attached:</label>
-										<input type="text" class="form-control" ng-model="people.licensed.certificat">
-							  		</div>
-							  		<button ng-click="savePeople()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px" ng-show="peopleType!=null">Save</button>
-								</form>
-						      </div>
-						    </div>
-						  </div>
 						</div>
-					</div>  
-				  </div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>  
-	
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			 <div class="panel panel-default">
-					<div class="panel-heading">
-				    	<h3 class="panel-title">Documents</h3>
-				  	</div>
-				<div class="panel-body">
-				  <div class="row">
-					<div class="col-md-12">
-						<div class="col-md-5 col-md-offset-7" ng-show="!checkInfoDocument">
-							<button type="button" class="btn btn-primary btn-lg btn-block pull-right" data-toggle="modal" data-target="#addDocument">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
-							</button>
-							<a href="productSpec">
-							<button type="button" class="btn btn-primary btn-lg btn-block pull-right">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Product Spec  
-							</button>
-							</a>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Project Team</h3>
 						</div>
-						<div ng-show="checkInfoDocument">
-						<div class="row">
-							<div class"col-md-6">
-								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-								  <div class="panel panel-primary">
-								    <div class="panel-heading" role="tab" id="headingOne">
-								      <h4 class="panel-title">
-								        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								          Show Document added
-								        </a>
-								      </h4>
-								    </div>
-								    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-								      <div class="panel-body">
-								      <ul ng-repeat="item in consent.doc">
-								      <li><a ng-href= '{{$scope.url}}' + "{{item.url}}" target="_blank">{{item.name}}</a></li>
-								      </ul>
-								      <ul ng-repeat="art in articleChoose" class="list-no-bullets">
-							            <li>
-							          <div class="row">
-							            <div class="col-md-10">
-							               {{art.product_title}}
-							            </div>
-							            <div class="col-md-2">
-							              <button type="button" class="btn btn-danger" ng-click="removeProduct(art)"><span class="glyphicon glyphicon-trash"></span></button>
-							            </div>
-							          </div>          
-							            </li>
-							          </ul>
-								      </div>
-								    </div>
-								  </div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-5 col-md-offset-7" ng-show="!checkInfoPeople">
+										<a href="#/contact">	
+											<button type="button" class="btn btn-primary btn-lg btn-block pull-right">
+												<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> People  
+											</button>
+										</a>
+									</div>
+									<div class="col-md-12" ng-show="checkInfoPeople">
+										<div class="row">
+											<div class"col-md-6">
+												<a href="#/contact">	
+													<button type="button" class="btn btn-success btn-lg btn-block pull-right">
+														<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> People  
+													</button>
+												</a>
+											</div>
+										</div> 
+									</div>
 								</div>
 							</div>
-							<div class"col-md-3">
-								<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addDocument">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add More  
-								</button>	
-								<a href="productSpec">
-								<button type="button" class="btn btn-primary btn-lg">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add From ProductSpec  
-								</button>	
-								</a>
-						   </div>
 						</div>
-							
-						</div>
-						
-						<!-- Modal -->
-						<div class="modal fade" id="addDocument" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        <h4 class="modal-title" id="myModalLabel">Add Document</h4>
-						      </div>
-						      <div class="modal-body">
-								<form class="large-margin-top">
-							  		<div class="form-group">
-										<label>File:</label>
-										<input type="file" file-model="myFile"/>
-										<button ng-click="uploadFile()" class="btn btn-lg btn-primary btn-block margin-top-10px">Upload file</button>
-							  		</div>
-								</form>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-
 					</div>  
-				  </div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Documents</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-5 col-md-offset-7" ng-show="!checkInfoDocument">
+										<button type="button" class="btn btn-primary btn-lg btn-block pull-right" data-toggle="modal" data-target="#addDocument">
+											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+										</button>
+										<a href="#/productSpec">
+											<button type="button" class="btn btn-primary btn-lg btn-block pull-right">
+												<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Product Spec  
+											</button>
+										</a>
+									</div>
+									<div class="col-md-12" ng-show="checkInfoDocument">
+										<div class="row">
+											<div class"col-md-6">
+												<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+													<div class="panel panel-primary">
+														<div class="panel-heading" role="tab" id="headingOne">
+															<h4 class="panel-title">
+																<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+																	Show Document added
+																</a>
+															</h4>
+														</div>
+														<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+															<div class="panel-body">
+																<ul ng-repeat="item in consent.doc">
+																	<li><a ng-href= '{{$scope.url}}' + "{{item.url}}" target="_blank">{{item.name}}</a></li>
+																</ul>
+																<ul ng-repeat="art in articleChoose" class="list-no-bullets">
+																	<li>
+																		<div class="row">
+																			<div class="col-md-10">
+																				{{art.product_title}}
+																			</div>
+																			<div class="col-md-2">
+																				<button type="button" class="btn btn-danger" ng-click="removeProduct(art)"><span class="glyphicon glyphicon-trash"></span></button>
+																			</div>
+																		</div>          
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class"col-md-3">
+												<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addDocument">
+													<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add More  
+												</button>	
+												<a href="#/productSpec">
+													<button type="button" class="btn btn-primary btn-lg">
+														<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add From ProductSpec  
+													</button>	
+												</a>
+											</div>
+										</div>
+
+									</div>
+
+									<!-- Modal -->
+									<div class="modal fade" id="addDocument" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+													<h4 class="modal-title" id="myModalLabel">Add Document</h4>
+												</div>
+												<div class="modal-body">
+													<form class="large-margin-top">
+														<div class="form-group">
+															<label>File:</label>
+															<input type="file" file-model="myFile"/>
+															<button ng-click="uploadFile()" class="btn btn-lg btn-primary btn-block margin-top-10px">Upload file</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>  
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
-	</div>
-	
-</div>

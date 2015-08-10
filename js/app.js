@@ -1,3 +1,5 @@
+"use strict";
+
 var app = angular.module('app', [
   'ngRoute',
   'ngResource',
@@ -5,9 +7,7 @@ var app = angular.module('app', [
 ]);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-
-    $locationProvider.html5Mode(true);
-
+    //$locationProvider.html5Mode(true);
     $routeProvider.
       when('/', {
         templateUrl: 'views/home.html',
@@ -52,8 +52,6 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       when('/contact', {
         templateUrl: 'views/dashboard/contact/contact.html',
         controller: 'ContactCtrl'
-      }).
-      otherwise({
-        redirectTo: '/'
       });
+      
 }]);

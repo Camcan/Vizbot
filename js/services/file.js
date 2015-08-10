@@ -1,3 +1,5 @@
+"use strict";
+
 app.service('fileUpload', ['$http', function ($http) {
     this.uploadFileToUrl = function(file, uploadUrl){
         var fd = new FormData();
@@ -6,5 +8,5 @@ app.service('fileUpload', ['$http', function ($http) {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         });
-    }
+    };
 }]);

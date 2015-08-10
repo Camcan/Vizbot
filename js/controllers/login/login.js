@@ -1,3 +1,5 @@
+"use strict";
+
 app.controller('LoginCtrl', ['$scope', '$location',
 	'User',
 	'Consent',
@@ -6,9 +8,9 @@ app.controller('LoginCtrl', ['$scope', '$location',
 
 	//$scope.user = new User();
 	$scope.consent = new Consent();
-	$scope.consents = new Array();
+	$scope.consents = [];
 	$scope.loginMistake = false;
-	$scope.loginerror;
+	$scope.loginerror = ' ';
 	
 	$scope.save = function(){
 		User.logIn({}, $scope.login, function(data,headers){
@@ -17,7 +19,7 @@ app.controller('LoginCtrl', ['$scope', '$location',
 			$location.path("/consents/");
 		}, function(err){
 			$scope.loginMistake = true;
-			$scope.loginerror = "The user name or password is incorect";
+			$scope.loginerror = "The user name or password is incorrect";
 		});
 	};
 }]);

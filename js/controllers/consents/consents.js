@@ -1,3 +1,5 @@
+"use strict";
+
 app.controller('ConsentsCtrl', ['$scope', '$location',
 	'User',
 	'Consent',
@@ -24,7 +26,7 @@ app.controller('ConsentsCtrl', ['$scope', '$location',
 			sessionStorage.setItem('username', JSON.stringify(user.name));
 			$scope.username = user.name;
 		});
-	}
+	};
 
 	function updateConsents(){
 		var consentslist = Consent.byUser({'userId':JSON.parse(sessionStorage.getItem('userId'))}, function(response){
@@ -37,7 +39,7 @@ app.controller('ConsentsCtrl', ['$scope', '$location',
 
 	$scope.dashboard = function(id){
 		sessionStorage.setItem('idConsentSelected', JSON.stringify(id));
-		$location.path("/dashboard/");
+		$location.path("#/dashboard/");
 	};
 
 	$scope.createConsent = function(){

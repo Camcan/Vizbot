@@ -1,177 +1,176 @@
 <nav class="navbar navbar-inverse">
-	<a class="navbar-brand" href="consents">Vizbot</a>
+	<a class="navbar-brand" href="#/consents">Vizbot</a>
 	<ul class="nav navbar-nav">
 		<li class="active">
-			<a href="dashboard">Dashboard</a>
+			<a href="#/dashboard">Dashboard</a>
 		</li>
 		<li>
-			<a href="workspace">Application Information</a>
+			<a href="#/workspace">Application Information</a>
 		</li>
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-user"> {{username}} <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
-            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="home"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-          </ul>
-        </li>
-	</ul>
-</nav>
-<div class="container-fluid" data-ng-init="init()">
-  <div class="row">
-	<div class="col-md-12 overflow">
-
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				<span class="glyphicon glyphicon-user"> {{username}} <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+					<li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
+					<li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="home"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<div class="container-fluid" data-ng-init="init()">
 		<div class="row">
-			<div class="col-md-12">
-			 	<div class="panel panel-default">
-					<div class="panel-heading">
-				    	<h3 class="panel-title">Global informations</h3>
-				  	</div>
-				<div class="panel-body">
-				  <div class="row">
-					<div class="col-md-2">
-					    <span><b>Consent </b>: {{consent.title}} </span><br/>
-					    <span><b>Client </b>: {{consent.client}} </span><br/>
-					    <span><b>Owner </b>: {{consent.owner}}</span><br/>
-					    <span><b>Location </b>: {{consent.address}}</span><br/>
+			<div class="col-md-12 overflow">
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Summary of consent</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2">
+										<span><b>Project Name </b>: {{consent.title}} </span><br/>
+										<span><b>Client </b>: {{consent.client.name}} </span><br/>
+										<span><b>Owner </b>: {{consent.owner}}</span><br/>
+										<span><b>Location </b>: {{consent.address}}</span><br/>
+									</div>
+									<div class="col-md-3">
+										<div class="panel panel-primary">
+											<div class="panel-heading">
+												<h3 class="panel-title">Project Team <a class="pull-right" href="#/workspace">View all</a></h3>
+											</div>
+											<div class="panel-body">
+												<ul ng-repeat="person in consent.people">
+													{{person.name}}<span class="pull right"> {{person.type}}</span>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6" ng-hide="consent.status =='create'">
+										<div class="col-md-4">
+											<div class="panel panel-primary">
+												<div class="panel-heading">
+													<h3 class="panel-title">Council working days remaining</h3>
+												</div>
+												<div class="panel-body">
+													{{consent.workingDays}}
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="panel panel-primary">
+												<div class="panel-heading">
+													<h3 class="panel-title">Days Paused</h3>
+												</div>
+												<div class="panel-body">
+													0
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
+				</div>
+				<div class="row">
 					<div class="col-md-3">
-						<div class="panel panel-primary">
-							  <div class="panel-heading">
-									<h3 class="panel-title">Project Team <a class="pull-right" href="workspace">View all</a></h3>
-							  </div>
-							  <div class="panel-body">
-							  		<ul ng-repeat="person in consent.people">
-							  			{{person.name}}<span class="pull right"> {{person.type}}</span>
-							  		</ul>
-							  </div>
+						<div class="panel panel-default fixed-panel">
+							<div class="panel-heading">
+								<h3 class="panel-title">Status</h3>
+							</div>
+							<div class="panel-body">
+								<h4>{{status}}</h4>
+								<button ng-click="submitApplication()" type="button" class="btn btn-success" ng-show="consent.status =='submit'">SUBMIT</button>
+								<button ng-click="vetting()" type="button" class="btn btn-success" ng-show="consent.status =='submitted'">Go to vetting</button>
+								<button ng-click="approval()" type="button" class="btn btn-success" ng-show="consent.status =='vetting'">Go to Approval</button>
+								<button ng-click="rfc()" type="button" class="btn btn-success" ng-show="consent.status =='approval'">Add RFC</button>
+								<button ng-click="rfi()" type="button" class="btn btn-success" ng-show="consent.status =='rfc'">Go to RFI</button>
+							</div>
 						</div>
 					</div>
-					<div class="col-md-6" ng-hide="consent.status =='create'">
-					<div class="col-md-4">
-					    <div class="panel panel-primary">
-					    	  <div class="panel-heading">
-					    			<h3 class="panel-title">Days Remaining</h3>
-					    	  </div>
-					    	  <div class="panel-body">
-					    			{{consent.workingDays}}
-					    	  </div>
-					    </div>
-					</div>
-					<div class="col-md-4">
-						<div class="panel panel-primary">
-							  <div class="panel-heading">
-									<h3 class="panel-title">Days Paused</h3>
-							  </div>
-							  <div class="panel-body">
-									0
-							  </div>
+
+					<div class="col-md-9">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Consent Progress Bar</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row " >
+									<div class="col-lg-12">
+										<div class="row bs-wizard">
+											<div class="col-lg-1 col-md-offset-2 bs-wizard-step" ng-class="stepbar.create" style="border-top:30px;">
+												<div class="text-center bs-wizard-stepnum">Creation</div>
+												<div class="progress"><div class="progress-bar"></div></div>
+												<a class="bs-wizard-dot"></a>
+											</div>
+											
+											<div class="col-lg-1 bs-wizard-step" ng-class="stepbar.build"><!-- complete -->
+												<div class="text-center bs-wizard-stepnum">Compiling</div>
+												<div class="progress"><div class="progress-bar"></div></div>
+												<a class="bs-wizard-dot"></a>
+											</div>
+											
+											<div class="col-lg-1 bs-wizard-step" ng-class="stepbar.submit"><!-- complete -->
+												<div class="text-center bs-wizard-stepnum">Submit</div>
+												<div class="progress"><div class="progress-bar"></div></div>
+												<a class="bs-wizard-dot"></a>
+											</div>
+											
+											<div class="col-lg-1 bs-wizard-step" ng-class="stepbar.vetting"><!-- active -->
+												<div class="text-center bs-wizard-stepnum">Vetting</div>
+												<div class="progress"><div class="progress-bar"></div></div>
+												<a class="bs-wizard-dot"></a>
+											</div>
+											<div class="col-lg-1 bs-wizard-step" ng-class="stepbar.approval"><!-- active -->
+												<div class="text-center bs-wizard-stepnum">Processing</div>
+												<div class="progress"><div class="progress-bar"></div></div>
+												<a class="bs-wizard-dot"></a>
+											</div>
+											<div class="col-lg-1 bs-wizard-step" ng-class="stepbar.rfi"><!-- active -->
+												<div class="text-center bs-wizard-stepnum">RFI</div>
+												<div class="progress"><div class="progress-bar"></div></div>
+												<a class="bs-wizard-dot"></a>
+											</div>
+											<div class="col-lg-1 bs-wizard-step" ng-class="stepbar.approved"><!-- active -->
+												<div class="text-center bs-wizard-stepnum">Approved</div>
+												<div class="progress"><div class="progress-bar"></div></div>
+												<a class="bs-wizard-dot"></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+					<div class="col-md-9 col-md-offset-3">
+						<div class="border-1px">
+							<h3 class="panel-title">{{timelineTitle}}</h3>
+							<ul class="timeline" ng-repeat="item in timeline.slice().reverse()">
+								<li>
+									<div class="timeline-badge"><i ng-class="item.icon"></i></div>
+									<div class="timeline-panel">
+										<div class="timeline-heading">
+											<h4 class="timeline-title">{{item.title}}</h4>
+											<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{item.date}} by {{item.by}}</small></p>
+										</div>
+										<div class="timeline-body">
+											<p> {{item.text}} </p>
+											<hr ng-show="consent.status =='create'">
+											<a href="#/workspace" class="btn btn-primary" ng-show="consent.status =='create'">Compile Application</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
 					</div>
-				  </div>
 				</div>
-			</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-3">
-				<div class="panel panel-default fixed-panel">
-					<div class="panel-heading">
-				    	<h3 class="panel-title">Status</h3>
-				    </div>
-					<div class="panel-body">
-						<h4>{{status}}</h4>
-						<button ng-click="submitApplication()" type="button" class="btn btn-success" ng-show="consent.status =='submit'">SUBMIT</button>
-						<button ng-click="vetting()" type="button" class="btn btn-success" ng-show="consent.status =='submitted'">Go to vetting</button>
-						<button ng-click="approval()" type="button" class="btn btn-success" ng-show="consent.status =='vetting'">Go to Approval</button>
-						<button ng-click="rfc()" type="button" class="btn btn-success" ng-show="consent.status =='approval'">Add RFC</button>
-						<button ng-click="rfi()" type="button" class="btn btn-success" ng-show="consent.status =='rfc'">Go to RFI</button>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-9">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Step Bar</h3>
-					</div>
-					<div class="panel-body">
-						<div class="row " >
-	                	<div class="col-lg-12">
-	                	<div class="row bs-wizard">
-			                <div class="col-lg-1 col-md-offset-2 bs-wizard-step" ng-class="stepbar.create" style="border-top:30px;">
-			                  <div class="text-center bs-wizard-stepnum">Creation</div>
-			                  <div class="progress"><div class="progress-bar"></div></div>
-			                  <a href="#" class="bs-wizard-dot"></a>
-			                </div>
-			                
-			                <div class="col-lg-1 bs-wizard-step" ng-class="stepbar.build"><!-- complete -->
-			                  <div class="text-center bs-wizard-stepnum">Compiling</div>
-			                  <div class="progress"><div class="progress-bar"></div></div>
-			                  <a href="#" class="bs-wizard-dot"></a>
-			                </div>
-			                
-			                <div class="col-lg-1 bs-wizard-step" ng-class="stepbar.submit"><!-- complete -->
-			                  <div class="text-center bs-wizard-stepnum">Submit</div>
-			                  <div class="progress"><div class="progress-bar"></div></div>
-			                  <a href="#" class="bs-wizard-dot"></a>
-			                </div>
-			                
-			                <div class="col-lg-1 bs-wizard-step" ng-class="stepbar.vetting"><!-- active -->
-			                  <div class="text-center bs-wizard-stepnum">Vetting</div>
-			                  <div class="progress"><div class="progress-bar"></div></div>
-			                  <a href="#" class="bs-wizard-dot"></a>
-			                </div>
-			                <div class="col-lg-1 bs-wizard-step" ng-class="stepbar.approval"><!-- active -->
-			                  <div class="text-center bs-wizard-stepnum">Processing</div>
-			                  <div class="progress"><div class="progress-bar"></div></div>
-			                  <a href="#" class="bs-wizard-dot"></a>
-			                </div>
-			                <div class="col-lg-1 bs-wizard-step" ng-class="stepbar.rfi"><!-- active -->
-			                  <div class="text-center bs-wizard-stepnum">RFI</div>
-			                  <div class="progress"><div class="progress-bar"></div></div>
-			                  <a href="#" class="bs-wizard-dot"></a>
-			                </div>
-							<div class="col-lg-1 bs-wizard-step" ng-class="stepbar.approved"><!-- active -->
-			                  <div class="text-center bs-wizard-stepnum">Approved</div>
-			                  <div class="progress"><div class="progress-bar"></div></div>
-			                  <a href="#" class="bs-wizard-dot"></a>
-		            	    </div>
-		            	</div>
-		            	</div>
-			            </div>
-					</div>
-				</div>
-			</div>
-
-			
-
-		<div class="col-md-9 col-md-offset-3">
-				<div class="border-1px">
-					<h3 class="panel-title">{{timelineTitle}}</h3>
-					<ul class="timeline" ng-repeat="item in timeline.slice().reverse()">
-				        <li>
-				          <div class="timeline-badge"><i ng-class="item.icon"></i></div>
-				          <div class="timeline-panel">
-				            <div class="timeline-heading">
-				              <h4 class="timeline-title">{{item.title}}</h4>
-				              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{item.date}} by {{item.by}}</small></p>
-				            </div>
-				            <div class="timeline-body">
-				              <p> {{item.text}} </p>
-				              <hr ng-show="consent.status =='create'">
-				              <a href="workspace" class="btn btn-primary" ng-show="consent.status =='create'">Compile Application</a>
-				            </div>
-				          </div>
-				        </li>
-				    </ul>
-			   </div>
-		</div>
-  	</div>
-</div>
+	</div>

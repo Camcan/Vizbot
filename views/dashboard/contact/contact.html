@@ -1,230 +1,188 @@
 <nav class="navbar navbar-inverse">
-  <a class="navbar-brand" href="consents">Vizbot</a>
+  <a class="navbar-brand" href="#/consents">Vizbot</a>
   <ul class="nav navbar-nav">
     <li class="active">
       <a href="consent">Home</a>
     </li>
   </ul>
   <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-user"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
-            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="home"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-          </ul>
-        </li>
-      </ul> 
-</nav>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <span class="glyphicon glyphicon-user"><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+          <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
+          <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#/"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+        </ul>
+      </li>
+    </ul> 
+  </nav>
+
+  <div class="container-fluid" data-ng-init="init()">
+    <div class="row">
+      <ol class="breadcrumb">
+        <li><a href="#/workspace">Workspace</a></li>
+        <li class="active">Project Team</li>
+      </ol>
 
 
+      <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
+          <h3>Project Team</h3>
+        </div>
 
-<div class="container-fluid" data-ng-init="init()">
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <div class="col-md-12">
-        <h3>Project Team</h3>
-      </div>
-      <div class="col-md-8 content-left-seperator">
-        <div class="row">
-          <div class="col-md-12">
-            <h3>Agent</h3>
-            <div ng-show="!hasAgent">
-              <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addAgent">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agent  
-              </button>
+        <div class="col-md-8 content-left-seperator">
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Agent</h3>
+              <div ng-show="isAgent">
+                <h3>{{username}}</h3>
+              </div>
+              <div ng-show="!isAgent && !hasAgent">
+                <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addAgent">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agent  
+                </button>
 
-              <div class="modal fade" id="addAgent">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title">Modal title</h4>
-                    </div>
+                <div class="modal fade" id="addAgent">
+                  <div class="modal-dialog"> 
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Add Agent</h4>
+                      </div>
                       <div class="modal-body">
-                      <div class="form-group" >
-                      <label>Name of Agent :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.name">
+                        <div class="form-group" >
+                          <label>Name of Agent :</label>
+                          <input type="text" class="form-control" ng-model="agent.name">
 
-                      <label>Street :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.street">
-                      <label>Suburb :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.suburb">
-                      <label>City :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.city">
-                      <label>Post Code :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.postCode">
+                          <label>Street :</label>
+                          <input type="text" class="form-control" ng-model="agent.address.street">
+                          <label>Suburb :</label>
+                          <input type="text" class="form-control" ng-model="agent.address.suburb">
+                          <label>City :</label>
+                          <input type="text" class="form-control" ng-model="agent.address.city">
+                          <label>Post Code :</label>
+                          <input type="text" class="form-control" ng-model="agent.address.postCode">
 
-                      <label>Phone Number:</label>
-                      <input type="text" class="form-control" ng-model="people.agent.phone">
-                      <label>Email:</label>
-                      <input type="text" class="form-control" ng-model="people.agent.mail">
+                          <label>Phone Number:</label>
+                          <input type="text" class="form-control" ng-model="agent.phone">
+                          <label>Email:</label>
+                          <input type="text" class="form-control" ng-model="agent.mail">
+                        </div>
+                        <button ng-click="saveAgent()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
                       </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
                   </div>
                 </div>
+                <div ng-show="hasAgent">
+                  <h3>{{agent.name}}</h3>
+                  <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addAgent">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
+                  </button>
+                </div>
               </div>
-
-              <button type="button" class="btn btn-primary btn-md pull-right margin-right-10px" data-toggle="modal" data-target="#addContact">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> From Contact  
-              </button>
-            </div>
-            <div ng-show="hasAgent">
             </div>
           </div>
-        </div>
-        <hr>
+          <hr>
 
-        <div class="row">
-          <div class="col-md-12">
-            <h3>Owner</h3>
-            <div ng-show="!hasAgent">
-              <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addOwner">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Owner  
-              </button>
-              <div class="modal fade" id="addOwner">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title">Add Owner</h4>
-                    </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Owner</h3>
+              <div ng-show="!isAgent">
+                <h3>{{ username }}</h3>
+              </div>
+              <div>
+                <div ng-show="isAgent && !hasClient">
+                  <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addOwner">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Client / Owner  
+                  </button>
+                </div>
+                <div ng-show="isAgent && hasClient">
+                  <h3>{{client.name}}</h3>
+                  <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addOwner">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
+                  </button>
+                </div>
+                <div class="modal fade" id="addOwner">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Add Client / Owner</h4>
+                      </div>
                       <div class="modal-body">
-                      <div class="form-group" >
-                      <label>Name of Owner :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.name">
+                        <div class="form-group" >
+                          <label>Name of Owner :</label>
+                          <input type="text" class="form-control" ng-model="client.name">
 
-                      <label>Street :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.street">
-                      <label>Suburb :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.suburb">
-                      <label>City :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.city">
-                      <label>Post Code :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.postCode">
+                          <label>Street :</label>
+                          <input type="text" class="form-control" ng-model="client.address.street">
+                          <label>Suburb :</label>
+                          <input type="text" class="form-control" ng-model="client.address.suburb">
+                          <label>City :</label>
+                          <input type="text" class="form-control" ng-model="client.address.city">
+                          <label>Post Code :</label>
+                          <input type="text" class="form-control" ng-model="client.address.postCode">
 
-                      <label>Phone Number:</label>
-                      <input type="text" class="form-control" ng-model="people.agent.phone">
-                      <label>Email:</label>
-                      <input type="text" class="form-control" ng-model="people.agent.mail">
+                          <label>Phone Number:</label>
+                          <input type="text" class="form-control" ng-model="client.phone">
+                          <label>Email:</label>
+                          <input type="text" class="form-control" ng-model="client.mail">
+                        </div>
+                        <button ng-click="saveClient()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
                       </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
                   </div>
                 </div>
               </div>
-
-              <button type="button" class="btn btn-primary btn-md pull-right margin-right-10px" data-toggle="modal" data-target="#addContact">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> From Contact  
-              </button>
-            </div>
-            <div ng-show="hasAgent">
             </div>
           </div>
-        </div>
-        <hr>
+          <hr>
 
-        <div class="row">
-          <div class="col-md-12">
-            <h3>Professional</h3>
-            <div ng-show="!hasAgent">
-              
-
-              <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addPro">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Professional  
-              </button>
-
-              <div class="modal fade" id="addPro">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title">Add Professional</h4>
-                    </div>
-                    <div class="modal-body">
-                      <form class="large-margin-top">
-                        <div class="form-group">
-                        <label>Type :</label>
-                          <select class="form-control" id="type" ng-model= "people.pro.type">
-                                <option value"architect" selected>Architect</option>
-                                <option value"structEngineer">Structural Engineer</option>
-                                <option value"fire">Fire Engineer</option>
-                                <option value"mechanical">Mechanical Engineer</option>
-                                <option value"builder">Builder</option>
-                                <option value"plumber">Plumber</option>
-                                <option value"gasfitter">Gasfitter</option>
-                                <option value"electrician">Electrician</option>
-                                <option value"drainlayer">Drainlayer</option>
-                                <option value"cladder">Exterior Cladder</option>
-                                <option value"surveyor">Surveyor</option>
-                                <option value"heating">Heating Appliance Installer</option>
-                                <option value"others">Others</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                        <label>Name / Business :</label>
-                        <input type="text" class="form-control" ng-model="people.pro.name">
-                        <label>Street :</label>
-                        <input type="text" class="form-control" ng-model="people.pro.address.street">
-                        <label>Suburb :</label>
-                        <input type="text" class="form-control" ng-model="people.pro.address.suburb">
-                        <label>City :</label>
-                        <input type="text" class="form-control" ng-model="people.pro.address.city">
-                        <label>Post Code :</label>
-                        <input type="text" class="form-control" ng-model="people.pro.address.postCode">
-
-                        <label>Phone Number:</label>
-                        <input type="text" class="form-control" ng-model="people.pro.phone">
-                        <label>Email:</label>
-                        <input type="text" class="form-control" ng-model="people.pro.mail">
-                        <label>Website:</label>
-                        <input type="text" class="form-control" ng-model="people.pro.website">
-                        <label>Registration Qualification:</label>
-                        <input type="text" class="form-control" ng-model="people.pro.registration">
-                        </div>
-                        <button ng-click="savePeople()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                  </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h3>L.B.P</h3>
+              <div ng-show="!hasLBP">
+                <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addLbp">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> LBP  
+                </button>
+              </div>
+              <div ng-show="hasLBP">
+              <div class="row">
+                <button type="button" class="btn btn-primary btn-md pull-right margin-bottom-10px" data-toggle="modal" data-target="#addLbp">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> More LBP  
+                </button>
+              </div>
+                <div class="table-responsive" >
+                  <table class="table table-condensed">
+                    <thead class="tableHead"> 
+                      <tr>
+                        <th>Name</th>
+                        <th>Licensing Class</th> 
+                        <th>LBP Number</th>
+                        <th>Certificate</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody> 
+                      <tr ng-repeat="item in consent.lbp" class="tableLine">
+                        <td>{{item.name}}</td>
+                        <td>{{item.classL}}</td> 
+                        <td>{{item.lbp}}</td>
+                        <td>{{item.certificat}}</td>
+                        <td><button type="button" class="btn btn-primary btn-md" ng-click="editLbp(item)">
+                          <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span> Edit
+                        </button></td>
+                        <td><button ng-click="deleteLbp(item)" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
-
-
-              <button type="button" class="btn btn-primary btn-md pull-right margin-right-10px" data-toggle="modal" data-target="#addContact">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> From Contact  
-              </button>
-              <button type="button" class="btn btn-primary btn-md pull-right margin-right-10px" data-toggle="modal" data-target="#addContact">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> From IPENZ  
-              </button>
-            </div>
-            <div ng-show="hasAgent">
-            </div>
-          </div>
-        </div>
-        <hr>
-
-        <div class="row">
-          <div class="col-md-12">
-            <h3>L.B.P</h3>
-            <div ng-show="!hasAgent">
-              <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addLbp">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> LBP  
-              </button>
-
               <div class="modal fade" id="addLbp">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
@@ -232,52 +190,131 @@
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       <h4 class="modal-title">Add Licensed Building Practionner</h4>
                     </div>
-                      <div class="modal-body">
-                      <div class="form-group" >
-                      <label>Name of Owner :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.name">
-
-                      <label>Street :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.street">
-                      <label>Suburb :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.suburb">
-                      <label>City :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.city">
-                      <label>Post Code :</label>
-                      <input type="text" class="form-control" ng-model="people.agent.address.postCode">
-
-                      <label>Phone Number:</label>
-                      <input type="text" class="form-control" ng-model="people.agent.phone">
-                      <label>Email:</label>
-                      <input type="text" class="form-control" ng-model="people.agent.mail">
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" class="form-control" ng-model="licensed.name">
+                        <label>Licensing Class:</label>
+                        <input type="text" class="form-control" ng-model="licensed.classL">
+                        <label>LBP Number:</label>
+                        <input type="text" class="form-control" ng-model="licensed.lbp">
+                        <label>Certificate of design work attached:</label>
+                        <input type="text" class="form-control" ng-model="licensed.certificat">
                       </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                      <button ng-click="saveLBP()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <button type="button" class="btn btn-primary btn-md pull-right margin-right-10px" data-toggle="modal" data-target="#addContact">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> From Contact  
-              </button>
-              <button type="button" class="btn btn-primary btn-md pull-right margin-right-10px" data-toggle="modal" data-target="#addContact">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> From IPENZ  
-              </button>
             </div>
-            <div ng-show="hasAgent">
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Professional</h3>
+              <div ng-show="!hasPro">
+                <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addPro">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Professional  
+                </button>
+              </div>
+              <div ng-show="hasPro">
+                <div class="row">
+                <button type="button" class="btn btn-primary btn-md pull-right margin-bottom-10px" data-toggle="modal" data-target="#addLbp">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> More LBP  
+                </button>
+              </div>
+                <div class="table-responsive" >
+                  <table class="table table-condensed">
+                    <thead class="tableHead"> 
+                      <tr>
+                        <th>Profession</th>
+                        <th>Name</th> 
+                        <th>City</th>
+                        <th>Phone</th>
+                        <th>E-Mail</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody> 
+                      <tr ng-repeat="item in consent.people" class="tableLine">
+                        <td>{{item.type}}</td>
+                        <td>{{item.name}}</td> 
+                        <td>{{item.city}}</td> 
+                        <td>{{item.phone}}</td>
+                        <td>{{item.mail}}</td>
+                        <td><button type="button" class="btn btn-primary btn-md" ng-click="editPro(item)">
+                          <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span> Edit
+                        </button></td>
+                        <td><button ng-click="deletePro(item)" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+                <div class="modal fade" id="addPro">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Add Professional</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form class="large-margin-top">
+                          <div class="form-group">
+                            <label>Type:</label>
+                            <select class="form-control" id="type" ng-model= "pro.type">
+                              <option value"architect" selected>Architect</option>
+                              <option value"structEngineer">Structural Engineer</option>
+                              <option value"fire">Fire Engineer</option>
+                              <option value"mechanical">Mechanical Engineer</option>
+                              <option value"builder">Builder</option>
+                              <option value"plumber">Plumber</option>
+                              <option value"gasfitter">Gasfitter</option>
+                              <option value"electrician">Electrician</option>
+                              <option value"drainlayer">Drainlayer</option>
+                              <option value"cladder">Exterior Cladder</option>
+                              <option value"surveyor">Surveyor</option>
+                              <option value"heating">Heating Appliance Installer</option>
+                              <option value"others">Others</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label>Name / Business:</label>
+                            <input type="text" class="form-control" ng-model="pro.name">
+                            <label>Street:</label>
+                            <input type="text" class="form-control" ng-model="pro.address.street">
+                            <label>Suburb:</label>
+                            <input type="text" class="form-control" ng-model="pro.address.suburb">
+                            <label>City:</label>
+                            <input type="text" class="form-control" ng-model="pro.address.city">
+                            <label>Post Code:</label>
+                            <input type="text" class="form-control" ng-model="pro.address.postCode">
+
+                            <label>Phone Number:</label>
+                            <input type="text" class="form-control" ng-model="pro.phone">
+                            <label>Email:</label>
+                            <input type="text" class="form-control" ng-model="pro.mail">
+                            <label>Website:</label>
+                            <input type="text" class="form-control" ng-model="pro.website">
+                            <label>Registration Qualification:</label>
+                            <input type="text" class="form-control" ng-model="pro.registration">
+                          </div>
+                          <button ng-click="savePro()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
-  
-          
-      </div>
-      <div class="col-md-4">
-      <h3>Team</h3>
-      </div>
+        <div class="col-md-4">
+          <h3>Team</h3>
+        </div>
 
+      </div>
     </div>
   </div>
-</div>
