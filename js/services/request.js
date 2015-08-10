@@ -1,6 +1,6 @@
 "use strict";
 
-var url = 'http://localhost:3000',
+var url = 'http://ec2-52-18-99-146.eu-west-1.compute.amazonaws.com',
 	server = 'http://localhost:3000';
 
  app.factory('User', ['$resource', function($resource) {

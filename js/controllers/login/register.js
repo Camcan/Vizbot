@@ -11,7 +11,7 @@ app.controller('RegisterCtrl', ['$scope', '$http', '$location', function ($scope
 				address : $scope.register.address,
 				phone : $scope.register.phone
 		};
-		var res = $http.post("http://localhost:3000/users", user);
+		var res = $http.post("http://ec2-52-18-99-146.eu-west-1.compute.amazonaws.com/users", user);
 		res.success(function(data, status, headers, config) {
 			$scope.message = data;
 			$scope.userId = headers.id;

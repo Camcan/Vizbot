@@ -13,7 +13,7 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 		$scope.docAdded = false;
 		var idconsent = JSON.parse(sessionStorage.getItem('idConsentSelected'));
 		$scope.username = JSON.parse(sessionStorage.getItem('username'));
-		$scope.url = "http://localhost:3000/";
+		$scope.url = "http://ec2-52-18-99-146.eu-west-1.compute.amazonaws.com/";
 
 		$scope.init = function(){
 			$scope.consent = Consent.get({_id: idconsent} )
