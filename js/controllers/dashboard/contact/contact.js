@@ -32,15 +32,15 @@ app.controller('ContactCtrl', ['$scope', '$location',
 				}
 				if(consent.client){
 					$scope.hasClient = true;
-					$scope.consent.client = consent.client;
+					$scope.client = consent.client;
 				}
 				if(consent.lbp.length > 0){
 					$scope.hasLBP = true;
-					$scope.consent.lbp = consent.lbp;
+					$scope.licensed = consent.lbp;
 				}
 				if(consent.people.length > 0){
 					$scope.hasPro = true;
-					$scope.consent.people = consent.people;
+					$scope.pro = consent.people;
 				}
 			});
 		};
@@ -132,9 +132,9 @@ app.controller('ContactCtrl', ['$scope', '$location',
 			});
 		};
 
-		$scope.editPro = function(pro){
+		$scope.editPro = function(item){
 			$('#addLbp').modal('show');
-			$scope.licensed = pro;
+			$scope.pro = item;
 		};
 
 		$scope.deletePro = function(pro){
