@@ -1,0 +1,796 @@
+<nav class="navbar navbar-inverse">
+  <a class="navbar-brand" href="#/consents">Vizbot</a>
+  <ul class="nav navbar-nav">
+    <li class="active">
+      <a href="#/dashboard">Dashboard</a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <span class="glyphicon glyphicon-user"><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+          <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
+          <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#/"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+        </ul>
+      </li>
+    </ul> 
+  </nav>
+
+  <div class="container-fluid" data-ng-init="init()">
+  <ol class="breadcrumb">
+        <li><a href="#/workspace">Workspace</a></li>
+        <li class="active">Coce Compliance</li>
+      </ol> 
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-12">
+          <h3>Code Compliance<br/>
+            <small> Explanation... </small>
+          </h3>
+        </div>      
+      </div>
+    </div>
+    <div class="modal fade" id="addDocument" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Document</h4>
+          </div>
+          <div class="modal-body">
+            <form class="large-margin-top">
+              <div class="form-group">
+                <label>File:</label>
+                <input type="file" file-model="myFile"/>
+                <button ng-click="uploadFile(compliance)" class="btn btn-lg btn-primary btn-block margin-top-10px">Upload file</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-12">
+          <h3> B. Stability </h3>
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#structure" aria-expanded="true" aria-controls="structure">
+                    B1. Structure
+                  </a>
+                </h4>
+              </div>
+              <div id="structure" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                  <div class="row">
+                    <ul ng-repeat="item in consent.compliance | filter:{ clause: 'b1' }">
+                      <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+                    </ul>
+                    <button ng-click="compliance = 'b1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+                    </button>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#durability" aria-expanded="false" aria-controls="durability">
+                    B1. Durability
+                  </a>
+                </h4>
+              </div>
+              <div id="durability" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                  <div class="row">
+                    <ul ng-repeat="item in consent.compliance | filter:{ clause: 'b2' }">
+                      <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+                    </ul>
+                    <button ng-click="compliance = 'b2' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-12">
+          <h3> C. Protection from fire</h3>
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#fire" aria-expanded="true" aria-controls="collapseOne">
+                    C1 to C6 
+                  </a>
+                </h4>
+              </div>
+              <div id="fire" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                 <div class="row">
+                  <ul ng-repeat="item in consent.compliance | filter:{ clause: 'c' }">
+                    <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+                  </ul>
+                  <button ng-click="compliance = 'c' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+                  </button>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-12">
+        <h3> D. Access </h3>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#access" aria-expanded="true" aria-controls="collapseOne">
+                  D1. Access routes 
+                </a>
+              </h4>
+            </div>
+            <div id="access" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <div class="row">
+                  <ul ng-repeat="item in consent.compliance | filter:{ clause: 'd1' }">
+                    <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+                  </ul>
+                  <button ng-click="compliance = 'd1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#mechanicalAccess" aria-expanded="false" aria-controls="collapseTwo">
+                  D2 Mechanical installations for access
+                </a>
+              </h4>
+            </div>
+            <div id="mechanicalAccess" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+                <div class="row">
+                  <ul ng-repeat="item in consent.compliance | filter:{ clause: 'd2' }">
+                    <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+                  </ul>
+                  <button ng-click="compliance = 'd2' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-12">
+        <h3> E. Moisture </h3>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#surface" aria-expanded="true" aria-controls="collapseOne">
+                  E1 Surface water 
+                </a>
+              </h4>
+            </div>
+            <div id="surface" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <div class="row">
+                  <ul ng-repeat="item in consent.compliance | filter:{ clause: 'e1' }">
+                    <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+                  </ul>
+                  <button ng-click="compliance = 'e1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#moisture" aria-expanded="false" aria-controls="collapseTwo">
+                  E2 External moisture 
+                </a>
+              </h4>
+            </div>
+            <div id="moisture" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+                <div class="row">
+                  <ul ng-repeat="item in consent.compliance | filter:{ clause: 'e2' }">
+                    <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+                  </ul>
+                  <button ng-click="compliance = 'e2' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#internalMoisture" aria-expanded="false" aria-controls="collapseTwo">
+                  E3 Internal moisture 
+                </a>
+              </h4>
+            </div>
+            <div id="internalMoisture" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+                <div class="row">
+                  <ul ng-repeat="item in consent.compliance | filter:{ clause: 'e3' }">
+                    <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+                  </ul>
+                  <button ng-click="compliance = 'e3' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-12">
+        <h3> F. Safety of Users </h3>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#agent" aria-expanded="true" aria-controls="collapseOne">
+                  F1 Hazardous agents on site 
+                </a>
+              </h4>
+            </div>
+            <div id="agent" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <div class="row">
+                  <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f1' }">
+                    <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+                  </ul>
+                  <button ng-click="compliance = 'f1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#materials" aria-expanded="false" aria-controls="collapseTwo">
+                  F2 Hazardous building materials 
+                </a>
+              </h4>
+            </div>
+            <div id="materials" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+               <div class="row">
+                <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f2' }">
+                  <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+                </ul>
+                <button ng-click="compliance = 'f2' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#substances" aria-expanded="false" aria-controls="collapseTwo">
+                F3 Hazardous substances and processes
+              </a>
+            </h4>
+          </div>
+          <div id="substances" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+                <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f3' }">
+                  <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+                </ul>
+                <button ng-click="compliance = 'f3' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#safety" aria-expanded="false" aria-controls="collapseTwo">
+               F4 Safety from falling  
+             </a>
+           </h4>
+         </div>
+         <div id="safety" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f4' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'f4' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#demolition" aria-expanded="false" aria-controls="collapseTwo">
+              F5 Construction and demolition hazards 
+            </a>
+          </h4>
+        </div>
+        <div id="demolition" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f5' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'f5' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#routes" aria-expanded="false" aria-controls="collapseTwo">
+              F6 Visibility in escape routes  
+            </a>
+          </h4>
+        </div>
+        <div id="routes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f6' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'f6' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#warning" aria-expanded="false" aria-controls="collapseTwo">
+              F7 Warning systems  
+            </a>
+          </h4>
+        </div>
+        <div id="warning" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f7' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'f7' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#signs" aria-expanded="false" aria-controls="collapseTwo">
+              F8 Signs
+            </a>
+          </h4>
+        </div>
+        <div id="signs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f8' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'f8' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>      
+</div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-12">
+      <h3> G. Services and Facilities </h3>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#hygiene" aria-expanded="true" aria-controls="hygiene">
+                G1 Personal hygiene
+              </a>
+            </h4>
+          </div>
+          <div id="hygiene" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+             <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g1' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div> 
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#laundering" aria-expanded="false" aria-controls="laundering">
+                G2 Laundering
+              </a>
+            </h4>
+          </div>
+          <div id="laundering" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g2' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g2' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#foodPreparation" aria-expanded="false" aria-controls="foodPreparation">
+                G3 Food preparation and prevention of contamination
+              </a>
+            </h4>
+          </div>
+          <div id="foodPreparation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g3' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g3' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#ventilation" aria-expanded="false" aria-controls="ventilation">
+                G4 Ventilation 
+              </a>
+            </h4>
+          </div>
+          <div id="ventilation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g4' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g4' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#interiorEnv" aria-expanded="false" aria-controls="interiorEnv">
+                G5 Interior environment 
+              </a>
+            </h4>
+          </div>
+          <div id="interiorEnv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g5' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g5' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#airborne" aria-expanded="false" aria-controls="airborne">
+                G6 Airborne and impact sound
+              </a>
+            </h4>
+          </div>
+          <div id="airborne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g6' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g6' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#naturalLight" aria-expanded="false" aria-controls="naturalLight">
+                G7 Natural light 
+              </a>
+            </h4>
+          </div>
+          <div id="naturalLight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g7' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g7' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#artificialLight" aria-expanded="false" aria-controls="artificialLight">
+                G8 Artificial light 
+              </a>
+            </h4>
+          </div>
+          <div id="artificialLight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g8' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g8' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#electricity" aria-expanded="false" aria-controls="electricity">
+                G9 Electricity
+              </a>
+            </h4>
+          </div>
+          <div id="electricity" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g9' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g9' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#piped" aria-expanded="false" aria-controls="piped">
+                G10 Piped services
+              </a>
+            </h4>
+          </div>
+          <div id="piped" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g10' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g10' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#gas" aria-expanded="false" aria-controls="gas">
+                G11 Gas as an energy source
+              </a>
+            </h4>
+          </div>
+          <div id="gas" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g11' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g11' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#waterSupplies" aria-expanded="false" aria-controls="waterSupplies">
+                G12 Water supplies 
+              </a>
+            </h4>
+          </div>
+          <div id="waterSupplies" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g12' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g12' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#foulWater" aria-expanded="false" aria-controls="foulWater">
+                G13 Foul water 
+              </a>
+            </h4>
+          </div>
+          <div id="foulWater" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g13' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g13' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#liquidWaste" aria-expanded="false" aria-controls="liquidWaste">
+                G14 Industrial liquid waste 
+              </a>
+            </h4>
+          </div>
+          <div id="liquidWaste" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g14' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g14' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#solidWaste" aria-expanded="false" aria-controls="solidWaste">
+                G15 Solid waste
+              </a>
+            </h4>
+          </div>
+          <div id="solidWaste" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g15' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'g15' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>      
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-12">
+      <h3> H. Energy Efficiency </h3>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#energy" aria-expanded="true" aria-controls="collapseOne">
+                H1. Energy efficiency
+              </a>
+            </h4>
+          </div>
+          <div id="energy" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <div class="row">
+              <ul ng-repeat="item in consent.compliance | filter:{ clause: 'h1' }">
+                <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
+              </ul>
+              <button ng-click="compliance = 'h1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
+              </button>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>      
+  </div>
+</div>
+</div>
+

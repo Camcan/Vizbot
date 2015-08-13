@@ -14,6 +14,7 @@ module.exports = function(grunt) {
 		        	module : true,
 		        	sessionStorage : true,
 		        	$ : true,
+		        	$sce:true,
 		        	console : true,
 		        	FormData : true,
 		        	document : true
@@ -34,7 +35,7 @@ module.exports = function(grunt) {
 		      livereload: true,
 		    },
 			css: {
-				files: 'less/*.less',
+				files: ['less/*.less', 'css/*.css'],
 				tasks: ['less']
 			},
 			scripts: {

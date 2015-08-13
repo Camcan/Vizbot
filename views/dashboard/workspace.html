@@ -84,6 +84,19 @@
 													<input type="text" class="form-control" ng-model="building.totalFloor">
 													<label>Indicate area affeted by the building work if less than the total area:</label>
 													<input type="text" class="form-control" ng-model="building.area">
+													<label>Does the building have any specified systems?</label>
+														<div class="radio">
+															<label><input type="radio" name="optradio" ng-model="building.speSystem" ng-value="true">Yes</label>
+															<div ng-show="building.speSystem==true">
+																<label>The specified systems for the building are as follows:</label>
+																<input type="textarea" class="form-control" ng-model="building.speFollows" placeholder="eg: cable cars" ng-show="building.speSystem==true">
+																<label>The following specified systems are being altered added to, or removed in the course of the building work:</label>
+																<input type="textarea" class="form-control" ng-model="building.speUpdate" placeholder="eg: altered " >
+															</div>
+														</div>
+														<div class="radio">
+															<label><input type="radio" name="optradio" ng-model="building.speSystem" ng-value="false">No</label>
+														</div>
 													<button ng-click="addBuildingInfo()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
 												</form>
 											</div>
@@ -222,7 +235,7 @@
 														<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 															<div class="panel-body">
 																<ul ng-repeat="item in consent.doc">
-																	<li><a ng-href= '{{$scope.url}}' + "{{item.url}}" target="_blank">{{item.name}}</a></li>
+																	<li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
 																</ul>
 																<ul ng-repeat="art in articleChoose" class="list-no-bullets">
 																	<li>
@@ -280,6 +293,28 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Compliance</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="col-md-5 col-md-offset-7">
+										<a href="#/compliance">	
+											<button type="button" class="btn btn-primary btn-lg btn-block pull-right">
+												<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Compliance  
+											</button>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>  
 				</div>
 			</div>
 

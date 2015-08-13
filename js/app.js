@@ -3,7 +3,8 @@
 var app = angular.module('app', [
   'ngRoute',
   'ngResource',
-  'br.fullpage'
+  'br.fullpage',
+  'ngSanitize'
 ]);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
@@ -52,6 +53,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       when('/contact', {
         templateUrl: 'views/dashboard/contact/contact.html',
         controller: 'ContactCtrl'
+      }).
+      when('/compliance', {
+        templateUrl: 'views/dashboard/compliance/compliance.html',
+        controller: 'ComplianceCtrl'
       });
       
 }]);

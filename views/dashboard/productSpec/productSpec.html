@@ -2,73 +2,110 @@
 	<a class="navbar-brand" href="#/consents">Vizbot</a>
   <ul class="nav navbar-nav">
     <li class="active">
-      <a href="#/consents">Home</a>
+      <a href="#/dashboard">Dashboard</a>
     </li>
   </ul>
-	<ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-user"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
-            <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#/"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-          </ul>
-        </li>
-      </ul>	
-</nav>
+  <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <span class="glyphicon glyphicon-user"><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+          <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
+          <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#/"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+        </ul>
+      </li>
+    </ul>	
+  </nav>
 
-<div class="container-fluid" data-ng-init="init()">
-  <div class="row">
-  <div class="col-md-12 overflow">
+  <div class="container-fluid" data-ng-init="init()">
     <div class="row">
-      <div class="col-md-3">
-          <form class="large-margin-top">
-            <div class="form-group">
-            <label>Search :</label>
-            <input type="text" class="form-control" ng-model="value">
-            </div>
-            <button class="btn btn-primary btn-block" ng-click="searchProduct()" type="submit">Search</button>
-          </form>
-          <div ng-show="articleChoose.length > 0"> 
-          <h3>Product choose</h3>
-          <ul ng-repeat="art in articleChoose" class="list-no-bullets">
-            <li>
-          <div class="row">
-            <div class="col-md-10">
-               {{art.product_title}}
-            </div>
-            <div class="col-md-2">
-              <button type="button" class="btn btn-danger" ng-click="removeProduct(art)"><span class="glyphicon glyphicon-trash"></span></button>
-            </div>
-          </div>          
-            </li>
-          </ul>
-          <button type="button" class="btn btn-success btn-block" ng-click="save()">Add to consent</button>
+      <ol class="breadcrumb">
+        <li><a href="#/workspace">Workspace</a></li>
+        <li class="active">Product Spec Documents</li>
+      </ol> 
+
+      <div class="col-md-12 overflow">
+        <div class="row">
+          <div class="col-md-3">
+            <form class="large-margin-top">
+              <div class="form-group">
+                <label>Search :</label>
+                <input type="text" class="form-control" ng-model="value">
+              </div>
+              <button class="btn btn-primary btn-block" ng-click="searchProduct()" type="submit">Search</button>
+            </form>
+            <div ng-show="articleChoose.length > 0"> 
+              <h3>Product choose</h3>
+              <ul ng-repeat="art in articleChoose" class="list-no-bullets">
+                <li>
+                  <div class="row">
+                    <div class="col-md-10">
+                     {{art.product_title}}
+                   </div>
+                   <div class="col-md-2">
+                    <button type="button" class="btn btn-danger" ng-click="removeProduct(art)"><span class="glyphicon glyphicon-trash"></span></button>
+                  </div>
+                </div>          
+              </li>
+            </ul>
+            <button type="button" class="btn btn-success btn-block" ng-click="save()">Add to consent</button>
           </div>
           <h3>Categories</h3>
           <ul ng-repeat="cat in categories" class="list-no-bullets">
             <li>
              <a ng-click="catFilter(cat.primary_slug)"> {{cat.primary}}</a>
-            </li>
-          </ul>
-          <hr/>
-      </div>
-      <div class="col-md-9">
-          <ul class="list-no-bullets" ng-repeat="prod in product.products">
+           </li>
+         </ul>
+         <hr/>
+       </div>
+       <div class="col-md-9">
+        <ul class="list-no-bullets" ng-repeat="prod in product.products">
           <li>
             <div class="col-lg-3">
-            <a ng-click="addArticle(prod)">
-              <img src="{{prod.image}}" alt="125x125" style="width:200px;height:200px">
-              <span>{{prod.product_title}}</span>
-            </a>
+              <a ng-click="addArticle(prod)" data-toggle="modal" data-target="#showArt">
+                <img src="{{prod.image}}" alt="125x125" style="width:200px;height:200px">
+                <span>{{prod.product_title}}</span>
+              </a>
             </div>
           </li>
-          </ul>
+        </ul>
+        <div class="modal fade" id="showArt">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{productDetails.product_title}}</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <img src="{{productDetails.product_images[0].medium_path}}" alt="article image" class="img-rounded image-product-size">
+                  </div>
+                  <div class="col-md-4">
+                    <h3>Company information</h3>
+                    <img src="{{productDetails.company_logo_url}}" alt="Company logo" class="img-circle logo-product-size">
+                    <address>
+                    <strong>{{productDetails.company_name}}</strong><br>
+                    <a href="mailto:#">{{productDetails.company_email}} </a><br/>
+                      <abbr title="Phone">P:</abbr> {{productDetails.company_phone}}
+                    </address>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">
+                    <div ng-bind-html="productDetails.product_description"></div>
+                  </div>
+                <button ng-click="addProduct(productDetails)" type="submit" class="btn btn-lg btn-primary margin-top-10px">Add to consent</button>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>  
   </div>
-  </div>
+</div>
 </div>

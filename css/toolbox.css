@@ -44,8 +44,21 @@
 }
 
 .logo-size{
-	width: 100px;
+	width: 200px;
 	height: 100px;
+}
+
+.image-product-size{
+	width: 300px;
+	height: 300px;
+	margin-right: auto;
+    margin-left: auto;
+    display: block;	
+}
+
+.logo-product-size{
+	width: 150px;
+	height: 150px;
 }
 
 .image-size{
@@ -67,9 +80,7 @@
     color: #0099cc;
 }
 
-.color-txt-white {
-	color : #ecf0f1;
-}
+
 .text-align {
 	text-align: center;
 }
