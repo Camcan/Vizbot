@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse">
-	<a class="navbar-brand" href="#/consents">Vizbot</a>
+	<a class="navbar-brand" href="#/consents"><img src="images/icon1.svg" alt="logo" class="logo-nav-size"></a>
 	<ul class="nav navbar-nav navbar-right">
 		<li class="dropdown">
 			<a href="#/consents" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -18,14 +18,9 @@
 		<div class="row">
 			<div class="col-md-12 overflow">
 				<div class="row">
-					<div class="col-md-6">
-						<h1>My Projects</h1>
-					</div>
-				</div>
-				<div class="row">
 					<div class="col-md-3">
 						<div>
-							<button class="btn btn-primary btn-block margin-top-10px" data-toggle="modal" data-target="#addConsent" data-backdrop='static' data-keyboard='false'>
+							<button class="btn btn-lg btn-primary btn-block margin-top-10px" data-toggle="modal" data-target="#addConsent" data-backdrop='static' data-keyboard='false'>
 								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create project
 							</button>
 							<span role="separator" class="divider"></span>
@@ -53,7 +48,7 @@
 													<label>Location :</label>
 													<input placeholder="Address" type="text" class="form-control" ng-model="newconsent.address" required>
 												</div>
-												<button class="btn btn-primary btn-block" ng-click="createConsent()" type="submit">Create consent</button>
+												<button class="btn btn-primary btn-block" ng-click="createConsent()" type="submit">Create project</button>
 											</form>
 										</div>
 									</div>
@@ -68,6 +63,13 @@
 										<div class="modal-body">
 											<div class="row">
 												<div ng-show="step1">
+												<div class="row">
+													<div class="col-md-8 col-md-offset-1">
+														<h3><img src="images/oneRound.svg" alt="logo" class="number-size-sm">
+														Current, lawfully established, use: </h3>
+													</div>
+												</div>
+												
 													<div class="col-md-4 content-left-seperator">
 														<div class="row">
 															<span custom-popover popover-html="Applies to buildings or use where there is self care and service (internal
@@ -112,6 +114,12 @@
 
 												</div>
 												<div ng-show="step11">
+												<div class="row">
+													<div class="col-md-8 col-md-offset-1">
+														<h3><img src="images/twoRound.svg" alt="logo" class="number-size-sm">
+														Building type: </h3>
+													</div>
+												</div>
 													<div class="col-md-4 content-left-seperator">
 														<a ng-click="dwelling(1)">
 															<img src="images/home168.svg" alt="Detached Dwelling" class="center-block" style="width:100px;height:100px">
@@ -132,6 +140,12 @@
 													</div> 
 												</div>
 												<div ng-show="step12">
+												<div class="row">
+													<div class="col-md-8 col-md-offset-1">
+														<h3><img src="images/twoRound.svg" alt="logo" class="number-size-sm">
+														Building type: </h3>
+													</div>
+												</div>
 													<div class="col-md-6 content-left-seperator">
 														<a ng-click="community(1)">
 															<img src="images/accomodation1.svg" alt="Community Service" class="center-block" style="width:100px;height:100px">
@@ -146,6 +160,12 @@
 													</div>
 												</div>
 												<div ng-show="step13">
+												<div class="row">
+													<div class="col-md-8 col-md-offset-1">
+														<h3><img src="images/twoRound.svg" alt="logo" class="number-size-sm">
+														Building type: </h3>
+													</div>
+												</div>
 													<div class="col-md-4 content-left-seperator">
 														<a ng-click="assembly(1)">
 															<img src="images/movies12.svg" alt="Assembly Service" class="center-block" style="width:100px;height:100px">
@@ -212,10 +232,11 @@
 												</div>
 												<div ng-show="step4">
 													<div class="row">
-														<div class="col-md-6">
-															<h2>New use of building</h2>
-														</div>
+													<div class="col-md-8 col-md-offset-1">
+														<h3><img src="images/oneRound.svg" alt="logo" class="number-size-sm">
+														New, lawfully established, use:</h3>
 													</div>
+												</div>
 													<div class="row">
 														<div class="col-md-4 content-left-seperator">
 															<span custom-popover popover-html="Applies to buildings or use where there is self care and service (internal
@@ -259,6 +280,10 @@
 													</div>
 												</div>
 												<div ng-show="step41">
+												<div class="col-md-8 col-md-offset-1">
+														<h3><img src="images/twoRound.svg" alt="logo" class="number-size-sm">
+														Building type: </h3>
+													</div>
 													<div class="col-md-4 content-left-seperator">
 														<a ng-click="dwelling(41)">
 															<img src="images/home168.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
@@ -279,6 +304,10 @@
 													</div> 
 												</div>
 												<div ng-show="step42">
+												<div class="col-md-8 col-md-offset-1">
+														<h3><img src="images/twoRound.svg" alt="logo" class="number-size-sm">
+														Building type: </h3>
+													</div>
 													<div class="col-md-6 content-left-seperator">
 														<a ng-click="community(41)">
 															<img src="images/accomodation1.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
@@ -293,6 +322,10 @@
 													</div>
 												</div>
 												<div ng-show="step43">
+												<div class="col-md-8 col-md-offset-1">
+														<h3><img src="images/twoRound.svg" alt="logo" class="number-size-sm">
+														Building type: </h3>
+													</div>
 													<div class="col-md-4 content-left-seperator">
 														<a ng-click="assembly(41)">
 															<img src="images/movies12.svg" alt="125x125" class="center-block" style="width:100px;height:100px">
@@ -310,7 +343,7 @@
 													<div class="row">
 														<div class="col-md-8 col-md-offset-2">
 															<h3>Congratulations {{username}}</h3>
-															<p> Your project is created.</p>
+															<p> Your project has been created.</p>
 															<button ng-click="final()" class="btn btn-primary margin-top-10px pull-right">Save</button>
 														</div>										
 													</div>
@@ -322,42 +355,39 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-2">
-						<label>Search: <input ng-model="searchText"></label>
+					<div class="col-md-4 margin-top-10px">
+						<input class="input-lg input-block" ng-model="searchText" placeholder="Search for a project">
 					</div>
-					<div class="col-md-2">
-						<p>Total consents : {{consents.length}}</p>
-					</div>
-					<div class="col-md-2">
-						<p>Underway : {{consents.length}}</p>
-					</div>
-					<div class="col-md-2">
-						<p>Approved : 0</p>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<h3>Your Projects</h3>
 					</div>
 				</div>
 				<div class="row margin-top-20px">
 					<div class="col-md-12">
+
 						<div class="table-responsive" >
 							<table class="table table-condensed">
 								<thead class="tableHead"> 
-									<tr>
-										<th>Project Name</th>
-										<th>Client</th> 
-										<th>Location</th>
-										<th>Council reference</th>
-										<th>Status</th>
-										<th></th>
+									<tr class="tableHead">
+										<th valign="middle" class="th-height ">Project Name</th>
+										<th class="th-height">Client</th> 
+										<th class="th-height">Location</th>
+										<th class="th-height">Council reference</th>
+										<th class="th-height">Status</th>
+										<th class="th-height"></th>
 									</tr>
 								</thead>
 								<tbody> 
 									<tr ng-repeat="consent in consents | filter:searchText" class="tableLine">
-										<td>{{consent.title}}</td>
-										<td>{{consent.client.name}}</td> 
-										<td>{{consent.address}}</td>
-										<td>{{consent.councilRef}}</td>
-										<td>{{consent.status}}</td>
-										<td><a href="#/dashboard"><button type="button" class="btn btn-primary btn-md" ng-click="dashboard(consent._id)">
-											<span aria-hidden="true" class="glyphicon glyphicon-pencil"></span> Edit
+										<td class="tableLine">{{consent.title}}</td>
+										<td class="tableLine">{{consent.client.name}}</td> 
+										<td class="tableLine">{{consent.address}}</td>
+										<td class="tableLine">{{consent.councilRef}}</td>
+										<td class="tableLine">{{consent.status}}</td>
+										<td class="tableLine"><a href="#/dashboard"><button type="button" class="btn btn-primary btn-lg pull-right" ng-click="dashboard(consent._id)">
+											<span aria-hidden="true" class="glyphicon glyphicon-pencil"></span> View
 										</button></a></td>
 									</tr>
 								</tbody>

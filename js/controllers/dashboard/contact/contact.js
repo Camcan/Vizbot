@@ -32,15 +32,15 @@ app.controller('ContactCtrl', ['$scope', '$location',
 				}
 				if(consent.client){
 					$scope.hasClient = true;
-					$scope.client = consent.client;
+					$scope.consent.client = consent.client;
 				}
 				if(consent.lbp.length > 0){
 					$scope.hasLBP = true;
-					$scope.licensed = consent.lbp;
+					$scope.consent.lbp = consent.lbp;
 				}
 				if(consent.people.length > 0){
 					$scope.hasPro = true;
-					$scope.pro = consent.people;
+					$scope.consent.people = consent.people;
 				}
 			});
 		};
@@ -76,15 +76,15 @@ app.controller('ContactCtrl', ['$scope', '$location',
 			$scope.consent = Consent.get({_id : idconsent})
 			.$promise.then(function(consent){
 				$scope.consent = consent;
-				if($scope.licensed){
-					if($scope.licensed._id){
+				if($scope.lbp){
+					if($scope.lbp._id){
 						for(var i = $scope.consent.lbp.length - 1; i >= 0; i--) {
-							if($scope.consent.lbp[i]._id === $scope.licensed._id) {
+							if($scope.consent.lbp[i]._id === $scope.lbp._id) {
 								$scope.consent.lbp.splice(i, 1);
 							}
 						}
 					}
-					$scope.consent.lbp.push($scope.licensed); 
+					$scope.consent.lbp.push($scope.lbp); 
 					$scope.consent.$save();	
 					$scope.hasLBP = true;
 				}
@@ -94,7 +94,7 @@ app.controller('ContactCtrl', ['$scope', '$location',
 
 		$scope.editLbp = function(lbp){
 			$('#addLbp').modal('show');
-			$scope.licensed = lbp;
+			$scope.lbp = lbp;
 		};
 
 		$scope.deleteLbp = function(lbp){
@@ -116,15 +116,15 @@ app.controller('ContactCtrl', ['$scope', '$location',
 			$scope.consent = Consent.get({_id : idconsent})
 			.$promise.then(function(consent){
 				$scope.consent = consent;
-				if($scope.pro){
-					if($scope.pro._id){
+				if($scope.people){
+					if($scope.people._id){
 						for(var i = $scope.consent.people.length - 1; i >= 0; i--) {
-							if($scope.consent.people[i]._id === $scope.pro._id) {
+							if($scope.consent.people[i]._id === $scope.people._id) {
 								$scope.consent.people.splice(i, 1);
 							}
 						}
 					}
-					$scope.consent.people.push($scope.pro); 
+					$scope.consent.people.push($scope.people); 
 					$scope.consent.$save();
 					$scope.hasPro = true;
 				}
@@ -133,16 +133,16 @@ app.controller('ContactCtrl', ['$scope', '$location',
 		};
 
 		$scope.editPro = function(item){
-			$('#addLbp').modal('show');
-			$scope.pro = item;
+			$('#addPro').modal('show');
+			$scope.people = item;
 		};
 
-		$scope.deletePro = function(pro){
+		$scope.deletePro = function(people){
 			$scope.consent = Consent.get({_id : idconsent})
 			.$promise.then(function(consent){
 				$scope.consent = consent;
 				for(var i = $scope.consent.people.length - 1; i >= 0; i--) {
-					if($scope.consent.people[i]._id === pro._id) {
+					if($scope.consent.people[i]._id === people._id) {
 						$scope.consent.people.splice(i, 1);
 					}
 				}

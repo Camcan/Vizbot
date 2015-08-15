@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse">
-  <a class="navbar-brand" href="#/consents">Vizbot</a>
+  <a class="navbar-brand" href="#/consents"><img src="images/icon1.svg" alt="logo" class="logo-nav-size"></a>
   <ul class="nav navbar-nav">
     <li class="active">
       <a href="consent">Home</a>
@@ -99,7 +99,7 @@
                   </button>
                 </div>
                 <div ng-show="isAgent && hasClient">
-                  <h3>{{client.name}}</h3>
+                  <h3>{{consent.client.name}}</h3>
                   <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addOwner">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
                   </button>
@@ -142,16 +142,16 @@
 
           <div class="row">
             <div class="col-md-12">
-              <h3>L.B.P</h3>
+              <h3>Licenced Building Practitioner (LBP)</h3>
               <div ng-show="!hasLBP">
                 <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addLbp">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> LBP  
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> L.B.P.  
                 </button>
               </div>
               <div ng-show="hasLBP">
               <div class="row">
                 <button type="button" class="btn btn-primary btn-md pull-right margin-bottom-10px" data-toggle="modal" data-target="#addLbp">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> More LBP  
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> More L.B.P.  
                 </button>
               </div>
                 <div class="table-responsive" >
@@ -187,18 +187,18 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title">Add Licensed Building Practionner</h4>
+                      <h4 class="modal-title">Add Licensed Building Practitioner</h4>
                     </div>
                     <div class="modal-body">
                       <div class="form-group">
                         <label>Name:</label>
-                        <input type="text" class="form-control" ng-model="licensed.name">
+                        <input type="text" class="form-control" ng-model="lbp.name">
                         <label>Licensing Class:</label>
-                        <input type="text" class="form-control" ng-model="licensed.classL">
+                        <input type="text" class="form-control" ng-model="lbp.classL">
                         <label>LBP Number:</label>
-                        <input type="text" class="form-control" ng-model="licensed.lbp">
+                        <input type="text" class="form-control" ng-model="lbp.lbp">
                         <label>Certificate of design work attached:</label>
-                        <input type="text" class="form-control" ng-model="licensed.certificat">
+                        <input type="text" class="form-control" ng-model="lbp.certificat">
                       </div>
                       <button ng-click="saveLBP()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
                     </div>
@@ -264,7 +264,7 @@
                         <form class="large-margin-top">
                           <div class="form-group">
                             <label>Type:</label>
-                            <select class="form-control" id="type" ng-model= "pro.type">
+                            <select class="form-control" id="type" ng-model= "people.type">
                               <option value"architect" selected>Architect</option>
                               <option value"structEngineer">Structural Engineer</option>
                               <option value"fire">Fire Engineer</option>
@@ -282,24 +282,24 @@
                           </div>
                           <div class="form-group">
                             <label>Name / Business:</label>
-                            <input type="text" class="form-control" ng-model="pro.name">
+                            <input type="text" class="form-control" ng-model="people.name">
                             <label>Street:</label>
-                            <input type="text" class="form-control" ng-model="pro.address.street">
+                            <input type="text" class="form-control" ng-model="people.address.street">
                             <label>Suburb:</label>
-                            <input type="text" class="form-control" ng-model="pro.address.suburb">
+                            <input type="text" class="form-control" ng-model="people.address.suburb">
                             <label>City:</label>
-                            <input type="text" class="form-control" ng-model="pro.address.city">
+                            <input type="text" class="form-control" ng-model="people.address.city">
                             <label>Post Code:</label>
-                            <input type="text" class="form-control" ng-model="pro.address.postCode">
+                            <input type="text" class="form-control" ng-model="people.address.postCode">
 
                             <label>Phone Number:</label>
-                            <input type="text" class="form-control" ng-model="pro.phone">
+                            <input type="text" class="form-control" ng-model="people.phone">
                             <label>Email:</label>
-                            <input type="text" class="form-control" ng-model="pro.mail">
+                            <input type="text" class="form-control" ng-model="people.mail">
                             <label>Website:</label>
-                            <input type="text" class="form-control" ng-model="pro.website">
+                            <input type="text" class="form-control" ng-model="people.website">
                             <label>Registration Qualification:</label>
-                            <input type="text" class="form-control" ng-model="pro.registration">
+                            <input type="text" class="form-control" ng-model="people.registration">
                           </div>
                           <button ng-click="savePro()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
                         </form>

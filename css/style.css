@@ -13,18 +13,27 @@ body {
 
 .tableHead{
 	background-color : #3c3c3c;
-	color :white;
-	font-size: 16px;
+	color :#E6E7E8;
+	font-size: 18px;
 }
 
-.tableLine{
-	padding-top:  : 10px;
-	padding-bottom: 10px;
+.tableLine{	
+	vertical-align: center !important;
+	height: 50px;
+	line-height: 50px !important; 
 }
 
 /* Home */
 
 .background{
-
+	background-image:url("../images/home.jpg");
+	height: 450px;
 }
+
+.th-height{
+	height: 40px;
+	line-height: 40px !important; 
+}
+
+
 

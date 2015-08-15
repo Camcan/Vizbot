@@ -44,8 +44,8 @@
 }
 
 .logo-size{
-	width: 200px;
-	height: 100px;
+	margin-left: -70px;
+	width: 380px;
 }
 
 .image-product-size{
@@ -66,6 +66,12 @@
 	height: 300px;
 }
 
+.logo-nav-size{
+	margin-top: -15px;
+	width: 50px;
+	height: 50px;	
+}
+
 .btn-lg.sign {
     border-radius: 24px;
 }
@@ -80,7 +86,22 @@
     color: #0099cc;
 }
 
+.number-size{
+	width: 120px;
+	height: 120px;
+	margin-right: auto;
+	margin-left: auto;
+}
 
+.number-size-sm{
+	width: 60px;
+	height: 60px;
+}
 .text-align {
 	text-align: center;
 }
+
+.display-inline{
+	display :inline-block;
+}
+

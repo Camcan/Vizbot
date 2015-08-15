@@ -3,17 +3,17 @@
 
 
 .generate-space-pc(@n, @name, @prefixe, @suffix, @val, @i: 1) when (@i =< @n) {
-  .@{prefixe}-@{val}@{suffix} {
-    @{name}: (@i * 100% / @n);
-  }
-  .generate-space-pc(@n, @name, @prefixe, @suffix, (@val + 10), (@i + 1));
+	.@{prefixe}-@{val}@{suffix} {
+		@{name}: (@i * 100% / @n);
+	}
+	.generate-space-pc(@n, @name, @prefixe, @suffix, (@val + 10), (@i + 1));
 }
 
 .generate-space-px(@n, @name, @prefixe, @suffix, @val, @i: 1) when (@i =< @n) {
-  .@{prefixe}-@{val}@{suffix} {
-    @{name}: (@val * 1px);
-  }
-  .generate-space-px(@n, @name, @prefixe, @suffix, (@val + 5), (@i + 1));
+	.@{prefixe}-@{val}@{suffix} {
+		@{name}: (@val * 1px);
+	}
+	.generate-space-px(@n, @name, @prefixe, @suffix, (@val + 5), (@i + 1));
 }
 
 .generate-space-pc(10, width, width, pc, 10);
@@ -43,3 +43,21 @@
 .generate-space-px(30, padding-bottom, padding-bottom, px, 5);
 .generate-space-px(30, padding-right, padding-right, px, 5);
 
+.border-bottom-home{
+	border-bottom: 15px solid @color2;
+}
+
+.bullet-number{
+	background-color: @color2;
+	color : @color5;
+	height: 100px;
+	width:100px;
+	border-radius: 50px 50px 50px 50px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 95px; 
+	font-size: 50px;
+	font : bold;
+	margin-right: auto;
+	margin-left: auto;
+}

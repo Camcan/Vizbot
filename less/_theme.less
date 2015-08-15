@@ -1,8 +1,8 @@
-@color1 : #F67B00;
-@color2 : #4BB748;
-@color3 : #808184;
-@color4 : #E6E7E8;
-@color5 : #211F20;
+@color1 : #F67B00; // Orange
+@color2 : #4BB748;	// green
+@color3 : #808184;	// Gray shade 1
+@color4 : #E6E7E8;	// Gray shade 2
+@color5 : #231F20;	// Dark
 @border : #e5e5e5;
 
 @import "../bower_components/bootstrap/less/variables.less";
@@ -55,7 +55,9 @@
 @import "../bower_components/bootstrap/less/utilities.less";
 @import "../bower_components/bootstrap/less/responsive-utilities.less";
 
+@import "../bower_components/bootstrap/less/glyphicons.less";
 
+@icon-font-path:          "../bower_components/bootstrap/fonts/";
 
 @brand-primary: darken(#337ab7, 6.5%); // #337ab7
 
@@ -72,7 +74,7 @@
 @modal-title-line-height:     @line-height-base;
 
 //** Background color of modal content area
-@modal-content-bg:                             #eee;
+@modal-content-bg:                             #ecf0f1;
 //** Modal content border color
 @modal-content-border-color:                   rgba(0,0,0,.2);
 //** Modal content border color **for IE8**
@@ -81,7 +83,7 @@
 //** Modal backdrop background color
 @modal-backdrop-bg:           #000;
 //** Modal backdrop opacity
-@modal-backdrop-opacity:      .5;
+@modal-backdrop-opacity:      .7;
 //** Modal header border color
 @modal-header-border-color:   #e5e5e5;
 //** Modal footer border color
@@ -95,8 +97,55 @@
 @border-radius-large:       0px;
 @border-radius-small:       0px;
 
-.border-bottom-home{
-    border-bottom: 15px solid @color2;
+@gray-base:              #000;
+@gray-darker:            lighten(@gray-base, 13.5%); // #222
+@gray-dark:              lighten(@gray-base, 20%);   // #333
+@gray:                   lighten(@gray-base, 33.5%); // #555
+@gray-light:             lighten(@gray-base, 46.7%); // #777
+@gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-}
+@brand-primary:         darken(@color2, 6.5%); // #337ab7
+@brand-success:         #5cb85c;
+@brand-info:            @color5; //#5bc0de
+@brand-warning:         #f0ad4e;
+@brand-danger:          #d9534f;
+
+//== Panels
+//
+//##
+
+@panel-bg:                    #fff;
+@panel-body-padding:          15px;
+@panel-heading-padding:       10px 15px;
+@panel-footer-padding:        @panel-heading-padding;
+@panel-border-radius:         @border-radius-base;
+
+//** Border color for elements within panels
+@panel-inner-border:          #ddd;
+@panel-footer-bg:             #f5f5f5;
+
+@panel-default-text:          @color4;
+@panel-default-border:        #ddd;
+@panel-default-heading-bg:    @color5;
+
+@panel-primary-text:          #fff;
+@panel-primary-border:        @brand-primary;
+@panel-primary-heading-bg:    @brand-primary;
+
+@panel-success-text:          @state-success-text;
+@panel-success-border:        @state-success-border;
+@panel-success-heading-bg:    @state-success-bg;
+
+@panel-info-text:             @state-info-text;
+@panel-info-border:           @state-info-border;
+@panel-info-heading-bg:       @state-info-bg;
+
+@panel-warning-text:          @state-warning-text;
+@panel-warning-border:        @state-warning-border;
+@panel-warning-heading-bg:    @state-warning-bg;
+
+@panel-danger-text:           @state-danger-text;
+@panel-danger-border:         @state-danger-border;
+@panel-danger-heading-bg:     @state-danger-bg;
+
 

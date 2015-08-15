@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse">
-	<a class="navbar-brand" href="#/consents">Vizbot</a>
+	<a class="navbar-brand" href="#/consents"><img src="images/icon1.svg" alt="logo" class="logo-nav-size"></a>
   <ul class="nav navbar-nav">
     <li class="active">
       <a href="#/dashboard">Dashboard</a>
@@ -29,15 +29,15 @@
 
       <div class="col-md-12 overflow">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-3 content-left-seperator">
             <form class="large-margin-top">
               <div class="form-group">
-                <label>Search :</label>
-                <input type="text" class="form-control" ng-model="value">
+                <input type="text" placeholder="Search for products" class="form-control" ng-model="value">
               </div>
               <button class="btn btn-primary btn-block" ng-click="searchProduct()" type="submit">Search</button>
             </form>
-            <div ng-show="articleChoose.length > 0"> 
+            <div ng-show="articleChoose.length > 0">
+            <hr> 
               <h3>Product choose</h3>
               <ul ng-repeat="art in articleChoose" class="list-no-bullets">
                 <li>
@@ -53,7 +53,8 @@
             </ul>
             <button type="button" class="btn btn-success btn-block" ng-click="save()">Add to consent</button>
           </div>
-          <h3>Categories</h3>
+          <hr>
+          <h3>Find products by category</h3>
           <ul ng-repeat="cat in categories" class="list-no-bullets">
             <li>
              <a ng-click="catFilter(cat.primary_slug)"> {{cat.primary}}</a>
@@ -62,9 +63,9 @@
          <hr/>
        </div>
        <div class="col-md-9">
-        <ul class="list-no-bullets" ng-repeat="prod in product.products">
-          <li>
-            <div class="col-lg-3">
+        <ul class="list-no-bullets">
+          <li  ng-repeat="prod in product.products" class="display-inline margin-right-30px">
+            <div class="margin-bottom-40px  " style="width:200px;height:200px">
               <a ng-click="addArticle(prod)" data-toggle="modal" data-target="#showArt">
                 <img src="{{prod.image}}" alt="125x125" style="width:200px;height:200px">
                 <span>{{prod.product_title}}</span>
