@@ -8,13 +8,13 @@
   <ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span class="glyphicon glyphicon-user"><span class="caret"></span></a>
+        <span class="glyphicon glyphicon-user"> {{username}} <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
           <li class="disabled"><a href="#"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
           <li class="disabled"><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#/"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+          <li><a href="#/home"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
         </ul>
       </li>
     </ul> 
@@ -29,7 +29,7 @@
       <div class="col-md-6 col-md-offset-3">
         <div class="col-md-12">
           <h3>Code Compliance<br/>
-            <small> Explanation... </small>
+            <small>For each code clause, you should supply at least one Producer Statement from suitably qualified and experienced designers or building professionals involved in specific design. Calculations and drawings (where applicable) must accompany producer statements. Architectural drawings must be signed by the engineer verifying specific design details. Included with any Producer Statements should be any supporting material, including plans, design reports or documents required for compliance management.</small>
           </h3>
         </div>      
       </div>
@@ -70,13 +70,30 @@
               </div>
               <div id="structure" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
+
                   <div class="row">
+                  <div class="col-md-12">
+                    <h4>Compliance for Code Clause B1 Structure may be established by using </h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>AS1NZS1170</li>
+                      <li>B1/AS1</li>
+                      <li>NZS3604</li>
+                      <li>NZS4229</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>B1/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
                     <ul ng-repeat="item in consent.compliance | filter:{ clause: 'b1' }">
                       <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                     </ul>
                     <button ng-click="compliance = 'b1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                     </button>
+                    </div>
                   </div>
                   
                 </div>
@@ -86,19 +103,32 @@
               <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#/compliance#durability" aria-expanded="false" aria-controls="durability">
-                    B1. Durability
+                    B2. Durability
                   </a>
                 </h4>
               </div>
               <div id="durability" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="panel-body">
                   <div class="row">
+                  <div class="col-md-12">
+                    <h4>Compliance for Code Clause B2 Durability may be established by using </h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>B2/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>B2/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
                     <ul ng-repeat="item in consent.compliance | filter:{ clause: 'b2' }">
                       <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                     </ul>
                     <button ng-click="compliance = 'b2' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                     </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -123,12 +153,33 @@
               <div id="fire" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
                  <div class="row">
+                 <div class="col-md-12">
+                    <h4>Compliance for Code Clauses C1-C6 Protection from Fire may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>C/AS1,</li>
+                      <li>C/AS2,</li>
+                      <li>C/AS3,</li>
+                      <li>C/AS4,</li>
+                      <li>C/AS5,</li>
+                      <li>C/AS6,</li>
+                      <li>C/AS7,</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>C/VM1,</li>
+                      <li>C/VM2</li>
+
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
                   <ul ng-repeat="item in consent.compliance | filter:{ clause: 'c' }">
                     <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                   </ul>
                   <button ng-click="compliance = 'c' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                   </button>
+                  </div>
                 </div> 
               </div>
             </div>
@@ -153,12 +204,22 @@
             <div id="access" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
                 <div class="row">
+                <div class="col-md-12">
+                    <h4>Compliance for Code Clause D1 Access Routes may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>D1/AS1</li>
+                      <li>NZS4121</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
                   <ul ng-repeat="item in consent.compliance | filter:{ clause: 'd1' }">
                     <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                   </ul>
                   <button ng-click="compliance = 'd1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                   </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -174,12 +235,24 @@
             <div id="mechanicalAccess" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
               <div class="panel-body">
                 <div class="row">
+                <div class="col-md-12">
+                    <h4>Compliance for Code Clause D2 Mechanical Installations for Access may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>D2/AS1</li>
+                      <li>D2/AS2</li>
+                      <li>D2/AS3</li>
+                      <li>NZS4121</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
                   <ul ng-repeat="item in consent.compliance | filter:{ clause: 'd2' }">
                     <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                   </ul>
                   <button ng-click="compliance = 'd2' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                   </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -204,12 +277,26 @@
             <div id="surface" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
                 <div class="row">
+                <div class="col-md-12">
+                    <h4>Compliance for Code Clause E1 Surface Water may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>E1/AS1</li>
+                      <li>AS3500</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>E1/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
                   <ul ng-repeat="item in consent.compliance | filter:{ clause: 'e1' }">
                     <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                   </ul>
                   <button ng-click="compliance = 'e1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                   </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -225,12 +312,28 @@
             <div id="moisture" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
               <div class="panel-body">
                 <div class="row">
+                <div class="col-md-12">
+                    <h4>Compliance for Code Clause E2 External Moisture may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>E2/AS1</li>
+                      <li>E2/AS2</li>
+                      <li>E2/AS3</li>
+                      <li>SED</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>E2/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
                   <ul ng-repeat="item in consent.compliance | filter:{ clause: 'e2' }">
                     <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                   </ul>
                   <button ng-click="compliance = 'e2' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                   </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -246,12 +349,21 @@
             <div id="internalMoisture" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
               <div class="panel-body">
                 <div class="row">
+                <div class="col-md-12">
+                    <h4>Compliance for Code Clause E3 Internal Moisture may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>E3/AS1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
                   <ul ng-repeat="item in consent.compliance | filter:{ clause: 'e3' }">
                     <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                   </ul>
                   <button ng-click="compliance = 'e3' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                   </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -276,12 +388,25 @@
             <div id="agent" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
                 <div class="row">
+                <div class="col-md-12">
+                    <h4>Compliance for Code Clause F1 Hazardous Agents of Site may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>F1/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>F2/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
                   <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f1' }">
                     <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                   </ul>
                   <button ng-click="compliance = 'f1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                   </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -297,12 +422,21 @@
             <div id="materials" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
               <div class="panel-body">
                <div class="row">
+               <div class="col-md-12">
+                    <h4>Compliance for Code Clause F2 Hazardous Building Materials may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>F2/AS1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
                 <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f2' }">
                   <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                 </ul>
                 <button ng-click="compliance = 'f2' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                 </button>
+                </div>
               </div>
             </div>
           </div>
@@ -318,12 +452,25 @@
           <div id="substances" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause F3 Hazardous Substances and Processes may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>F3/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>F3/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
                 <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f3' }">
                   <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                 </ul>
                 <button ng-click="compliance = 'f3' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                 </button>
+                </div>
               </div>
             </div>
           </div>
@@ -339,12 +486,21 @@
          <div id="safety" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
           <div class="panel-body">
             <div class="row">
+            <div class="col-md-12">
+                    <h4>Compliance for Code Clause F4 Safety from Falling may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>F4/AS1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f4' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'f4' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
           </div>
         </div>
@@ -360,12 +516,21 @@
         <div id="demolition" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
           <div class="panel-body">
             <div class="row">
+            <div class="col-md-12">
+                    <h4>Compliance for Code Clause F5 Construction and Demolition Hazards may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>F5/AS1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f5' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'f5' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
           </div>
         </div>
@@ -381,12 +546,21 @@
         <div id="routes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
           <div class="panel-body">
             <div class="row">
+            <div class="col-md-12">
+                    <h4>Compliance for Code Clause F6 Visibility in Escape Routes may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>F6/AS1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f6' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'f6' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
           </div>
         </div>
@@ -402,12 +576,21 @@
         <div id="warning" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
           <div class="panel-body">
             <div class="row">
+            <div class="col-md-12">
+                    <h4>Compliance for Code Clause F7 Warning Systems may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>F8/AS1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f7' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'f7' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
           </div>
         </div>
@@ -423,12 +606,22 @@
         <div id="signs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
           <div class="panel-body">
             <div class="row">
+            <div class="col-md-12">
+                    <h4>Compliance for Code Clause F8 Signs may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>F8/AS1</li>
+                      <li>NZS4121</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'f8' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'f8' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
           </div>
         </div>
@@ -453,12 +646,22 @@
           <div id="hygiene" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
              <div class="row">
+             <div class="col-md-12">
+                    <h4>Compliance for Code Clause G1 Personal Hygiene may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G1/AS1</li>
+                      <li>NZS4121</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g1' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div> 
             </div>
           </div>
@@ -474,12 +677,22 @@
           <div id="laundering" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G1 Personal Hygiene may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G2/AS1</li>
+                      <li>NZS4121</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g2' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g2' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -495,12 +708,22 @@
           <div id="foodPreparation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+               <div class="col-md-12">
+                    <h4>Compliance for Code Clause G3 Food Preparation and Prevention of Contamination may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G3/AS1</li>
+                      <li>NZS4121</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g3' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g3' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -516,12 +739,25 @@
           <div id="ventilation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G4 Ventilation may be established by usingg</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G4/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>G4/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g4' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g4' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -537,12 +773,25 @@
           <div id="interiorEnv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G5 Interior Environment may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G5/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>G5/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g5' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g5' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -558,12 +807,25 @@
           <div id="airborne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G6 Airborne and Impact Sound may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G6/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>G6/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g6' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g6' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -579,12 +841,25 @@
           <div id="naturalLight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G7 Natural Light may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G7/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>G7/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g7' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g7' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -600,12 +875,25 @@
           <div id="artificialLight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G8 Artificial Light may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G8/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>G8/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g8' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g8' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -621,12 +909,25 @@
           <div id="electricity" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G9 Electricity may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G9/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>G9/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g9' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g9' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -642,12 +943,25 @@
           <div id="piped" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G10 Piped Services may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G10/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>G10/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g10' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g10' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -663,12 +977,25 @@
           <div id="gas" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G11 Gas and Energy Source may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G11/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>G11/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g11' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g11' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -684,12 +1011,22 @@
           <div id="waterSupplies" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G12 Water Supplies may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G12/AS1</li>
+                      <li>G12/AS2</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g12' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g12' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -705,12 +1042,29 @@
           <div id="foulWater" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G13 Foul Water may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G13/AS1</li>
+                      <li>G13/AS2</li>
+                      <li>G13/AS3</li>
+                      <li>AS3500</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>G13/VM1</li>
+                      <li>G13/VM4</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g13' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g13' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -726,12 +1080,25 @@
           <div id="liquidWaste" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G14 Industrial Liquid Waste may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G14/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>G14/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g14' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g14' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -747,12 +1114,21 @@
           <div id="solidWaste" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause G15 Solid Waste may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>G15/AS1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'g15' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'g15' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
             </div>
           </div>
@@ -777,12 +1153,25 @@
           <div id="energy" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
               <div class="row">
+              <div class="col-md-12">
+                    <h4>Compliance for Code Clause H1 Energy Efficiency may be established by using</h4>
+                    Acceptable Solutions : 
+                    <ul>
+                      <li>H1/AS1</li>
+                    </ul>
+                    Verification Method
+                    <ul>
+                      <li>H1/VM1</li>
+                    </ul>
+                    Alternative Solutions or using waivers and modifications. 
+                    <hr>
               <ul ng-repeat="item in consent.compliance | filter:{ clause: 'h1' }">
                 <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
               </ul>
               <button ng-click="compliance = 'h1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
               </button>
+              </div>
             </div>
 
             </div>
