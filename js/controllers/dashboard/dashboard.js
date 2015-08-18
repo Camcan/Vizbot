@@ -44,7 +44,7 @@ app.controller('DashboardCtrl', ['$scope', '$location', 'Consent','User', functi
 			$scope.consent.status = 'vetting';
 			$scope.consent.councilRef = 'SM34563';
 			$scope.consent.workingDays = 20;
-			$scope.status = 'Action from Council required';
+			$scope.status = 'Underway - Action from Council required';
 			$scope.consent.$save();
 			prepareTimeline();
 		});	
@@ -70,7 +70,7 @@ app.controller('DashboardCtrl', ['$scope', '$location', 'Consent','User', functi
       		$scope.consent = consent;
       		$scope.consent.status = 'approval';
       		$scope.consent.workingDays = 17;
-      		$scope.status = 'Action from Council required';
+      		$scope.status = 'Underway - Action from Council required';
       		$scope.consent.$save();
       		prepareTimeline();
       	});	
@@ -110,7 +110,7 @@ app.controller('DashboardCtrl', ['$scope', '$location', 'Consent','User', functi
   	$scope.consent.status = 'rfc';
   	$scope.consent.workingDays = 16;
   	$scope.consent.RFI = rfi;
-  	$scope.status = 'Action from Council required';
+  	$scope.status = 'Underway - Action from Council required';
   	$scope.consent.$save();
   	prepareTimeline();
   });	
@@ -122,7 +122,7 @@ $scope.rfi = function(){
 		$scope.consent = consent;
 		$scope.consent.status = 'rfi';
 		$scope.consent.workingDays = 4;
-		$scope.status = 'Action from Agent required';
+		$scope.status = 'Paused - Action from Agent required';
 		$scope.consent.$save();
 		prepareTimeline();
 	});	
