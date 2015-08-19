@@ -220,7 +220,7 @@ function prepareTimeline(){
 		}
 		if($scope.consent.status == 'approval'){
 			elem = {
-				title : "Someone are looking your application",
+				title : "Someone is looking your application",
 				date : new Date(),
 				by : "Council",
 				text : "Your application is underway, the Council will send you a request for information (RFI) if needed. You can view requests for clarification notes lodged by Council during processing. These notes will be included in the Council RFI.",
