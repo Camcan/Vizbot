@@ -7,6 +7,7 @@ app.controller('ComplianceCtrl', ['$scope', 'Consent','User','fileUpload', funct
 	var idconsent = JSON.parse(sessionStorage.getItem('idConsentSelected'));
 	$scope.compliance = '';
 	$scope.urlUpload = "http://ec2-52-18-99-146.eu-west-1.compute.amazonaws.com/consents/";
+	$scope.username = JSON.parse(sessionStorage.getItem('username'));
 
 	$scope.init = function(){
 		$scope.consent = Consent.get({_id: idconsent} )

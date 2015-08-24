@@ -39,7 +39,6 @@ app.controller('ConsentsCtrl', ['$scope', '$location',
 
 	$scope.dashboard = function(id){
 		sessionStorage.setItem('idConsentSelected', JSON.stringify(id));
-		$location.path("#/dashboard/");
 	};
 
 	$scope.createConsent = function(){
@@ -229,6 +228,7 @@ app.controller('ConsentsCtrl', ['$scope', '$location',
 		sessionStorage.setItem('consents', JSON.stringify($scope.consents));
 		$scope.newconsent.$save();
 		$('#building').modal('hide');
+		
 	};
 	
 }]);

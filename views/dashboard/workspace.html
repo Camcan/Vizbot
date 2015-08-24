@@ -32,7 +32,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<button ng-click="submitApplication()" type="button" class="btn btn-lg btn-success btn-block margin-top-10px pull-right margin-bottom-10px" ng-show="checkInfoBuilding==true && checkInfoPeople==true && checkInfoProject==true && checkInfoDocument==true && consent.status != 'submitted' || consent.status =='submit'">SUBMIT</button>
+						<button ng-click="submitApplication()" type="button" class="btn btn-lg btn-success btn-block margin-top-10px pull-right margin-bottom-10px" ng-disabled="submittable">SUBMIT</button>
 					</div>
 				</div>
 			</div>

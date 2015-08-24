@@ -32,12 +32,17 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 					$scope.checkInfoPeople = true;
 				if($scope.consent.doc.length > 0)
 					$scope.checkInfoDocument = true;
+				submittable();
 			});
-			if(JSON.parse(sessionStorage.getItem('product'))){
-				$scope.articleChoose = JSON.parse(sessionStorage.getItem('product'));
-				$scope.checkInfoDocument = true;
-			}
 		};
+
+		function submittable(){
+			if($scope.consent.status == 'create' && $scope.consent.buildingInfo && $scope.consent.project && $scope.consent.people.length > 0 && $scope.consent.doc.length > 0){
+				$scope.submittable = false;
+			}
+			else
+				$scope.submittable = true;
+		}
 
 		$scope.addBuildingInfo = function(){
 			$scope.consent = Consent.get({_id: idconsent} )
@@ -60,34 +65,6 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 				$scope.consent.$save();
 				$scope.checkInfoProject = true;
 				$('#addproject').modal('hide'); 
-			});
-			
-		};
-
-		$scope.savePeople = function(){
-			$scope.consent = Consent.get({_id : idconsent})
-			.$promise.then(function(consent){
-				$scope.consent = consent;
-				if($scope.peopleType == 'pro'){
-					$scope.people.pro.peopleType = $scope.peopleType;
-					$scope.consent.people.push($scope.people.pro); 
-					$scope.consent.$save();
-					$scope.people = null;
-				}
-				if($scope.peopleType == 'agent'){
-					$scope.people.agent.peopleType = $scope.peopleType;
-					$scope.consent.people.push($scope.people.agent);
-					$scope.consent.$save();
-					$scope.people = null;
-				}
-				if($scope.peopleType == 'licensed'){
-					$scope.people.licensed.peopleType = $scope.peopleType;
-					$scope.consent.people.push($scope.people.licensed);
-					$scope.consent.$save();
-					$scope.people = null;
-				}
-				$('#addPeopleModal').modal('hide');
-				$scope.checkInfoPeople = true;
 			});
 		};
 
@@ -113,6 +90,7 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 			.$promise.then(function(consent) {
 				$scope.consent = consent;
 				$scope.consent.status = 'submitted';
+				$scope.submittable = true;
 				$scope.status = 'Action from Council required';
 				$scope.consent.$save();
 			});		

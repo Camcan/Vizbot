@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('DashboardCtrl', ['$scope', '$location', 'Consent','User', function ($scope, $location,Consent, User) {
+app.controller('DashboardCtrl', ['$scope', '$location','$http','Consent','User', function ($scope, $http,  $location,Consent, User) {
 
 	
 	$scope.timeline = [];
@@ -30,7 +30,6 @@ app.controller('DashboardCtrl', ['$scope', '$location', 'Consent','User', functi
 		.$promise.then(function(consent) {
 			$scope.consent = consent;
 			$scope.consent.status = 'submitted';
-			$scope.consent.workingDays = 20;
 			$scope.status = 'Action from Council required';
 			$scope.consent.$save();
 			prepareTimeline();
@@ -78,69 +77,43 @@ app.controller('DashboardCtrl', ['$scope', '$location', 'Consent','User', functi
       };
 
       $scope.rfc = function(){
-      	var rfi = [
-      	{"rfi_id" : "SM456373",
-      	"location" : "Building Consent Team",
-      	"details" : "Plans on pages 3A, 3B and 4C don't indicate how sump insouth east corner links to plumbieng. Please provide updated plancs so we can identify how the plumbing arragment works (this request for clarification will be added to any formal Request for Information when your application is finished being assessed).",
-      	"response" : "",
-      	"created_by" : "John Baker",
-      	"date_letter_sent" : "",
-      	"date_of_response" : "",
-      	"date_signed_off" : "",
-      	"signed_off_by" : "", 
-      	"building_code_clause" : "",
-      	"building_code_sub_clause" : ""
-      },
-      {"rfi_id" : "SM456374",
-      "location" : "Structural",
-      "details" : "Structural information from material xxxxx used on north west corner omitted from application. Request manufacturer information for this  (this request for clarification will be added to any formal Request for Information when your application is finished being assessed)",
-      "response" : "",
-      "created_by" : "Ben Thomas",
-      "date_letter_sent" : "",
-      "date_of_response" : "",
-      "date_signed_off" : "",
-      "signed_off_by" : "", 
-      "building_code_clause" : "",
-      "building_code_sub_clause" : ""
-  }
-  ];
-  $scope.consent = Consent.get({_id: idconsent})
-  .$promise.then(function(consent) {
-  	$scope.consent = consent;
-  	$scope.consent.status = 'rfc';
-  	$scope.consent.workingDays = 16;
-  	$scope.consent.RFI = rfi;
-  	$scope.status = 'Underway - Action from Council required';
-  	$scope.consent.$save();
-  	prepareTimeline();
-  });	
-};
+      	$scope.consent = Consent.get({_id: idconsent})
+      	.$promise.then(function(consent) {
+      		$scope.consent = consent;
+      		$scope.consent.status = 'rfc';
+      		$scope.consent.workingDays = 16;
+      		$scope.consent.RFI = rfi;
+      		$scope.status = 'Underway - Action from Council required';
+      		$scope.consent.$save();
+      		prepareTimeline();
+      	});	
+      };
 
-$scope.rfi = function(){
-	$scope.consent = Consent.get({_id: idconsent})
-	.$promise.then(function(consent) {
-		$scope.consent = consent;
-		$scope.consent.status = 'rfi';
-		$scope.consent.workingDays = 4;
-		$scope.status = 'Paused - Action from Agent required';
-		$scope.consent.$save();
-		prepareTimeline();
-	});	
+      $scope.rfi = function(){
+      	$scope.consent = Consent.get({_id: idconsent})
+      	.$promise.then(function(consent) {
+      		$scope.consent = consent;
+      		$scope.consent.status = 'rfi';
+      		$scope.consent.workingDays = 4;
+      		$scope.status = 'Paused - Action from Agent required';
+      		$scope.consent.$save();
+      		prepareTimeline();
+      	});	
 
-};
+      };
 
-function updatestatus(){
-	if($scope.consent.project && $scope.consent.buildingInfo  && $scope.consent.people.length > 0 && $scope.consent.doc.length > 0){
-		if($scope.consent.status == 'create')
-			$scope.consent.status = 'submit';
-	}
-}
+      function updatestatus(){
+      	if($scope.consent.project && $scope.consent.buildingInfo  && $scope.consent.people.length > 0 && $scope.consent.doc.length > 0){
+      		if($scope.consent.status == 'create')
+      			$scope.consent.status = 'submit';
+      	}
+      }
 
-function prepareTimeline(){
-	var elem = {};
-	if($scope.consent.status == 'create'){
-		elem = {
-			title : "First Step",
+      function prepareTimeline(){
+      	var elem = {};
+      	if($scope.consent.status == 'create'){
+      		elem = {
+      			title : "First Step",
 				date : new Date(), // Only date not hour
 				by : "Vizbot",
 				text : "Your project information is a crucial in making sure you add the required information for an application for a building consent. You can add and save information at any time to compile your application. When it's completed you'll be ready to submit it to Council",
@@ -178,7 +151,7 @@ function prepareTimeline(){
 			};
 			
 		}
-		if($scope.consent.status =='submited'){
+		if($scope.consent.status =='submitted'){
 			elem = {
 				title : "Your application has successfuly been submited",
 				date : new Date(),
