@@ -82,7 +82,6 @@ app.controller('DashboardCtrl', ['$scope', '$location','$http','Consent','User',
       		$scope.consent = consent;
       		$scope.consent.status = 'rfc';
       		$scope.consent.workingDays = 16;
-      		$scope.consent.RFI = rfi;
       		$scope.status = 'Underway - Action from Council required';
       		$scope.consent.$save();
       		prepareTimeline();
