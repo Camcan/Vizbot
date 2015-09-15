@@ -65,6 +65,20 @@
 						<div class="alert alert-success" role="alert">
 							Days Paused : <span class="pull-right">{{consent.pausedDays}}</span>
 						</div>
+
+						<div class="panel panel-default fixed-panel">
+							<div class="panel-heading">
+								<h3 class="panel-title">Status</h3>
+							</div>
+							<div class="panel-body">
+								<h4>{{status}}</h4>
+								<button ng-click="vetting()" type="button" class="btn btn-success" ng-show="consent.status =='submitted'">Go to vetting</button>
+								<button ng-click="approval()" type="button" class="btn btn-success" ng-show="consent.status =='vetting'">Go to Approval</button>
+								<button ng-click="rfc()" type="button" class="btn btn-success" ng-show="consent.status =='approval'">Add RFC</button>
+								<button ng-click="rfi()" type="button" class="btn btn-success" ng-show="consent.status =='rfc'">Go to RFI</button>
+							</div>
+						</div>
+
 					</div>
 
 					<div class="col-md-8">

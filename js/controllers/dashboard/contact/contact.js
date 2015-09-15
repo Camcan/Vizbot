@@ -13,6 +13,9 @@ app.controller('ContactCtrl', ['$scope', '$location',
 		$scope.hasPro = false;
 		$scope.hasLBP = false;
 		$scope.isAgent = false;
+		$scope.contact ={
+			info : 'agent'
+		};
 		$scope.consent = new Consent();
 
 
@@ -150,6 +153,10 @@ app.controller('ContactCtrl', ['$scope', '$location',
 				$('#addPro').modal('hide');
 			});
 			
+		};
+
+		$scope.saveContact = function(){
+			console.log($scope.contact);
 		};
 
 	}]);

@@ -25,6 +25,20 @@ app.controller('DashboardCtrl', ['$scope', '$location','$http','Consent','User',
 	  });
 	};
 
+	// MOCK
+	$scope.vetting = function(){
+		$scope.consent = Consent.get({_id: idconsent})
+		.$promise.then(function(consent) {
+			$scope.consent = consent;
+			$scope.consent.status = 'vetting';
+			$scope.consent.councilRef = 'SM34563';
+			$scope.consent.workingDays = 20;
+			$scope.status = 'Action from Council required';
+			$scope.consent.$save();
+			prepareTimeline();
+		});	
+	};
+
 	$scope.submitApplication = function(){
 		$scope.consent = Consent.get({_id: idconsent})
 		.$promise.then(function(consent) {
@@ -35,33 +49,6 @@ app.controller('DashboardCtrl', ['$scope', '$location','$http','Consent','User',
 			prepareTimeline();
 		});		
 	};
-
-	$scope.vetting = function(){
-		$scope.consent = Consent.get({_id: idconsent})
-		.$promise.then(function(consent) {
-			$scope.consent = consent;
-			$scope.consent.status = 'vetting';
-			$scope.consent.councilRef = 'SM34563';
-			$scope.consent.workingDays = 20;
-			$scope.status = 'Underway - Action from Council required';
-			$scope.consent.$save();
-			prepareTimeline();
-		});	
-
-	};
-
-	/*      rfi_id : String,
-      location : String,
-      details : String, 
-      response : String, 
-      accepted : String,
-      creted_by : String,
-      date_letter_sent : String,
-      date_of_response : String,
-      date_signed_off : String,
-      signed_off_by : String, 
-      building_code_clause : String,
-      building_code_sub_clause : String*/
 
       $scope.approval = function(){
       	$scope.consent = Consent.get({_id: idconsent})
@@ -76,7 +63,7 @@ app.controller('DashboardCtrl', ['$scope', '$location','$http','Consent','User',
 
       };
 
-      $scope.rfc = function(){
+     /* $scope.rfc = function(){
       	$scope.consent = Consent.get({_id: idconsent})
       	.$promise.then(function(consent) {
       		$scope.consent = consent;
@@ -86,7 +73,46 @@ app.controller('DashboardCtrl', ['$scope', '$location','$http','Consent','User',
       		$scope.consent.$save();
       		prepareTimeline();
       	});	
-      };
+      };*/
+      $scope.rfc = function(){
+      	var rfi = [
+      	{"rfi_id" : "SM456373",
+      	"location" : "Building Consent Team",
+      	"details" : "Plans on pages 3A, 3B and 4C don't indicate how sump insouth east corner links to plumbieng. Please provide updated plancs so we can identify how the plumbing arragment works (this request for clarification will be added to any formal Request for Information when your application is finished being assessed).",
+      	"response" : "",
+      	"created_by" : "John Baker",
+      	"date_letter_sent" : "",
+      	"date_of_response" : "",
+      	"date_signed_off" : "",
+      	"signed_off_by" : "", 
+      	"building_code_clause" : "",
+      	"building_code_sub_clause" : ""
+      },
+      {"rfi_id" : "SM456374",
+      "location" : "Structural",
+      "details" : "Structural information from material xxxxx used on north west corner omitted from application. Request manufacturer information for this  (this request for clarification will be added to any formal Request for Information when your application is finished being assessed)",
+      "response" : "",
+      "created_by" : "Ben Thomas",
+      "date_letter_sent" : "",
+      "date_of_response" : "",
+      "date_signed_off" : "",
+      "signed_off_by" : "", 
+      "building_code_clause" : "",
+      "building_code_sub_clause" : ""
+  }
+  ];
+  $scope.consent = Consent.get({_id: idconsent})
+  .$promise.then(function(consent) {
+  	$scope.consent = consent;
+  	$scope.consent.status = 'rfc';
+  	$scope.consent.workingDays = 16;
+  	$scope.consent.RFI = rfi;
+  	$scope.status = 'Action from Council required';
+  	$scope.consent.$save();
+  	prepareTimeline();
+  });	
+};
+
 
       $scope.rfi = function(){
       	$scope.consent = Consent.get({_id: idconsent})
@@ -215,7 +241,7 @@ app.controller('DashboardCtrl', ['$scope', '$location','$http','Consent','User',
 				for(var i = 0; i < $scope.consent.RFI.length; i++) {
 					elem = {
 						title : "Request for clarification",
-						date : new Date(),
+						date : $scope.consent.RFI[i].created_date,
 						by : $scope.consent.RFI[i].created_by + " - " + $scope.consent.RFI[i].location,
 						text : $scope.consent.RFI[i].details,
 						icon : "glyphicon glyphicon-warning-sign"
