@@ -17,7 +17,8 @@ module.exports = function(grunt) {
 		        	$sce:true,
 		        	console : true,
 		        	FormData : true,
-		        	document : true
+		        	document : true,
+		        	window : true
 		        }
 		    },
 		},
