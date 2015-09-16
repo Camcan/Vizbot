@@ -328,6 +328,13 @@ function prepareTimeline(){
 			$scope.timelineTitle = "Request for information";
 		}
 		if($scope.consent.status == 'approved'){
+			elem = {
+				title : "Application approved",
+				date : new Date(),
+				by : "Vizbot",
+				text : "Congratulations! Your consent application has been granted. You will have received an email from the council with more information about next steps.",
+				icon : "glyphicon glyphicon-ok"
+			};	
 			$scope.stepbar = {
 				create : "complete",
 				build : "complete",
