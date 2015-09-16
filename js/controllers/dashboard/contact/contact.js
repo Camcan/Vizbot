@@ -13,6 +13,7 @@ app.controller('ContactCtrl', ['$scope', '$location',
 		$scope.hasPro = false;
 		$scope.hasLBP = false;
 		$scope.isAgent = false;
+		$scope.hasContact = false;
 		$scope.contact ={
 			info : 'agent'
 		};
@@ -71,6 +72,27 @@ app.controller('ContactCtrl', ['$scope', '$location',
 					$scope.hasClient = true;
 				}
 				$('#addOwner').modal('hide');
+			});
+		};
+
+		$scope.saveContact = function(){
+			$scope.consent = Consent.get({_id : idconsent})
+			.$promise.then(function(consent){
+				$scope.consent = consent;
+				if($scope.contact.info == 'owner'){
+					$scope.consent.contact = $scope.consent.client; 
+					$scope.consent.$save();
+					$scope.hasContact = true;
+				} else if($scope.consent.info == 'agent'){
+					$scope.consent.contact = $scope.consent.agent; 
+					$scope.consent.$save();
+					$scope.hasContact = true;
+				} else if($scope.consent.info == 'other'){
+					$scope.consent.contact = $scope.contact; 
+					$scope.consent.$save();
+					$scope.hasContact = true;
+				}
+				$('#addContact').modal('hide');
 			});
 		};
 
