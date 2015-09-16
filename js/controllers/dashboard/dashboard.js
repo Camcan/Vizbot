@@ -171,7 +171,7 @@ $scope.reset = function(){
 		$scope.consent.$save();
 		prepareTimeline();
 	});	
-}
+};
 
 function updatestatus(){
 	if($scope.consent.project && $scope.consent.buildingInfo  && $scope.consent.people.length > 0 && $scope.consent.doc.length > 0){
