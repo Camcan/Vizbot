@@ -27,13 +27,25 @@
         <li><a href="#/workspace">Application information</a></li>
         <li class="active">Project Team</li>
       </ol> 
-      <div class="col-md-10 col-md-offset-1">
-        <div class="col-md-12">
+      <div class="col-md-12">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Project profile</h3>
+        </div>
+        <div class="panel-body">
+          <span><b>Project Name </b>: {{consent.title}} </span><br/>
+          <span><b>Agent </b>: {{consent.agent.name}} </span><br/>
+          <span><b>Client </b>: {{consent.client.name}} </span><br/>
+          <span><b>Location </b>: {{consent.address}}</span><br/>
+        </div>
+      </div>
+      </div>
+        <div class="col-md-8 ">
+          <div class="row">
+          <div class="col-md-12">
           <h3>Project Team</h3>
         </div>
-
-        <div class="col-md-8 content-left-seperator">
-          <div class="row">
             <div class="col-md-12">
               <h3>Agent</h3>
               <div ng-show="isAgent">
@@ -41,7 +53,7 @@
               </div>
               <div ng-show="!isAgent && !hasAgent">
                 <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addAgent">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agent  
+                  Add Agent  
                 </button>
 
                 <div class="modal fade" id="addAgent">
@@ -78,7 +90,7 @@
                 <div ng-show="hasAgent">
                   <h3>{{agent.name}}</h3>
                   <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addAgent">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
+                     Edit  
                   </button>
                 </div>
               </div>
@@ -89,21 +101,21 @@
           <div class="row">
             <div class="col-md-12">
               <h3>Owner</h3>
-              <small>
+              <p>
                 The following evidence of ownership is attached to this application :<br/> 
-                <a href="http://www.linz.govt.nz/land/land-records/types-land-records/computer-register-certificate-title-current">Copy of certificate title</a>,<br/>
+                <a target="_blank" href="http://www.linz.govt.nz/land/land-records/types-land-records/computer-register-certificate-title-current">Copy of certificate title</a>,<br/>
                 or lease, <br/>
                 or Agreement for sale and purchase, <br/>
                 or other document showing full name of legal owner(s) of the building<br/>
                 You can add this document <a href="#/workspace">here</a>  
-              </small>
+              </p>
               <div ng-show="!isAgent">
                 <h3>{{ username }}</h3>
               </div>
               <div>
                 <div ng-show="isAgent && !hasClient">
                   <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addOwner">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Client / Owner  
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Client/Owner  
                   </button>
                 </div>
                 <div ng-show="isAgent && hasClient">
@@ -117,13 +129,12 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Add Client / Owner</h4>
+                        <h4 class="modal-title">Add Client/Owner</h4>
                       </div>
                       <div class="modal-body">
                         <div class="form-group" >
                           <label>Name of Owner :</label>
                           <input type="text" class="form-control" ng-model="client.name">
-
                           <label>Street :</label>
                           <input type="text" class="form-control" ng-model="client.address.street">
                           <label>Suburb :</label>
@@ -132,7 +143,6 @@
                           <input type="text" class="form-control" ng-model="client.address.city">
                           <label>Post Code :</label>
                           <input type="text" class="form-control" ng-model="client.address.postCode">
-
                           <label>Phone Number:</label>
                           <input type="text" class="form-control" ng-model="client.phone">
                           <label>Email:</label>
@@ -150,21 +160,21 @@
 
           <div class="row">
             <div class="col-md-12">
-              <h3>First point of contact</h3>
-              <small>
+              <h3>Add First point of contact</h3>
+              <p>
                 First point of contact for communications with the council/building consent authority <br/>
                 Contact details must be in New Zealand
-              </small>
+              </p>
               <div>
                 <div ng-show="!hasContact">
                   <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addContact">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Point of Contact  
+                     Add Point of Contact  
                   </button>
                 </div>
                 <div ng-show="hasContact">
                   <h3>{{consent.contact.name}}</h3>
                   <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addContact">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
+                     Edit  
                   </button>
                 </div>
                 <div class="modal fade" id="addContact">
@@ -172,7 +182,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Add First Point of contact</h4>
+                        <h4 class="modal-title">First Point of contact</h4>
                       </div>
                       <div class="modal-body">
                         <div class="form-group" >
@@ -220,13 +230,13 @@
             <h3>Licenced Building Practitioner (LBP)</h3>
             <div ng-show="!hasLBP">
               <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addLbp">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> L.B.P.  
+                Add LBP  
               </button>
             </div>
             <div ng-show="hasLBP">
               <div class="row">
                 <button type="button" class="btn btn-primary btn-md pull-right margin-bottom-10px" data-toggle="modal" data-target="#addLbp">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> More L.B.P.  
+                   More LBP  
                 </button>
               </div>
               <div class="table-responsive" >
@@ -284,18 +294,18 @@
         </div>
         <hr>
 
-        <div class="row">
+        <div class="row margin-bottom-50px" >
           <div class="col-md-12">
             <h3>Others professionals</h3>
             <div ng-show="!hasPro">
               <button type="button" class="btn btn-primary btn-md pull-right" data-toggle="modal" data-target="#addPro">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Professional  
+                 Add Professional  
               </button>
             </div>
             <div ng-show="hasPro">
               <div class="row">
                 <button type="button" class="btn btn-primary btn-md pull-right margin-bottom-10px" data-toggle="modal" data-target="#addPro">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> More Professionals
+                   More Professional
                 </button>
               </div>
               <div class="table-responsive" >
@@ -333,7 +343,7 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Add Professional</h4>
+                    <h4 class="modal-title">Professional</h4>
                   </div>
                   <div class="modal-body">
                     <form class="large-margin-top">
@@ -347,16 +357,17 @@
                           <option value"builder">Builder</option>
                           <option value"plumber">Plumber</option>
                           <option value"gasfitter">Gasfitter</option>
+                          <option value"gasfitter">Designer</option>
                           <option value"electrician">Electrician</option>
                           <option value"drainlayer">Drainlayer</option>
                           <option value"cladder">Exterior Cladder</option>
                           <option value"surveyor">Surveyor</option>
                           <option value"heating">Heating Appliance Installer</option>
-                          <option value"others">Others</option>
+                          <option value"others">Other</option>
                         </select>
                       </div>
                       <div class="form-group">
-                        <label>Name / Business:</label>
+                        <label>name:</label>
                         <input type="text" class="form-control" ng-model="people.name">
                         <label>Street:</label>
                         <input type="text" class="form-control" ng-model="people.address.street">
@@ -384,9 +395,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <h3>Team</h3>
       </div>
 
     </div>

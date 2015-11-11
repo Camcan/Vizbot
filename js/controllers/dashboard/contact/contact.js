@@ -23,6 +23,7 @@ app.controller('ContactCtrl', ['$scope', '$location',
 		$scope.init = function(){
 			$scope.consent = Consent.get({_id: idconsent} )
 			.$promise.then(function(consent) {
+				$scope.consent = consent;
 				if(consent.role === "Agent"){
 					$scope.isAgent = true;
 				}else{
@@ -176,9 +177,4 @@ app.controller('ContactCtrl', ['$scope', '$location',
 			});
 			
 		};
-
-		$scope.saveContact = function(){
-			console.log($scope.contact);
-		};
-
 	}]);

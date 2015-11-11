@@ -23,32 +23,48 @@
 		</ul>
 	</nav>
 	<div class="container-fluid" data-ng-init="init()">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Project profile</h3>
+				</div>
+				<div class="panel-body">
+					<span><b>Project Name </b>: {{consent.title}} </span><br/>
+					<span><b>Agent </b>: {{consent.agent.name}} </span><br/>
+					<span><b>Client </b>: {{consent.client.name}} </span><br/>
+					<span><b>Location </b>: {{consent.address}}</span><br/>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-12">
 				<div class="col-md-12 margin-bottom-20px">
 					<h3>Application Information<br/>
 						<small>A building consent is the formal approval issued by a Building Consent Authority (BCA) to ensure certain works meet the requirements of the Building Act 2004, Building Regulations and the New Zealand Building Code. The Building Act requires that all sections of this form be completed in full before you are able to submit your application.</small>
 					</h3>
 				</div>
 				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
+					<div class="col-md-12">
 						<button ng-click="submitApplication()" type="button" class="btn btn-lg btn-success btn-block margin-top-10px pull-right margin-bottom-10px" ng-disabled="submittable">SUBMIT</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Building Information</h3>
+						<h3 class="panel-title">Building & Project Information</h3>
 					</div>
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="col-md-5 col-md-offset-7" ng-show="!checkInfoBuilding">
+									
 									<button type="button" class="btn btn-primary btn-block btn-lg pull-right" data-toggle="modal" data-target="#addBuildingInfo">
-										<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Building information
+										<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Building & Project Information
 									</button>
 								</div>
 								<div class="col-md-12" ng-show="checkInfoBuilding">
@@ -58,7 +74,7 @@
 										</div>
 										<div class"col-md-3">
 											<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addBuildingInfo">
-												<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
+												Edit  
 											</button>	
 										</div>
 									</div>
@@ -71,31 +87,83 @@
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											<h4 class="modal-title" id="myModalLabel">Building information</h4>
+											<h4 class="modal-title" id="myModalLabel">Building & Project Information</h4>
 										</div>
 										<div class="modal-body">
 											<form class="centering">
-												<label>Building name:</label>
-												<input type="text" class="form-control" ng-model="building.name" required autofocus>
-												<label>Number of levels:</label>
-												<input type="text" class="form-control" ng-model="building.level">
-												<label>Total floor area:</label>
-												<input type="text" class="form-control" ng-model="building.totalFloor">
-												<label>Indicate area affected by the building work if less than the total area:</label>
-												<input type="text" class="form-control" ng-model="building.area">
-												<label>Does the building have any specified systems?</label>
-												<div class="radio">
-													<label><input type="radio" name="optradio" ng-model="building.speSystem" ng-value="true">Yes</label>
-													<div ng-show="building.speSystem==true">
-														<label>The specified systems for the building are as follows:</label>
-														<input type="textarea" class="form-control" ng-model="building.speFollows" placeholder="eg: cable cars" ng-show="building.speSystem==true">
-														<label>The following specified systems are being altered added to, or removed, in the course of the building work:</label>
-														<input type="textarea" class="form-control" ng-model="building.speUpdate" placeholder="eg: altered " >
+												<div class="row">
+													<div class="col-md-6">
+														<label>Building name:</label>
+														<input type="text" class="form-control" ng-model="building.name" required autofocus>
+													</div>
+													<div class="col-md-6">
+														<label>Number of levels:</label>
+														<input type="text" class="form-control" ng-model="building.level">
 													</div>
 												</div>
-												<div class="radio">
+												<div class="row">
+													<div class="col-md-6">
+														<label>Total floor area:</label>
+														<div class="input-group">
+															<div class="input-group-addon">m²</div>
+															<input type="text" class="form-control" placeholder="e.g. 250m²" ng-model="building.totalFloor">
+														</div>
+													</div>
+													<div class="col-md-6">
+														<label>Affected area: (m²) </label>
+														<div class="input-group">
+															<div class="input-group-addon">m²</div>
+															<input placeholder="e.g. 250m²" type="text" class="form-control" ng-model="building.area">
+														</div>
+													</div>
+												</div>
+												<hr/>
+												<label>Does the building have any specified systems?</label>
+												<div class="pull-right">
+												<div class="radio-inline">
+													<label><input type="radio" name="optradio" ng-model="building.speSystem" ng-value="true">Yes</label>
+												</div>
+												<div class="radio-inline">
 													<label><input type="radio" name="optradio" ng-model="building.speSystem" ng-value="false">No</label>
 												</div>
+												</div>
+												<div ng-show="building.speSystem==true">
+													<label>The specified systems for the building are as follows:</label>
+													<input type="textarea" class="form-control" ng-model="building.speFollows" placeholder="e.g. Cable Cars" ng-show="building.speSystem==true">
+													<label>The following specified system(s) are being altered added to, or removed, in the course of the building work:</label>
+													<input type="textarea" class="form-control" ng-model="building.speUpdate" placeholder="e.g. altered " >
+												</div>
+												<hr />
+												<div class="row">
+												<div class="col-md-8">
+													<label>Have there been any pre-application meetings prior to making this application?</label>
+												</div>
+												<div class="col-md-4">
+												<div class="pull-right">
+													<div class="radio-inline">
+														<label><input type="radio" name="preApp" ng-model="project.info" ng-value="true">Yes</label>
+													</div>
+													<div class="radio-inline">
+														<label><input type="radio" name="preApp" ng-model="project.info" ng-value="false">No</label>
+													</div>
+												</div>
+												</div>
+												<div class="col-md-8">
+													<input type="text" class="form-control" ng-model="project.number" placeholder="Pre-app Number" ng-show="project.info==true">
+												</div>
+												</div>
+												<div class="row">
+												<div class="col-md-7">
+													<label>Estimated value of the building work on which the building levy will be calculated:</label>
+												</div>
+												<div class="col-md-5">
+													<div class="input-group">
+													<div class="input-group-addon">$NZD</div>
+														<input type="text" class="form-control" placeholder="eg : 100.000" ng-model="project.value">
+													</div>
+												</div>	
+												</div>
+												<hr />
 												<button ng-click="addBuildingInfo()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
 											</form>
 										</div>
@@ -108,67 +176,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Project Information</h3>
-					</div>
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="col-md-5 col-md-offset-7" ng-show="!checkInfoProject">
-									<button type="button" class="btn btn-primary btn-lg btn-block pull-right" data-toggle="modal" data-target="#addproject">
-										<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Project Information 
-									</button>
-								</div>
-
-								<div class="col-md-12" ng-show="checkInfoProject">
-									<div class"col-md-6">
-										<h3 class="">Information supplied</h3>
-									</div>
-									<div class"col-md-3">
-										<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addproject">
-											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Edit  
-										</button>	
-									</div>
-								</div>
-								<!-- Modal -->
-								<div class="modal fade" id="addproject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-												<h4 class="modal-title" id="myModalLabel">Add project information</h4>
-											</div>
-											<div class="modal-body">
-												<form class="centering">
-													<label>Have there been any pre-application meetings prior to making this application?</label>
-													<div class="radio">
-														<label><input type="radio" name="optradio" ng-model="project.info" ng-value="true">Yes</label>
-														<input type="textarea" class="form-control" ng-model="project.number" placeholder="Pre-app Number" ng-show="project.info==true">
-													</div>
-													<div class="radio">
-														<label><input type="radio" name="optradio" ng-model="project.info" ng-value="false">No</label>
-													</div>
-													<label>Estimated value of the building work on which the building levy will be calculated:</label>
-													<div class="input-group">
-														<div class="input-group-addon">$NZD</div>
-														<input type="text" class="form-control" placeholder="eg : 100.000" ng-model="project.value">
-													</div>
-													<button ng-click="saveProject()" type="submit" class="btn btn-lg btn-primary btn-block margin-top-10px">Save</button>
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>  
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Project Team</h3>
@@ -201,7 +209,32 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Means of Compliance</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="col-md-1">
+									<img src="images/check.svg" alt="logo" class="logo-nav-size">
+								</div>
+								<div class="col-md-5 col-md-offset-7">
+									<a href="#/compliance">	
+										<button type="button" class="btn btn-primary btn-lg btn-block pull-right">
+											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Means of Compliance  
+										</button>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>  
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Documents</h3>
@@ -294,27 +327,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="row margin-bottom-30px">
-			<div class="col-md-6 col-md-offset-3">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Means of Compliance</h3>
-					</div>
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="col-md-5 col-md-offset-7">
-									<a href="#/compliance">	
-										<button type="button" class="btn btn-primary btn-lg btn-block pull-right">
-											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Means of Compliance  
-										</button>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>  
-			</div>
 		</div>
 		<hr>
 		<div class="row">
@@ -325,6 +337,7 @@
 					</small>
 				</h3>
 			</div>
+		</div>
 		</div>
 	</div>
 

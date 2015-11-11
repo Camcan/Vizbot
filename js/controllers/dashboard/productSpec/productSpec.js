@@ -6,7 +6,9 @@ app.controller('ProductSpecCtrl', ['$scope', '$location', '$http', 'Consent', fu
 	$scope.categories = [{"primary":"Adhesives & Compounds","primary_slug":"adhesives-and-compounds"},{"primary":"Cladding","primary_slug":"cladding"},{"primary":"Electronic Systems","primary_slug":"electronic-systems"},{"primary":"Exterior & Landscape","primary_slug":"exterior-and-landscape"},{"primary":"Flooring","primary_slug":"flooring"},{"primary":"Hardware","primary_slug":"hardware"},{"primary":"Heating, Ventilation & Air Con.","primary_slug":"heating-ventilation-and-air-con."},{"primary":"Insulation","primary_slug":"insulation"},{"primary":"Interiors, Furnishings & Equipment","primary_slug":"interiors-furnishings-and-equipment"},{"primary":"Kitchen & Bathroom","primary_slug":"kitchen-and-bathroom"},{"primary":"Lighting & Electrical","primary_slug":"lighting-and-electrical"},{"primary":"Metal, Timber & Plastics","primary_slug":"metal-timber-and-plastics"},{"primary":"Paint & Coatings","primary_slug":"paint-and-coatings"},{"primary":"Plumbing, Drainage & Gas","primary_slug":"plumbing-drainage-and-gas"},{"primary":"Roofing","primary_slug":"roofing"},{"primary":"Security, Fire & Safety","primary_slug":"security-fire-and-safety"},{"primary":"Stairs & Transport Systems","primary_slug":"stairs-and-transport-systems"},{"primary":"Structure & Connectors","primary_slug":"structure-and-connectors"},{"primary":"Wall Coverings","primary_slug":"wall-coverings"},{"primary":"Wall Linings, Ceilings & Partitions","primary_slug":"wall-linings-ceilings-and-partitions"},{"primary":"Waterproofing","primary_slug":"waterproofing"},{"primary":"Windows, Doors & Glazing","primary_slug":"windows-doors-and-glazing"}];
 	$scope.articleChoose = [];
 	$scope.username = JSON.parse(sessionStorage.getItem('username'));
-	var idconsent = JSON.parse(sessionStorage.getItem('idConsentSelected'));
+	var idconsent = JSON.parse(sessionStorage.getItem('idConsentSelected')),
+		baseUrl = 'https://services.productspec.net/api/',
+		apiKey = {'api-key' : 'VZNJPrtONZcw'};
 
 
 	$scope.init = function(){
@@ -16,8 +18,8 @@ app.controller('ProductSpecCtrl', ['$scope', '$location', '$http', 'Consent', fu
 	};
 
 	$scope.searchProduct = function(){
-		$http.get('https://api.productspec.net/api/search?search=' + $scope.value, {
-			headers: {'Authorization': 'Basic ZmRMVVFOZ0huNDc3Ong=' }
+		$http.get(baseUrl + 'search?search=' + $scope.value, {
+			headers: apiKey
 		})
 		.success(function(data) {
 			$scope.product = data;
@@ -28,8 +30,8 @@ app.controller('ProductSpecCtrl', ['$scope', '$location', '$http', 'Consent', fu
 	};
 
 	$scope.catFilter = function(cat){
-		$http.get('https://api.productspec.net/api/search/?primary=' + cat, {
-			headers: { 'Authorization': 'Basic ZmRMVVFOZ0huNDc3Ong=' }
+		$http.get(baseUrl + 'search/?primary=' + cat, {
+			headers: apiKey
 		})
 		.success(function(data) {
 			$scope.product = data;
@@ -40,8 +42,8 @@ app.controller('ProductSpecCtrl', ['$scope', '$location', '$http', 'Consent', fu
 	};
 
 	$scope.addArticle = function(prod){
-		$http.get('https://api.productspec.net/api/product/' + prod.product_id, {
-			headers: { 'Authorization': 'Basic ZmRMVVFOZ0huNDc3Ong=' }
+		$http.get(baseUrl+ 'product/' + prod.product_id, {
+			headers: apiKey
 		})
 		.success(function(data) {
 			$scope.productDetails = data;
@@ -72,7 +74,7 @@ app.controller('ProductSpecCtrl', ['$scope', '$location', '$http', 'Consent', fu
 			for (var j = 0; j < $scope.articleChoose[i].product_tech_files.length; j++) {
 				var urlData = {
 					name : $scope.articleChoose[i].product_tech_files[j].file_name,
-					url : 'https://api.productspec.net/api/techfile/' + $scope.articleChoose[i].product_id + '/' + $scope.articleChoose[i].product_tech_files[j]._id
+					url : 'https://services.productspec.net/api/file/key/VZNJPrtONZcw/tech/' + $scope.articleChoose[i].product_tech_files[j]._id
 				};
 				data.push(urlData);
 			}

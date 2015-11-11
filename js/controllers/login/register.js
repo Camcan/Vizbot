@@ -17,6 +17,12 @@ app.controller('RegisterCtrl', ['$scope', '$http', '$location', function ($scope
 			$scope.userId = headers.id;
 			sessionStorage.clear();
 			sessionStorage.setItem('userId', JSON.stringify(headers('id')));
+			window.Intercom('boot', {
+				  app_id: "tde5lwyt",
+				  name: user.name, // TODO: The current logged in user's full name
+				  email: user.mail, // TODO: The current logged in user's email address.
+				  created_at: Date() // TODO: The current logged in user's sign-up date as a Unix timestamp.
+				});
 			$location.path("/consents");
 		});
 		res.error(function(data, status, headers, config) {
@@ -27,13 +33,5 @@ app.controller('RegisterCtrl', ['$scope', '$http', '$location', function ($scope
 	$scope.checkFirst = function(){
 		if($scope.register.name && $scope.register.mail && $scope.register.pwd)
 			$scope.step++;
-	};
-
-	$scope.next = function(){
-		$scope.step++;
-	};
-
-	$scope.previous = function(){
-		$scope.step--;
 	};
 }]);

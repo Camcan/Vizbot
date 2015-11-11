@@ -51,8 +51,10 @@ app.controller('WorkspaceCtrl', ['$scope', 'Consent','User', 'fileUpload',
 				$scope.building.client = consent.client;
 				$scope.building.address = consent.address;
 				$scope.consent.buildingInfo = $scope.building;
+				$scope.consent.project = $scope.project;
 				$scope.consent.$save();
 				$scope.checkInfoBuilding = true;
+				$scope.checkInfoProject = true;
 				$('#addBuildingInfo').modal('hide');
 			});
 		};

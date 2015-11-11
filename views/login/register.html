@@ -6,24 +6,30 @@
 					<form class="large-margin-top">
 						<h2>Register</h2>
 				  		<div class="form-group" ng-show="step==1">
-							<label>Name:</label>
-							<input type="text" class="form-control" ng-model="register.name" autofocus required>
-							<label>E-Mail:</label>
+				  		<div class="row">
+							<div class="col-md-12"> 
+								<label>Name</label>
+								<input type="text" class="form-control" ng-model="register.name" autofocus required>	
+							</div>
+						</div>
+							<label>Email</label>
 							<input type="text" class="form-control" ng-model="register.mail" required>
-							<label>Password:</label>
+							<label>Password</label>
 							<input type="password" class="form-control" ng-model="register.pwd" required>
-							<button ng-click="checkFirst()" class="btn btn-primary pull-right margin-top-10px">Next</button>
-				  		</div>
-				  		<div class="form-group" ng-show="step==2">
-							<label>Street:</label>
-							<input type="text" class="form-control" ng-model="register.address.street" autofocus>
-							<label>City:</label>
-							<input type="text" class="form-control" ng-model="register.address.city">	
-							<label>Post Code:</label>
-							<input type="text" class="form-control" ng-model="register.address.postCode">
-							<label>Phone Number:</label>
+							<label>Street</label>
+							<input type="text" class="form-control" ng-model="register.address.street">
+							<div class="row">
+							<div class="col-md-8"> 
+								<label>City</label>
+								<input type="text" class="form-control" ng-model="register.address.city">	
+							</div>
+							<div class="col-md-4">
+								<label>Post Code</label>
+								<input type="text" class="form-control" ng-model="register.address.postCode">
+							</div>
+							</div>
+							<label>Phone Number</label>
 							<input type="text" class="form-control" ng-model="register.phone">
-							<button ng-click="previous()" class="btn btn-primary margin-top-10px">Previous</button>
 				  			<button ng-click="create()" type="submit" class="btn btn-success margin-top-10px pull-right">Create profile</button>
 				  		</div>
 					</form>

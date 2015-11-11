@@ -34,19 +34,19 @@
 										<div class="modal-body">
 											<form class="large-margin-top">
 												<div class="form-group">
-													<label>Project name:</label>
-													<input type="text" placeholder="Short description for the project" class="form-control" ng-model="newconsent.title" autofocus required>
+													<label>Project name</label>
+													<input type="text" placeholder="e.g. Willy Wonka's Chocolate Factory" class="form-control" ng-model="newconsent.title" autofocus required>
 												</div>
 												<div class="form-group">
-													<label>What's your role in this project: </label>
+													<label>What's your role in this project </label>
 													<select class="form-control" ng-model="newconsent.role" required>
 														<option value"agent.name">Agent</option>
 														<option value"client.name">Client/Owner</option>
 													</select>
 												</div>
 												<div class="form-group">
-													<label>Location :</label>
-													<input placeholder="Address" type="text" class="form-control" ng-model="newconsent.address" required>
+													<label>Street address of building</label>
+													<input placeholder="e.g. 65B Jonston Drive, Te Aro, Wellington" type="text" class="form-control" ng-model="newconsent.address" required>
 												</div>
 												<button class="btn btn-primary btn-block" ng-click="createConsent()" type="submit">Create project</button>
 											</form>
@@ -192,10 +192,10 @@
 																</div>
 																<div class="form-group">
 																	<label>Year first constructed:</label>
-																	<input type="text" class="form-control" placeholder="year" ng-model="newconsent.old" required>
+																	<input type="text" class="form-control" placeholder="e.g. 2010" ng-model="newconsent.old" required>
 																</div>
 																<div class="form-group">
-																	<label>Intended life (if < 50 years)?</label>
+																	<label>Intended life (if < 50 years)</label>
 																	<div class="input-group">
 																		<input type="text" class="form-control" aria-describedby="sizing-addon1" ng-model="newconsent.intended" required>
 																		<span class="input-group-addon" id="sizing-addon1">Years</span>
@@ -211,7 +211,7 @@
 														<div class="col-md-6 col-md-offset-3">
 															<form class="large-margin-top">
 																<div class="form-group">
-																	<label>Description of the building work :</label><br/>
+																	<label>Description of the building work</label><br/>
 																	<textarea rows="5" cols="60" ng-model="newconsent.buildingWork" required>
 																	</textarea>
 																</div>
@@ -374,7 +374,7 @@
 										<th valign="middle" class="th-height ">Project Name</th>
 										<th class="th-height">Client</th> 
 										<th class="th-height">Location</th>
-										<th class="th-height">Council reference</th>
+										<th class="th-height">Council Reference</th>
 										<th class="th-height">Status</th>
 										<th class="th-height"></th>
 									</tr>
@@ -387,7 +387,7 @@
 										<td class="tableLine">{{consent.councilRef}}</td>
 										<td class="tableLine">{{consent.status}}</td>
 										<td class="tableLine"><a href="#/dashboard"><button type="button" class="btn btn-primary btn-lg pull-right" ng-click="dashboard(consent._id)">
-											<span aria-hidden="true" class="glyphicon glyphicon-pencil"></span> View
+											 View
 										</button></a></td>
 									</tr>
 								</tbody>

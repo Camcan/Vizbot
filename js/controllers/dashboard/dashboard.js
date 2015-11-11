@@ -227,7 +227,7 @@ function prepareTimeline(){
 				title : "Your application has successfuly been submited",
 				date : new Date(),
 				by : "Vizbot",
-				text : "We are now waiting on confirmation from the council that they have receive the application. There's nothing for you to do in the mean time. You will get notification when the council starts vetting your information",
+				text : "We are now waiting on confirmation from the council that they have receive the application. There's nothing for you to do in the mean time. You will get notification when the council starts vetting your information.",
 				icon : "glyphicon glyphicon-hourglass"
 			};
 			$scope.timeline.push(elem);
@@ -247,7 +247,7 @@ function prepareTimeline(){
 				title : "We have all the information we need to assess your application",
 				date : new Date(),
 				by : "Council",
-				text : "The application contains all the information required to assess the application. The Council reference number for the consent is : " + $scope.consent.councilRef,
+				text : "The application contains all the information required to assess the application. The Council reference number for the consent is: " + $scope.consent.councilRef + ".",
 				icon : "glyphicon glyphicon-ok"
 			};
 			$scope.timeline.push(elem);
