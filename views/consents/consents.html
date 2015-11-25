@@ -48,6 +48,15 @@
 													<label>Street address of building</label>
 													<input placeholder="e.g. 65B Jonston Drive, Te Aro, Wellington" type="text" class="form-control" ng-model="newconsent.address" required>
 												</div>
+												<div class="form-group">
+													<label>Legal Description</label>
+													<input placeholder="e.g. Lot 1 DP 312" type="text" class="form-control" ng-model="newconsent.legalDescription" required>
+												</div>
+												<div class="form-group">
+													<label>Valuation Number</label>
+													<input placeholder="e.g. 0730333501" type="text" class="form-control" ng-model="newconsent.valuation" required>
+												</div>
+
 												<button class="btn btn-primary btn-block" ng-click="createConsent()" type="submit">Create project</button>
 											</form>
 										</div>

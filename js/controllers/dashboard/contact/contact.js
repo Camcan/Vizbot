@@ -47,6 +47,10 @@ app.controller('ContactCtrl', ['$scope', '$location',
 					$scope.hasPro = true;
 					$scope.consent.people = consent.people;
 				}
+				if(consent.contact){
+					$scope.hasContact = true;
+					$scope.contact = consent.contact;
+				} 
 			});
 		};
 
@@ -84,11 +88,11 @@ app.controller('ContactCtrl', ['$scope', '$location',
 					$scope.consent.contact = $scope.consent.client; 
 					$scope.consent.$save();
 					$scope.hasContact = true;
-				} else if($scope.consent.info == 'agent'){
+				} else if($scope.contact.info == 'agent'){
 					$scope.consent.contact = $scope.consent.agent; 
 					$scope.consent.$save();
 					$scope.hasContact = true;
-				} else if($scope.consent.info == 'other'){
+				} else if($scope.contact.info == 'other'){
 					$scope.consent.contact = $scope.contact; 
 					$scope.consent.$save();
 					$scope.hasContact = true;

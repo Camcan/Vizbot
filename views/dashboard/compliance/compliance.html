@@ -76,20 +76,23 @@
                     <h4>Compliance for Code Clause B1 Structure may be established by using </h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>AS/NZS1170</li>
-                      <li>B1/AS1</li>
-                      <li>NZS3604</li>
-                      <li>NZS4229</li>
+                      <li><input type="checkbox" ng-model="means.b1.asnz1170"> AS/NZS1170</li>
+                      <li><input type="checkbox" ng-model="means.b1.b1as1"> B1/AS1</li>
+                      <li><input type="checkbox" ng-model="means.b1.NZS3604"> NZS3604</li>
+                      <li><input type="checkbox" ng-model="means.b1.NZS4229"> NZS4229</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>B1/VM1</li>
+                      <li><input type="checkbox" ng-model="means.b1.b1vm1"> B1/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
                     <ul ng-repeat="item in consent.compliance | filter:{ clause: 'b1' }">
                       <li><a ng-href= '{{item.url}}' target="_blank">{{item.name}}</a></li>
                     </ul>
+                    <button ng-click="saveSolution('b1')" type="button" class="btn btn-primary btn-lg pull-right">
+                      Save  
+                    </button>
                     <button ng-click="compliance = 'b1' " type="button" class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#addDocument">
                       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Document  
                     </button>
@@ -114,11 +117,11 @@
                     <h4>Compliance for Code Clause B2 Durability may be established by using </h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>B2/AS1</li>
+                      <li><input type="checkbox" ng-model="b2.b2as1"> B2/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>B2/VM1</li>
+                      <li><input type="checkbox" ng-model="b2.b2vm1">B2/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -157,18 +160,18 @@
                     <h4>Compliance for Code Clauses C1-C6 Protection from Fire may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>C/AS1,</li>
-                      <li>C/AS2,</li>
-                      <li>C/AS3,</li>
-                      <li>C/AS4,</li>
-                      <li>C/AS5,</li>
-                      <li>C/AS6,</li>
-                      <li>C/AS7,</li>
+                      <li><input type="checkbox" ng-model="c.as1">C/AS1,</li>
+                      <li><input type="checkbox" ng-model="c.as2">C/AS2,</li>
+                      <li><input type="checkbox" ng-model="c.as3">C/AS3,</li>
+                      <li><input type="checkbox" ng-model="c.as4">C/AS4,</li>
+                      <li><input type="checkbox" ng-model="c.as5">C/AS5,</li>
+                      <li><input type="checkbox" ng-model="c.as6">C/AS6,</li>
+                      <li><input type="checkbox" ng-model="c.as7">C/AS7,</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>C/VM1,</li>
-                      <li>C/VM2</li>
+                      <li><input type="checkbox" ng-model="c.cvm1">C/VM1,</li>
+                      <li><input type="checkbox" ng-model="c.cvm2">C/VM2</li>
 
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
@@ -208,8 +211,8 @@
                     <h4>Compliance for Code Clause D1 Access Routes may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>D1/AS1</li>
-                      <li>NZS4121</li>
+                      <li><input type="checkbox" ng-model="d1.as1"> D1/AS1</li>
+                      <li><input type="checkbox" ng-model="d1.nzs4121">NZS4121</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -239,10 +242,10 @@
                     <h4>Compliance for Code Clause D2 Mechanical Installations for Access may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>D2/AS1</li>
-                      <li>D2/AS2</li>
-                      <li>D2/AS3</li>
-                      <li>NZS4121</li>
+                      <li><input type="checkbox" ng-model="d2.as1"> D2/AS1</li>
+                      <li><input type="checkbox" ng-model="d2.as2"> D2/AS2</li>
+                      <li><input type="checkbox" ng-model="d2.as3"> D2/AS3</li>
+                      <li><input type="checkbox" ng-model="d2.nzs4121"> NZS4121</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -281,12 +284,12 @@
                     <h4>Compliance for Code Clause E1 Surface Water may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>E1/AS1</li>
-                      <li>AS3500</li>
+                      <li><input type="checkbox" ng-model="e1.as1">E1/AS1</li>
+                      <li><input type="checkbox" ng-model="e1.as3500">AS3500</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>E1/VM1</li>
+                      <li><input type="checkbox" ng-model="e1.vm1"> E1/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -316,14 +319,14 @@
                     <h4>Compliance for Code Clause E2 External Moisture may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>E2/AS1</li>
-                      <li>E2/AS2</li>
-                      <li>E2/AS3</li>
-                      <li>SED</li>
+                      <li><input type="checkbox" ng-model="e2.as1">E2/AS1</li>
+                      <li><input type="checkbox" ng-model="e2.as2">E2/AS2</li>
+                      <li><input type="checkbox" ng-model="e2.as3">E2/AS3</li>
+                      <li><input type="checkbox" ng-model="e2.sed">SED</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>E2/VM1</li>
+                      <li><input type="checkbox" ng-model="e2.vm1"> E2/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -353,7 +356,7 @@
                     <h4>Compliance for Code Clause E3 Internal Moisture may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>E3/AS1</li>
+                      <li><input type="checkbox" ng-model="e3.as1">E3/AS1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -392,11 +395,11 @@
                     <h4>Compliance for Code Clause F1 Hazardous Agents of Site may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>F1/AS1</li>
+                      <li><input type="checkbox" ng-model="f1.as1"> F1/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>F2/VM1</li>
+                      <li><input type="checkbox" ng-model="f1.vm1"> F2/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -426,7 +429,7 @@
                     <h4>Compliance for Code Clause F2 Hazardous Building Materials may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>F2/AS1</li>
+                      <li><input type="checkbox" ng-model="f2.as1">F2/AS1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -456,11 +459,11 @@
                     <h4>Compliance for Code Clause F3 Hazardous Substances and Processes may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>F3/AS1</li>
+                      <li><input type="checkbox" ng-model="f3.as1">F3/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>F3/VM1</li>
+                      <li><input type="checkbox" ng-model="f3.as1">F3/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -490,7 +493,7 @@
                     <h4>Compliance for Code Clause F4 Safety from Falling may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>F4/AS1</li>
+                      <li><input type="checkbox" ng-model="f4.as1">F4/AS1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -520,7 +523,7 @@
                     <h4>Compliance for Code Clause F5 Construction and Demolition Hazards may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>F5/AS1</li>
+                      <li><input type="checkbox" ng-model="f5.as1">F5/AS1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -550,7 +553,7 @@
                     <h4>Compliance for Code Clause F6 Visibility in Escape Routes may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>F6/AS1</li>
+                      <li><input type="checkbox" ng-model="f6.as1">F6/AS1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -580,7 +583,7 @@
                     <h4>Compliance for Code Clause F7 Warning Systems may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>F8/AS1</li>
+                      <li><input type="checkbox" ng-model="f7.as1">F7/AS1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -610,8 +613,8 @@
                     <h4>Compliance for Code Clause F8 Signs may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>F8/AS1</li>
-                      <li>NZS4121</li>
+                      <li><input type="checkbox" ng-model="f8.as1">F8/AS1</li>
+                      <li><input type="checkbox" ng-model="f8.nzs4121">NZS4121</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -650,8 +653,8 @@
                     <h4>Compliance for Code Clause G1 Personal Hygiene may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G1/AS1</li>
-                      <li>NZS4121</li>
+                      <li><input type="checkbox" ng-model="g1.as1">G1/AS1</li>
+                      <li><input type="checkbox" ng-model="g1.nzs4121">NZS4121</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -681,8 +684,8 @@
                     <h4>Compliance for Code Clause G1 Personal Hygiene may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G2/AS1</li>
-                      <li>NZS4121</li>
+                      <li><input type="checkbox" ng-model="g2.as1">G2/AS1</li>
+                      <li><input type="checkbox" ng-model="g2.nzs4121">NZS4121</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -712,8 +715,8 @@
                     <h4>Compliance for Code Clause G3 Food Preparation and Prevention of Contamination may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G3/AS1</li>
-                      <li>NZS4121</li>
+                      <li><input type="checkbox" ng-model="g3.as1">G3/AS1</li>
+                      <li><input type="checkbox" ng-model="g3.nzs4121">NZS4121</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -743,11 +746,11 @@
                     <h4>Compliance for Code Clause G4 Ventilation may be established by usingg</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G4/AS1</li>
+                      <li><input type="checkbox" ng-model="g4.as1">G4/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>G4/VM1</li>
+                      <li><input type="checkbox" ng-model="g4.vm1">G4/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -777,11 +780,11 @@
                     <h4>Compliance for Code Clause G5 Interior Environment may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G5/AS1</li>
+                      <li><input type="checkbox" ng-model="g5.as1">G5/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>G5/VM1</li>
+                      <li><input type="checkbox" ng-model="g5.vm1">G5/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -811,11 +814,11 @@
                     <h4>Compliance for Code Clause G6 Airborne and Impact Sound may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G6/AS1</li>
+                      <li><input type="checkbox" ng-model="g6.as1">G6/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>G6/VM1</li>
+                      <li><input type="checkbox" ng-model="g6.vm1">G6/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -845,11 +848,11 @@
                     <h4>Compliance for Code Clause G7 Natural Light may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G7/AS1</li>
+                      <li><input type="checkbox" ng-model="g7.as1">G7/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>G7/VM1</li>
+                      <li><input type="checkbox" ng-model="g7.vm1">G7/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -879,11 +882,11 @@
                     <h4>Compliance for Code Clause G8 Artificial Light may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G8/AS1</li>
+                      <li><input type="checkbox" ng-model="g8.as1">G8/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>G8/VM1</li>
+                      <li><input type="checkbox" ng-model="g8.vm1">G8/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -913,11 +916,11 @@
                     <h4>Compliance for Code Clause G9 Electricity may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G9/AS1</li>
+                      <li><input type="checkbox" ng-model="g9.as1">G9/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>G9/VM1</li>
+                      <li><input type="checkbox" ng-model="g9.vm1">G9/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -947,11 +950,11 @@
                     <h4>Compliance for Code Clause G10 Piped Services may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G10/AS1</li>
+                      <li><input type="checkbox" ng-model="g10.as1">G10/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>G10/VM1</li>
+                      <li><input type="checkbox" ng-model="g10.vm1">G10/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -981,11 +984,11 @@
                     <h4>Compliance for Code Clause G11 Gas and Energy Source may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G11/AS1</li>
+                      <li><input type="checkbox" ng-model="g11.as1">G11/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>G11/VM1</li>
+                      <li><input type="checkbox" ng-model="g11.vm1">G11/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -1015,8 +1018,8 @@
                     <h4>Compliance for Code Clause G12 Water Supplies may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G12/AS1</li>
-                      <li>G12/AS2</li>
+                      <li><input type="checkbox" ng-model="g12.as1">G12/AS1</li>
+                      <li><input type="checkbox" ng-model="g12.as2">G12/AS2</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -1046,15 +1049,15 @@
                     <h4>Compliance for Code Clause G13 Foul Water may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G13/AS1</li>
-                      <li>G13/AS2</li>
-                      <li>G13/AS3</li>
-                      <li>AS3500</li>
+                      <li><input type="checkbox" ng-model="g13.as1">G13/AS1</li>
+                      <li><input type="checkbox" ng-model="g13.as2">G13/AS2</li>
+                      <li><input type="checkbox" ng-model="g13.as3">G13/AS3</li>
+                      <li><input type="checkbox" ng-model="g13.as3500">AS3500</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>G13/VM1</li>
-                      <li>G13/VM4</li>
+                      <li><input type="checkbox" ng-model="g13.vm1">G13/VM1</li>
+                      <li><input type="checkbox" ng-model="g13.vm4">G13/VM4</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -1084,11 +1087,11 @@
                     <h4>Compliance for Code Clause G14 Industrial Liquid Waste may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G14/AS1</li>
+                      <li><input type="checkbox" ng-model="g14.as1">G14/AS1</li>
                     </ul>
                     Verification Method
                     <ul>
-                      <li>G14/VM1</li>
+                      <li><input type="checkbox" ng-model="g14.vm1">G14/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -1118,7 +1121,7 @@
                     <h4>Compliance for Code Clause G15 Solid Waste may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>G15/AS1</li>
+                      <li><input type="checkbox" ng-model="g15.as1">G15/AS1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
@@ -1157,11 +1160,16 @@
                     <h4>Compliance for Code Clause H1 Energy Efficiency may be established by using</h4>
                     Acceptable Solutions : 
                     <ul>
-                      <li>H1/AS1</li>
+                      <li><input type="checkbox" ng-model="h1.as1">H1/AS1</li>
                     </ul>
+                    <select class="form-control" name="gender" multiple ng-model="data">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
                     Verification Method
                     <ul>
-                      <li>H1/VM1</li>
+                      <li><input type="checkbox" ng-model="h1.vm1">H1/VM1</li>
                     </ul>
                     Alternative Solutions or using waivers and modifications. 
                     <hr>
